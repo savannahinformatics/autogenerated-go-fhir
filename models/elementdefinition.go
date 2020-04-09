@@ -1,29 +1,3 @@
-// Copyright (c) 2011-2017, HL7, Inc & The MITRE Corporation
-// All rights reserved.
-//
-// Redistribution and use in source and binary forms, with or without modification,
-// are permitted provided that the following conditions are met:
-//
-//     * Redistributions of source code must retain the above copyright notice, this
-//       list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright notice,
-//       this list of conditions and the following disclaimer in the documentation
-//       and/or other materials provided with the distribution.
-//     * Neither the name of HL7 nor the names of its contributors may be used to
-//       endorse or promote products derived from this software without specific
-//       prior written permission.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-// IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
-// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-// NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-// PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-// POSSIBILITY OF SUCH DAMAGE.
-
 package models
 
 type ElementDefinition struct {
@@ -200,8 +174,8 @@ type ElementDefinitionBaseComponent struct {
 type ElementDefinitionTypeRefComponent struct {
 	BackboneElement `bson:",inline"`
 	Code            string      `bson:"code,omitempty" json:"code,omitempty"`
-	Profile         []canonical `bson:"profile,omitempty" json:"profile,omitempty"`
-	TargetProfile   []canonical `bson:"targetProfile,omitempty" json:"targetProfile,omitempty"`
+	Profile         []Canonical `bson:"profile,omitempty" json:"profile,omitempty"`
+	TargetProfile   []Canonical `bson:"targetProfile,omitempty" json:"targetProfile,omitempty"`
 	Aggregation     []string    `bson:"aggregation,omitempty" json:"aggregation,omitempty"`
 	Versioning      string      `bson:"versioning,omitempty" json:"versioning,omitempty"`
 }
@@ -252,14 +226,14 @@ type ElementDefinitionConstraintComponent struct {
 	Human           string     `bson:"human,omitempty" json:"human,omitempty"`
 	Expression      string     `bson:"expression,omitempty" json:"expression,omitempty"`
 	Xpath           string     `bson:"xpath,omitempty" json:"xpath,omitempty"`
-	Source          *canonical `bson:"source,omitempty" json:"source,omitempty"`
+	Source          *Canonical `bson:"source,omitempty" json:"source,omitempty"`
 }
 
 type ElementDefinitionBindingComponent struct {
 	BackboneElement `bson:",inline"`
 	Strength        string     `bson:"strength,omitempty" json:"strength,omitempty"`
 	Description     string     `bson:"description,omitempty" json:"description,omitempty"`
-	ValueSet        *canonical `bson:"valueSet,omitempty" json:"valueSet,omitempty"`
+	ValueSet        *Canonical `bson:"valueSet,omitempty" json:"valueSet,omitempty"`
 }
 
 type ElementDefinitionMappingComponent struct {

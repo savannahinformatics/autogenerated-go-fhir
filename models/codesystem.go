@@ -1,29 +1,3 @@
-// Copyright (c) 2011-2017, HL7, Inc & The MITRE Corporation
-// All rights reserved.
-//
-// Redistribution and use in source and binary forms, with or without modification,
-// are permitted provided that the following conditions are met:
-//
-//     * Redistributions of source code must retain the above copyright notice, this
-//       list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright notice,
-//       this list of conditions and the following disclaimer in the documentation
-//       and/or other materials provided with the distribution.
-//     * Neither the name of HL7 nor the names of its contributors may be used to
-//       endorse or promote products derived from this software without specific
-//       prior written permission.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-// IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
-// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-// NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-// PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-// POSSIBILITY OF SUCH DAMAGE.
-
 package models
 
 import (
@@ -50,12 +24,12 @@ type CodeSystem struct {
 	Purpose          string                                 `bson:"purpose,omitempty" json:"purpose,omitempty"`
 	Copyright        string                                 `bson:"copyright,omitempty" json:"copyright,omitempty"`
 	CaseSensitive    *bool                                  `bson:"caseSensitive,omitempty" json:"caseSensitive,omitempty"`
-	ValueSet         *canonical                             `bson:"valueSet,omitempty" json:"valueSet,omitempty"`
+	ValueSet         *Canonical                             `bson:"valueSet,omitempty" json:"valueSet,omitempty"`
 	HierarchyMeaning string                                 `bson:"hierarchyMeaning,omitempty" json:"hierarchyMeaning,omitempty"`
 	Compositional    *bool                                  `bson:"compositional,omitempty" json:"compositional,omitempty"`
 	VersionNeeded    *bool                                  `bson:"versionNeeded,omitempty" json:"versionNeeded,omitempty"`
 	Content          string                                 `bson:"content,omitempty" json:"content,omitempty"`
-	Supplements      *canonical                             `bson:"supplements,omitempty" json:"supplements,omitempty"`
+	Supplements      *Canonical                             `bson:"supplements,omitempty" json:"supplements,omitempty"`
 	Count            *uint32                                `bson:"count,omitempty" json:"count,omitempty"`
 	Filter           []CodeSystemFilterComponent            `bson:"filter,omitempty" json:"filter,omitempty"`
 	Property         []CodeSystemPropertyComponent          `bson:"property,omitempty" json:"property,omitempty"`

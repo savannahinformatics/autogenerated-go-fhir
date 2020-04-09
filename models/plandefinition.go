@@ -1,29 +1,3 @@
-// Copyright (c) 2011-2017, HL7, Inc & The MITRE Corporation
-// All rights reserved.
-//
-// Redistribution and use in source and binary forms, with or without modification,
-// are permitted provided that the following conditions are met:
-//
-//     * Redistributions of source code must retain the above copyright notice, this
-//       list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright notice,
-//       this list of conditions and the following disclaimer in the documentation
-//       and/or other materials provided with the distribution.
-//     * Neither the name of HL7 nor the names of its contributors may be used to
-//       endorse or promote products derived from this software without specific
-//       prior written permission.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-// IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
-// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-// NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-// PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-// POSSIBILITY OF SUCH DAMAGE.
-
 package models
 
 import (
@@ -63,7 +37,7 @@ type PlanDefinition struct {
 	Reviewer               []ContactDetail                 `bson:"reviewer,omitempty" json:"reviewer,omitempty"`
 	Endorser               []ContactDetail                 `bson:"endorser,omitempty" json:"endorser,omitempty"`
 	RelatedArtifact        []RelatedArtifact               `bson:"relatedArtifact,omitempty" json:"relatedArtifact,omitempty"`
-	Library                []canonical                     `bson:"library,omitempty" json:"library,omitempty"`
+	Library                []Canonical                     `bson:"library,omitempty" json:"library,omitempty"`
 	Goal                   []PlanDefinitionGoalComponent   `bson:"goal,omitempty" json:"goal,omitempty"`
 	Action                 []PlanDefinitionActionComponent `bson:"action,omitempty" json:"action,omitempty"`
 }
@@ -153,9 +127,9 @@ type PlanDefinitionActionComponent struct {
 	RequiredBehavior       string                                       `bson:"requiredBehavior,omitempty" json:"requiredBehavior,omitempty"`
 	PrecheckBehavior       string                                       `bson:"precheckBehavior,omitempty" json:"precheckBehavior,omitempty"`
 	CardinalityBehavior    string                                       `bson:"cardinalityBehavior,omitempty" json:"cardinalityBehavior,omitempty"`
-	DefinitionCanonical    *canonical                                   `bson:"definitionCanonical,omitempty" json:"definitionCanonical,omitempty"`
+	DefinitionCanonical    *Canonical                                   `bson:"definitionCanonical,omitempty" json:"definitionCanonical,omitempty"`
 	DefinitionUri          string                                       `bson:"definitionUri,omitempty" json:"definitionUri,omitempty"`
-	Transform              *canonical                                   `bson:"transform,omitempty" json:"transform,omitempty"`
+	Transform              *Canonical                                   `bson:"transform,omitempty" json:"transform,omitempty"`
 	DynamicValue           []PlanDefinitionActionDynamicValueComponent  `bson:"dynamicValue,omitempty" json:"dynamicValue,omitempty"`
 	Action                 []PlanDefinitionActionComponent              `bson:"action,omitempty" json:"action,omitempty"`
 }
