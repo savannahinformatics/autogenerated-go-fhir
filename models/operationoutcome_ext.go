@@ -1,4 +1,4 @@
-package models
+package fhir
 
 import (
 	"bytes"
@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// Error ... // TODO Write proper comment
 func (o *OperationOutcome) Error() string {
 	if len(o.Issue) == 0 {
 		return "Unspecified OperationOutome"

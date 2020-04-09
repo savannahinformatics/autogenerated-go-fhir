@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// ContactPoint ... // TODO Write proper comment
 type ContactPoint struct {
 	System string  `bson:"system,omitempty" json:"system,omitempty"`
 	Value  string  `bson:"value,omitempty" json:"value,omitempty"`

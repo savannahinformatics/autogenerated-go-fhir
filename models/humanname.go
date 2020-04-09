@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// HumanName ... // TODO Write proper comment
 type HumanName struct {
 	Use    string   `bson:"use,omitempty" json:"use,omitempty"`
 	Text   string   `bson:"text,omitempty" json:"text,omitempty"`

@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Dosage ... // TODO Write proper comment
 type Dosage struct {
 	BackboneElement          `bson:",inline"`
 	Sequence                 *int32                       `bson:"sequence,omitempty" json:"sequence,omitempty"`
@@ -18,6 +19,7 @@ type Dosage struct {
 	MaxDosePerLifetime       *Quantity                    `bson:"maxDosePerLifetime,omitempty" json:"maxDosePerLifetime,omitempty"`
 }
 
+// DosageDoseAndRateComponent ... // TODO Write proper comment
 type DosageDoseAndRateComponent struct {
 	BackboneElement    `bson:",inline"`
 	Type               *CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`

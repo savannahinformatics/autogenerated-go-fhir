@@ -1,4 +1,4 @@
-package models
+package fhir
 
 import (
 	"encoding/json"
@@ -6,6 +6,7 @@ import (
 	"fmt"
 )
 
+// CoverageEligibilityResponse ... // TODO Write proper comment
 type CoverageEligibilityResponse struct {
 	DomainResource `bson:",inline"`
 	Identifier     []Identifier                                    `bson:"identifier,omitempty" json:"identifier,omitempty"`
@@ -27,10 +28,10 @@ type CoverageEligibilityResponse struct {
 }
 
 // MarshalJSON is a Custom marshaller to add the resourceType property, as required by the specification
-func (resource *CoverageEligibilityResponse) MarshalJSON() ([]byte, error) {
-	resource.ResourceType = "CoverageEligibilityResponse"
+func (x *CoverageEligibilityResponse) MarshalJSON() ([]byte, error) {
+	x.ResourceType = "CoverageEligibilityResponse"
 	// Dereferencing the pointer to avoid infinite recursion.
-	return json.Marshal(*resource)
+	return json.Marshal(*x)
 }
 
 // "coverageEligibilityResponse" sub-type is needed to avoid infinite recursion in UnmarshalJSON
@@ -55,11 +56,12 @@ func (x *CoverageEligibilityResponse) checkResourceType() error {
 	if x.ResourceType == "" {
 		x.ResourceType = "CoverageEligibilityResponse"
 	} else if x.ResourceType != "CoverageEligibilityResponse" {
-		return errors.New(fmt.Sprintf("Expected resourceType to be CoverageEligibilityResponse, instead received %s", x.ResourceType))
+		return fmt.Errorf("Expected resourceType to be CoverageEligibilityResponse, instead received %s", x.ResourceType)
 	}
 	return nil
 }
 
+// CoverageEligibilityResponseInsuranceComponent ... // TODO Write proper comment
 type CoverageEligibilityResponseInsuranceComponent struct {
 	BackboneElement `bson:",inline"`
 	Coverage        *Reference                                  `bson:"coverage,omitempty" json:"coverage,omitempty"`
@@ -68,6 +70,7 @@ type CoverageEligibilityResponseInsuranceComponent struct {
 	Item            []CoverageEligibilityResponseItemsComponent `bson:"item,omitempty" json:"item,omitempty"`
 }
 
+// CoverageEligibilityResponseItemsComponent ... // TODO Write proper comment
 type CoverageEligibilityResponseItemsComponent struct {
 	BackboneElement         `bson:",inline"`
 	Category                *CodeableConcept                              `bson:"category,omitempty" json:"category,omitempty"`
@@ -86,6 +89,7 @@ type CoverageEligibilityResponseItemsComponent struct {
 	AuthorizationUrl        string                                        `bson:"authorizationUrl,omitempty" json:"authorizationUrl,omitempty"`
 }
 
+// CoverageEligibilityResponseBenefitComponent ... // TODO Write proper comment
 type CoverageEligibilityResponseBenefitComponent struct {
 	BackboneElement    `bson:",inline"`
 	Type               *CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`
@@ -97,16 +101,19 @@ type CoverageEligibilityResponseBenefitComponent struct {
 	UsedMoney          *Quantity        `bson:"usedMoney,omitempty" json:"usedMoney,omitempty"`
 }
 
+// CoverageEligibilityResponseErrorsComponent ... // TODO Write proper comment
 type CoverageEligibilityResponseErrorsComponent struct {
 	BackboneElement `bson:",inline"`
 	Code            *CodeableConcept `bson:"code,omitempty" json:"code,omitempty"`
 }
 
+// CoverageEligibilityResponsePlus ... // TODO Write proper comment
 type CoverageEligibilityResponsePlus struct {
 	CoverageEligibilityResponse                     `bson:",inline"`
 	CoverageEligibilityResponsePlusRelatedResources `bson:",inline"`
 }
 
+// CoverageEligibilityResponsePlusRelatedResources ... // TODO Write proper comment
 type CoverageEligibilityResponsePlusRelatedResources struct {
 	IncludedCoverageEligibilityRequestResourcesReferencedByRequest         *[]CoverageEligibilityRequest `bson:"_includedCoverageEligibilityRequestResourcesReferencedByRequest,omitempty"`
 	IncludedPatientResourcesReferencedByPatient                            *[]Patient                    `bson:"_includedPatientResourcesReferencedByPatient,omitempty"`
@@ -201,6 +208,7 @@ type CoverageEligibilityResponsePlusRelatedResources struct {
 	RevIncludedPlanDefinitionResourcesReferencingDependsonPath2            *[]PlanDefinition             `bson:"_revIncludedPlanDefinitionResourcesReferencingDependsonPath2,omitempty"`
 }
 
+// GetIncludedCoverageEligibilityRequestResourceReferencedByRequest ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedCoverageEligibilityRequestResourceReferencedByRequest() (coverageEligibilityRequest *CoverageEligibilityRequest, err error) {
 	if c.IncludedCoverageEligibilityRequestResourcesReferencedByRequest == nil {
 		err = errors.New("Included coverageeligibilityrequests not requested")
@@ -212,6 +220,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedCoverageEli
 	return
 }
 
+// GetIncludedPatientResourceReferencedByPatient ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedPatientResourceReferencedByPatient() (patient *Patient, err error) {
 	if c.IncludedPatientResourcesReferencedByPatient == nil {
 		err = errors.New("Included patients not requested")
@@ -223,6 +232,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedPatientReso
 	return
 }
 
+// GetIncludedOrganizationResourceReferencedByInsurer ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedOrganizationResourceReferencedByInsurer() (organization *Organization, err error) {
 	if c.IncludedOrganizationResourcesReferencedByInsurer == nil {
 		err = errors.New("Included organizations not requested")
@@ -234,6 +244,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedOrganizatio
 	return
 }
 
+// GetIncludedPractitionerResourceReferencedByRequestor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedPractitionerResourceReferencedByRequestor() (practitioner *Practitioner, err error) {
 	if c.IncludedPractitionerResourcesReferencedByRequestor == nil {
 		err = errors.New("Included practitioners not requested")
@@ -245,6 +256,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedPractitione
 	return
 }
 
+// GetIncludedOrganizationResourceReferencedByRequestor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedOrganizationResourceReferencedByRequestor() (organization *Organization, err error) {
 	if c.IncludedOrganizationResourcesReferencedByRequestor == nil {
 		err = errors.New("Included organizations not requested")
@@ -256,6 +268,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedOrganizatio
 	return
 }
 
+// GetIncludedPractitionerRoleResourceReferencedByRequestor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedPractitionerRoleResourceReferencedByRequestor() (practitionerRole *PractitionerRole, err error) {
 	if c.IncludedPractitionerRoleResourcesReferencedByRequestor == nil {
 		err = errors.New("Included practitionerroles not requested")
@@ -267,6 +280,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedPractitione
 	return
 }
 
+// GetRevIncludedAppointmentResourcesReferencingSupportinginfo ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedAppointmentResourcesReferencingSupportinginfo() (appointments []Appointment, err error) {
 	if c.RevIncludedAppointmentResourcesReferencingSupportinginfo == nil {
 		err = errors.New("RevIncluded appointments not requested")
@@ -276,6 +290,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedAppointm
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingSuccessor() (eventDefinitions []EventDefinition, err error) {
 	if c.RevIncludedEventDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -285,6 +300,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEventDef
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom() (eventDefinitions []EventDefinition, err error) {
 	if c.RevIncludedEventDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -294,6 +310,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEventDef
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingPredecessor() (eventDefinitions []EventDefinition, err error) {
 	if c.RevIncludedEventDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -303,6 +320,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEventDef
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingComposedof() (eventDefinitions []EventDefinition, err error) {
 	if c.RevIncludedEventDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -312,6 +330,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEventDef
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingDependson ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingDependson() (eventDefinitions []EventDefinition, err error) {
 	if c.RevIncludedEventDefinitionResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -321,6 +340,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEventDef
 	return
 }
 
+// GetRevIncludedDocumentManifestResourcesReferencingItem ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDocumentManifestResourcesReferencingItem() (documentManifests []DocumentManifest, err error) {
 	if c.RevIncludedDocumentManifestResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded documentManifests not requested")
@@ -330,6 +350,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDocument
 	return
 }
 
+// GetRevIncludedDocumentManifestResourcesReferencingRelatedref ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDocumentManifestResourcesReferencingRelatedref() (documentManifests []DocumentManifest, err error) {
 	if c.RevIncludedDocumentManifestResourcesReferencingRelatedref == nil {
 		err = errors.New("RevIncluded documentManifests not requested")
@@ -339,6 +360,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDocument
 	return
 }
 
+// GetRevIncludedConsentResourcesReferencingData ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedConsentResourcesReferencingData() (consents []Consent, err error) {
 	if c.RevIncludedConsentResourcesReferencingData == nil {
 		err = errors.New("RevIncluded consents not requested")
@@ -348,6 +370,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedConsentR
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingSuccessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingSuccessor() (measures []Measure, err error) {
 	if c.RevIncludedMeasureResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -357,6 +380,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureR
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDerivedfrom() (measures []Measure, err error) {
 	if c.RevIncludedMeasureResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -366,6 +390,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureR
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingPredecessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingPredecessor() (measures []Measure, err error) {
 	if c.RevIncludedMeasureResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -375,6 +400,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureR
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingComposedof ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingComposedof() (measures []Measure, err error) {
 	if c.RevIncludedMeasureResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -384,6 +410,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureR
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDependsonPath1() (measures []Measure, err error) {
 	if c.RevIncludedMeasureResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -393,6 +420,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureR
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDependsonPath2() (measures []Measure, err error) {
 	if c.RevIncludedMeasureResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -402,6 +430,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureR
 	return
 }
 
+// GetRevIncludedDocumentReferenceResourcesReferencingRelated ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDocumentReferenceResourcesReferencingRelated() (documentReferences []DocumentReference, err error) {
 	if c.RevIncludedDocumentReferenceResourcesReferencingRelated == nil {
 		err = errors.New("RevIncluded documentReferences not requested")
@@ -411,6 +440,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDocument
 	return
 }
 
+// GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource() (measureReports []MeasureReport, err error) {
 	if c.RevIncludedMeasureReportResourcesReferencingEvaluatedresource == nil {
 		err = errors.New("RevIncluded measureReports not requested")
@@ -420,6 +450,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMeasureR
 	return
 }
 
+// GetRevIncludedVerificationResultResourcesReferencingTarget ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedVerificationResultResourcesReferencingTarget() (verificationResults []VerificationResult, err error) {
 	if c.RevIncludedVerificationResultResourcesReferencingTarget == nil {
 		err = errors.New("RevIncluded verificationResults not requested")
@@ -429,6 +460,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedVerifica
 	return
 }
 
+// GetRevIncludedContractResourcesReferencingSubject ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedContractResourcesReferencingSubject() (contracts []Contract, err error) {
 	if c.RevIncludedContractResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded contracts not requested")
@@ -438,6 +470,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedContract
 	return
 }
 
+// GetRevIncludedPaymentNoticeResourcesReferencingRequest ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferencingRequest() (paymentNotices []PaymentNotice, err error) {
 	if c.RevIncludedPaymentNoticeResourcesReferencingRequest == nil {
 		err = errors.New("RevIncluded paymentNotices not requested")
@@ -447,6 +480,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPaymentN
 	return
 }
 
+// GetRevIncludedPaymentNoticeResourcesReferencingResponse ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferencingResponse() (paymentNotices []PaymentNotice, err error) {
 	if c.RevIncludedPaymentNoticeResourcesReferencingResponse == nil {
 		err = errors.New("RevIncluded paymentNotices not requested")
@@ -456,6 +490,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPaymentN
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingSuccessor() (researchDefinitions []ResearchDefinition, err error) {
 	if c.RevIncludedResearchDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -465,6 +500,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom() (researchDefinitions []ResearchDefinition, err error) {
 	if c.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -474,6 +510,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingPredecessor() (researchDefinitions []ResearchDefinition, err error) {
 	if c.RevIncludedResearchDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -483,6 +520,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingComposedof() (researchDefinitions []ResearchDefinition, err error) {
 	if c.RevIncludedResearchDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -492,6 +530,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1() (researchDefinitions []ResearchDefinition, err error) {
 	if c.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -501,6 +540,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2() (researchDefinitions []ResearchDefinition, err error) {
 	if c.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -510,6 +550,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedImplementationGuideResourcesReferencingResource ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedImplementationGuideResourcesReferencingResource() (implementationGuides []ImplementationGuide, err error) {
 	if c.RevIncludedImplementationGuideResourcesReferencingResource == nil {
 		err = errors.New("RevIncluded implementationGuides not requested")
@@ -519,6 +560,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedImplemen
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if c.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -528,6 +570,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if c.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -537,6 +580,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if c.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -546,6 +590,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if c.RevIncludedResearchElementDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -555,6 +600,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if c.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -564,6 +610,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if c.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -573,6 +620,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResearch
 	return
 }
 
+// GetRevIncludedCommunicationResourcesReferencingPartof ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedCommunicationResourcesReferencingPartof() (communications []Communication, err error) {
 	if c.RevIncludedCommunicationResourcesReferencingPartof == nil {
 		err = errors.New("RevIncluded communications not requested")
@@ -582,6 +630,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedCommunic
 	return
 }
 
+// GetRevIncludedCommunicationResourcesReferencingBasedon ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedCommunicationResourcesReferencingBasedon() (communications []Communication, err error) {
 	if c.RevIncludedCommunicationResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded communications not requested")
@@ -591,6 +640,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedCommunic
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingSuccessor() (activityDefinitions []ActivityDefinition, err error) {
 	if c.RevIncludedActivityDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -600,6 +650,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivity
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom() (activityDefinitions []ActivityDefinition, err error) {
 	if c.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -609,6 +660,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivity
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingPredecessor() (activityDefinitions []ActivityDefinition, err error) {
 	if c.RevIncludedActivityDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -618,6 +670,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivity
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingComposedof() (activityDefinitions []ActivityDefinition, err error) {
 	if c.RevIncludedActivityDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -627,6 +680,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivity
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1() (activityDefinitions []ActivityDefinition, err error) {
 	if c.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -636,6 +690,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivity
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2() (activityDefinitions []ActivityDefinition, err error) {
 	if c.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -645,6 +700,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedActivity
 	return
 }
 
+// GetRevIncludedLinkageResourcesReferencingItem ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLinkageResourcesReferencingItem() (linkages []Linkage, err error) {
 	if c.RevIncludedLinkageResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded linkages not requested")
@@ -654,6 +710,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLinkageR
 	return
 }
 
+// GetRevIncludedLinkageResourcesReferencingSource ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLinkageResourcesReferencingSource() (linkages []Linkage, err error) {
 	if c.RevIncludedLinkageResourcesReferencingSource == nil {
 		err = errors.New("RevIncluded linkages not requested")
@@ -663,6 +720,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLinkageR
 	return
 }
 
+// GetRevIncludedDeviceRequestResourcesReferencingBasedon ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferencingBasedon() (deviceRequests []DeviceRequest, err error) {
 	if c.RevIncludedDeviceRequestResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded deviceRequests not requested")
@@ -672,6 +730,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDeviceRe
 	return
 }
 
+// GetRevIncludedDeviceRequestResourcesReferencingPriorrequest ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferencingPriorrequest() (deviceRequests []DeviceRequest, err error) {
 	if c.RevIncludedDeviceRequestResourcesReferencingPriorrequest == nil {
 		err = errors.New("RevIncluded deviceRequests not requested")
@@ -681,6 +740,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDeviceRe
 	return
 }
 
+// GetRevIncludedMessageHeaderResourcesReferencingFocus ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMessageHeaderResourcesReferencingFocus() (messageHeaders []MessageHeader, err error) {
 	if c.RevIncludedMessageHeaderResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded messageHeaders not requested")
@@ -690,6 +750,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedMessageH
 	return
 }
 
+// GetRevIncludedImmunizationRecommendationResourcesReferencingInformation ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedImmunizationRecommendationResourcesReferencingInformation() (immunizationRecommendations []ImmunizationRecommendation, err error) {
 	if c.RevIncludedImmunizationRecommendationResourcesReferencingInformation == nil {
 		err = errors.New("RevIncluded immunizationRecommendations not requested")
@@ -699,6 +760,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedImmuniza
 	return
 }
 
+// GetRevIncludedProvenanceResourcesReferencingEntity ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedProvenanceResourcesReferencingEntity() (provenances []Provenance, err error) {
 	if c.RevIncludedProvenanceResourcesReferencingEntity == nil {
 		err = errors.New("RevIncluded provenances not requested")
@@ -708,6 +770,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedProvenan
 	return
 }
 
+// GetRevIncludedProvenanceResourcesReferencingTarget ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedProvenanceResourcesReferencingTarget() (provenances []Provenance, err error) {
 	if c.RevIncludedProvenanceResourcesReferencingTarget == nil {
 		err = errors.New("RevIncluded provenances not requested")
@@ -717,6 +780,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedProvenan
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingSubject ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedTaskResourcesReferencingSubject() (tasks []Task, err error) {
 	if c.RevIncludedTaskResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -726,6 +790,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedTaskReso
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingFocus ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedTaskResourcesReferencingFocus() (tasks []Task, err error) {
 	if c.RevIncludedTaskResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -735,6 +800,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedTaskReso
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingBasedon ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedTaskResourcesReferencingBasedon() (tasks []Task, err error) {
 	if c.RevIncludedTaskResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -744,6 +810,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedTaskReso
 	return
 }
 
+// GetRevIncludedListResourcesReferencingItem ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedListResourcesReferencingItem() (lists []List, err error) {
 	if c.RevIncludedListResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded lists not requested")
@@ -753,6 +820,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedListReso
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingSuccessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingSuccessor() (evidenceVariables []EvidenceVariable, err error) {
 	if c.RevIncludedEvidenceVariableResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -762,6 +830,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidence
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom() (evidenceVariables []EvidenceVariable, err error) {
 	if c.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -771,6 +840,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidence
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingPredecessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingPredecessor() (evidenceVariables []EvidenceVariable, err error) {
 	if c.RevIncludedEvidenceVariableResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -780,6 +850,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidence
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingComposedof ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingComposedof() (evidenceVariables []EvidenceVariable, err error) {
 	if c.RevIncludedEvidenceVariableResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -789,6 +860,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidence
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingDependson ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingDependson() (evidenceVariables []EvidenceVariable, err error) {
 	if c.RevIncludedEvidenceVariableResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -798,6 +870,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidence
 	return
 }
 
+// GetRevIncludedObservationResourcesReferencingFocus ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedObservationResourcesReferencingFocus() (observations []Observation, err error) {
 	if c.RevIncludedObservationResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded observations not requested")
@@ -807,6 +880,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedObservat
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingSuccessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingSuccessor() (libraries []Library, err error) {
 	if c.RevIncludedLibraryResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -816,6 +890,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLibraryR
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDerivedfrom() (libraries []Library, err error) {
 	if c.RevIncludedLibraryResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -825,6 +900,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLibraryR
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingPredecessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingPredecessor() (libraries []Library, err error) {
 	if c.RevIncludedLibraryResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -834,6 +910,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLibraryR
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingComposedof ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingComposedof() (libraries []Library, err error) {
 	if c.RevIncludedLibraryResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -843,6 +920,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLibraryR
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingDependson ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDependson() (libraries []Library, err error) {
 	if c.RevIncludedLibraryResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -852,6 +930,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedLibraryR
 	return
 }
 
+// GetRevIncludedCommunicationRequestResourcesReferencingBasedon ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedCommunicationRequestResourcesReferencingBasedon() (communicationRequests []CommunicationRequest, err error) {
 	if c.RevIncludedCommunicationRequestResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded communicationRequests not requested")
@@ -861,6 +940,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedCommunic
 	return
 }
 
+// GetRevIncludedBasicResourcesReferencingSubject ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedBasicResourcesReferencingSubject() (basics []Basic, err error) {
 	if c.RevIncludedBasicResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded basics not requested")
@@ -870,6 +950,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedBasicRes
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingSuccessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingSuccessor() (evidences []Evidence, err error) {
 	if c.RevIncludedEvidenceResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -879,6 +960,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidence
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDerivedfrom() (evidences []Evidence, err error) {
 	if c.RevIncludedEvidenceResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -888,6 +970,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidence
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingPredecessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingPredecessor() (evidences []Evidence, err error) {
 	if c.RevIncludedEvidenceResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -897,6 +980,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidence
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingComposedof ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingComposedof() (evidences []Evidence, err error) {
 	if c.RevIncludedEvidenceResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -906,6 +990,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidence
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingDependson ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDependson() (evidences []Evidence, err error) {
 	if c.RevIncludedEvidenceResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -915,6 +1000,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedEvidence
 	return
 }
 
+// GetRevIncludedAuditEventResourcesReferencingEntity ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedAuditEventResourcesReferencingEntity() (auditEvents []AuditEvent, err error) {
 	if c.RevIncludedAuditEventResourcesReferencingEntity == nil {
 		err = errors.New("RevIncluded auditEvents not requested")
@@ -924,6 +1010,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedAuditEve
 	return
 }
 
+// GetRevIncludedConditionResourcesReferencingEvidencedetail ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedConditionResourcesReferencingEvidencedetail() (conditions []Condition, err error) {
 	if c.RevIncludedConditionResourcesReferencingEvidencedetail == nil {
 		err = errors.New("RevIncluded conditions not requested")
@@ -933,6 +1020,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedConditio
 	return
 }
 
+// GetRevIncludedCompositionResourcesReferencingSubject ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedCompositionResourcesReferencingSubject() (compositions []Composition, err error) {
 	if c.RevIncludedCompositionResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded compositions not requested")
@@ -942,6 +1030,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedComposit
 	return
 }
 
+// GetRevIncludedCompositionResourcesReferencingEntry ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedCompositionResourcesReferencingEntry() (compositions []Composition, err error) {
 	if c.RevIncludedCompositionResourcesReferencingEntry == nil {
 		err = errors.New("RevIncluded compositions not requested")
@@ -951,6 +1040,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedComposit
 	return
 }
 
+// GetRevIncludedDetectedIssueResourcesReferencingImplicated ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDetectedIssueResourcesReferencingImplicated() (detectedIssues []DetectedIssue, err error) {
 	if c.RevIncludedDetectedIssueResourcesReferencingImplicated == nil {
 		err = errors.New("RevIncluded detectedIssues not requested")
@@ -960,6 +1050,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedDetected
 	return
 }
 
+// GetRevIncludedQuestionnaireResponseResourcesReferencingSubject ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedQuestionnaireResponseResourcesReferencingSubject() (questionnaireResponses []QuestionnaireResponse, err error) {
 	if c.RevIncludedQuestionnaireResponseResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded questionnaireResponses not requested")
@@ -969,6 +1060,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedQuestion
 	return
 }
 
+// GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo() (clinicalImpressions []ClinicalImpression, err error) {
 	if c.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo == nil {
 		err = errors.New("RevIncluded clinicalImpressions not requested")
@@ -978,6 +1070,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedClinical
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingSuccessor() (planDefinitions []PlanDefinition, err error) {
 	if c.RevIncludedPlanDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -987,6 +1080,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefi
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom() (planDefinitions []PlanDefinition, err error) {
 	if c.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -996,6 +1090,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefi
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingPredecessor() (planDefinitions []PlanDefinition, err error) {
 	if c.RevIncludedPlanDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1005,6 +1100,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefi
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingComposedof() (planDefinitions []PlanDefinition, err error) {
 	if c.RevIncludedPlanDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1014,6 +1110,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefi
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1() (planDefinitions []PlanDefinition, err error) {
 	if c.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1023,6 +1120,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefi
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2() (planDefinitions []PlanDefinition, err error) {
 	if c.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1032,6 +1130,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedPlanDefi
 	return
 }
 
+// GetIncludedResources ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if c.IncludedCoverageEligibilityRequestResourcesReferencedByRequest != nil {
@@ -1073,6 +1172,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedResources()
 	return resourceMap
 }
 
+// GetRevIncludedResources ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if c.RevIncludedAppointmentResourcesReferencingSupportinginfo != nil {
@@ -1588,6 +1688,7 @@ func (c *CoverageEligibilityResponsePlusRelatedResources) GetRevIncludedResource
 	return resourceMap
 }
 
+// GetIncludedAndRevIncludedResources ... // TODO Write proper comment
 func (c *CoverageEligibilityResponsePlusRelatedResources) GetIncludedAndRevIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if c.IncludedCoverageEligibilityRequestResourcesReferencedByRequest != nil {

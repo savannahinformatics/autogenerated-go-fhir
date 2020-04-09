@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Resource ... // TODO Write proper comment
 type Resource struct {
 	ResourceType  string `bson:"resourceType,omitempty" json:"resourceType,omitempty"`
 	Id            string `bson:"_id,omitempty" json:"id,omitempty"`

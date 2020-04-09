@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// MarketingStatus ... // TODO Write proper comment
 type MarketingStatus struct {
 	BackboneElement `bson:",inline"`
 	Country         *CodeableConcept `bson:"country,omitempty" json:"country,omitempty"`

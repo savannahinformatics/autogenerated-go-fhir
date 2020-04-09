@@ -1,4 +1,4 @@
-package models
+package fhir
 
 import (
 	"encoding/json"
@@ -6,6 +6,7 @@ import (
 	"fmt"
 )
 
+// Bundle ... // TODO Write proper comment
 type Bundle struct {
 	Resource   `bson:",inline"`
 	Identifier *Identifier            `bson:"identifier,omitempty" json:"identifier,omitempty"`
@@ -18,10 +19,10 @@ type Bundle struct {
 }
 
 // MarshalJSON is a Custom marshaller to add the resourceType property, as required by the specification
-func (resource *Bundle) MarshalJSON() ([]byte, error) {
-	resource.ResourceType = "Bundle"
+func (x *Bundle) MarshalJSON() ([]byte, error) {
+	x.ResourceType = "Bundle"
 	// Dereferencing the pointer to avoid infinite recursion.
-	return json.Marshal(*resource)
+	return json.Marshal(*x)
 }
 
 // "bundle" sub-type is needed to avoid infinite recursion in UnmarshalJSON
@@ -41,17 +42,19 @@ func (x *Bundle) checkResourceType() error {
 	if x.ResourceType == "" {
 		x.ResourceType = "Bundle"
 	} else if x.ResourceType != "Bundle" {
-		return errors.New(fmt.Sprintf("Expected resourceType to be Bundle, instead received %s", x.ResourceType))
+		return fmt.Errorf("Expected resourceType to be Bundle, instead received %s", x.ResourceType)
 	}
 	return nil
 }
 
+// BundleLinkComponent ... // TODO Write proper comment
 type BundleLinkComponent struct {
 	BackboneElement `bson:",inline"`
 	Relation        string `bson:"relation,omitempty" json:"relation,omitempty"`
 	Url             string `bson:"url,omitempty" json:"url,omitempty"`
 }
 
+// BundleEntryComponent ... // TODO Write proper comment
 type BundleEntryComponent struct {
 	BackboneElement `bson:",inline"`
 	Link            []BundleLinkComponent         `bson:"link,omitempty" json:"link,omitempty"`
@@ -77,12 +80,14 @@ func (x *BundleEntryComponent) UnmarshalJSON(data []byte) (err error) {
 	return
 }
 
+// BundleEntrySearchComponent ... // TODO Write proper comment
 type BundleEntrySearchComponent struct {
 	BackboneElement `bson:",inline"`
 	Mode            string   `bson:"mode,omitempty" json:"mode,omitempty"`
 	Score           *float64 `bson:"score,omitempty" json:"score,omitempty"`
 }
 
+// BundleEntryRequestComponent ... // TODO Write proper comment
 type BundleEntryRequestComponent struct {
 	BackboneElement `bson:",inline"`
 	Method          string        `bson:"method,omitempty" json:"method,omitempty"`
@@ -93,6 +98,7 @@ type BundleEntryRequestComponent struct {
 	IfNoneExist     string        `bson:"ifNoneExist,omitempty" json:"ifNoneExist,omitempty"`
 }
 
+// BundleEntryResponseComponent ... // TODO Write proper comment
 type BundleEntryResponseComponent struct {
 	BackboneElement `bson:",inline"`
 	Status          string        `bson:"status,omitempty" json:"status,omitempty"`
@@ -117,11 +123,13 @@ func (x *BundleEntryResponseComponent) UnmarshalJSON(data []byte) (err error) {
 	return
 }
 
+// BundlePlus ... // TODO Write proper comment
 type BundlePlus struct {
 	Bundle                     `bson:",inline"`
 	BundlePlusRelatedResources `bson:",inline"`
 }
 
+// BundlePlusRelatedResources ... // TODO Write proper comment
 type BundlePlusRelatedResources struct {
 	IncludedCompositionResourcesReferencedByComposition                    *[]Composition                `bson:"_includedCompositionResourcesReferencedByComposition,omitempty"`
 	IncludedMessageHeaderResourcesReferencedByMessage                      *[]MessageHeader              `bson:"_includedMessageHeaderResourcesReferencedByMessage,omitempty"`
@@ -212,6 +220,7 @@ type BundlePlusRelatedResources struct {
 	RevIncludedPlanDefinitionResourcesReferencingDependsonPath2            *[]PlanDefinition             `bson:"_revIncludedPlanDefinitionResourcesReferencingDependsonPath2,omitempty"`
 }
 
+// GetIncludedCompositionResourceReferencedByComposition ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetIncludedCompositionResourceReferencedByComposition() (composition *Composition, err error) {
 	if b.IncludedCompositionResourcesReferencedByComposition == nil {
 		err = errors.New("Included compositions not requested")
@@ -223,6 +232,7 @@ func (b *BundlePlusRelatedResources) GetIncludedCompositionResourceReferencedByC
 	return
 }
 
+// GetIncludedMessageHeaderResourceReferencedByMessage ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetIncludedMessageHeaderResourceReferencedByMessage() (messageHeader *MessageHeader, err error) {
 	if b.IncludedMessageHeaderResourcesReferencedByMessage == nil {
 		err = errors.New("Included messageheaders not requested")
@@ -234,6 +244,7 @@ func (b *BundlePlusRelatedResources) GetIncludedMessageHeaderResourceReferencedB
 	return
 }
 
+// GetRevIncludedAppointmentResourcesReferencingSupportinginfo ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedAppointmentResourcesReferencingSupportinginfo() (appointments []Appointment, err error) {
 	if b.RevIncludedAppointmentResourcesReferencingSupportinginfo == nil {
 		err = errors.New("RevIncluded appointments not requested")
@@ -243,6 +254,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedAppointmentResourcesReferenci
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingSuccessor() (eventDefinitions []EventDefinition, err error) {
 	if b.RevIncludedEventDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -252,6 +264,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEventDefinitionResourcesRefer
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom() (eventDefinitions []EventDefinition, err error) {
 	if b.RevIncludedEventDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -261,6 +274,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEventDefinitionResourcesRefer
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingPredecessor() (eventDefinitions []EventDefinition, err error) {
 	if b.RevIncludedEventDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -270,6 +284,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEventDefinitionResourcesRefer
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingComposedof() (eventDefinitions []EventDefinition, err error) {
 	if b.RevIncludedEventDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -279,6 +294,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEventDefinitionResourcesRefer
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingDependson ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingDependson() (eventDefinitions []EventDefinition, err error) {
 	if b.RevIncludedEventDefinitionResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -288,6 +304,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEventDefinitionResourcesRefer
 	return
 }
 
+// GetRevIncludedDocumentManifestResourcesReferencingItem ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedDocumentManifestResourcesReferencingItem() (documentManifests []DocumentManifest, err error) {
 	if b.RevIncludedDocumentManifestResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded documentManifests not requested")
@@ -297,6 +314,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedDocumentManifestResourcesRefe
 	return
 }
 
+// GetRevIncludedDocumentManifestResourcesReferencingRelatedref ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedDocumentManifestResourcesReferencingRelatedref() (documentManifests []DocumentManifest, err error) {
 	if b.RevIncludedDocumentManifestResourcesReferencingRelatedref == nil {
 		err = errors.New("RevIncluded documentManifests not requested")
@@ -306,6 +324,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedDocumentManifestResourcesRefe
 	return
 }
 
+// GetRevIncludedConsentResourcesReferencingData ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedConsentResourcesReferencingData() (consents []Consent, err error) {
 	if b.RevIncludedConsentResourcesReferencingData == nil {
 		err = errors.New("RevIncluded consents not requested")
@@ -315,6 +334,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedConsentResourcesReferencingDa
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingSuccessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingSuccessor() (measures []Measure, err error) {
 	if b.RevIncludedMeasureResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -324,6 +344,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingSu
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDerivedfrom() (measures []Measure, err error) {
 	if b.RevIncludedMeasureResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -333,6 +354,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDe
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingPredecessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingPredecessor() (measures []Measure, err error) {
 	if b.RevIncludedMeasureResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -342,6 +364,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingPr
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingComposedof ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingComposedof() (measures []Measure, err error) {
 	if b.RevIncludedMeasureResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -351,6 +374,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingCo
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDependsonPath1() (measures []Measure, err error) {
 	if b.RevIncludedMeasureResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -360,6 +384,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDe
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDependsonPath2() (measures []Measure, err error) {
 	if b.RevIncludedMeasureResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -369,6 +394,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDe
 	return
 }
 
+// GetRevIncludedDocumentReferenceResourcesReferencingRelated ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedDocumentReferenceResourcesReferencingRelated() (documentReferences []DocumentReference, err error) {
 	if b.RevIncludedDocumentReferenceResourcesReferencingRelated == nil {
 		err = errors.New("RevIncluded documentReferences not requested")
@@ -378,6 +404,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedDocumentReferenceResourcesRef
 	return
 }
 
+// GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource() (measureReports []MeasureReport, err error) {
 	if b.RevIncludedMeasureReportResourcesReferencingEvaluatedresource == nil {
 		err = errors.New("RevIncluded measureReports not requested")
@@ -387,6 +414,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedMeasureReportResourcesReferen
 	return
 }
 
+// GetRevIncludedVerificationResultResourcesReferencingTarget ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedVerificationResultResourcesReferencingTarget() (verificationResults []VerificationResult, err error) {
 	if b.RevIncludedVerificationResultResourcesReferencingTarget == nil {
 		err = errors.New("RevIncluded verificationResults not requested")
@@ -396,6 +424,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedVerificationResultResourcesRe
 	return
 }
 
+// GetRevIncludedContractResourcesReferencingSubject ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedContractResourcesReferencingSubject() (contracts []Contract, err error) {
 	if b.RevIncludedContractResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded contracts not requested")
@@ -405,6 +434,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedContractResourcesReferencingS
 	return
 }
 
+// GetRevIncludedPaymentNoticeResourcesReferencingRequest ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferencingRequest() (paymentNotices []PaymentNotice, err error) {
 	if b.RevIncludedPaymentNoticeResourcesReferencingRequest == nil {
 		err = errors.New("RevIncluded paymentNotices not requested")
@@ -414,6 +444,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferen
 	return
 }
 
+// GetRevIncludedPaymentNoticeResourcesReferencingResponse ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferencingResponse() (paymentNotices []PaymentNotice, err error) {
 	if b.RevIncludedPaymentNoticeResourcesReferencingResponse == nil {
 		err = errors.New("RevIncluded paymentNotices not requested")
@@ -423,6 +454,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferen
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingSuccessor() (researchDefinitions []ResearchDefinition, err error) {
 	if b.RevIncludedResearchDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -432,6 +464,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom() (researchDefinitions []ResearchDefinition, err error) {
 	if b.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -441,6 +474,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingPredecessor() (researchDefinitions []ResearchDefinition, err error) {
 	if b.RevIncludedResearchDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -450,6 +484,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingComposedof() (researchDefinitions []ResearchDefinition, err error) {
 	if b.RevIncludedResearchDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -459,6 +494,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1() (researchDefinitions []ResearchDefinition, err error) {
 	if b.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -468,6 +504,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2() (researchDefinitions []ResearchDefinition, err error) {
 	if b.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -477,6 +514,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedImplementationGuideResourcesReferencingResource ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedImplementationGuideResourcesReferencingResource() (implementationGuides []ImplementationGuide, err error) {
 	if b.RevIncludedImplementationGuideResourcesReferencingResource == nil {
 		err = errors.New("RevIncluded implementationGuides not requested")
@@ -486,6 +524,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedImplementationGuideResourcesR
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if b.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -495,6 +534,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionReso
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if b.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -504,6 +544,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionReso
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if b.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -513,6 +554,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionReso
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if b.RevIncludedResearchElementDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -522,6 +564,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionReso
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if b.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -531,6 +574,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionReso
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if b.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -540,6 +584,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResearchElementDefinitionReso
 	return
 }
 
+// GetRevIncludedCommunicationResourcesReferencingPartof ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedCommunicationResourcesReferencingPartof() (communications []Communication, err error) {
 	if b.RevIncludedCommunicationResourcesReferencingPartof == nil {
 		err = errors.New("RevIncluded communications not requested")
@@ -549,6 +594,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedCommunicationResourcesReferen
 	return
 }
 
+// GetRevIncludedCommunicationResourcesReferencingBasedon ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedCommunicationResourcesReferencingBasedon() (communications []Communication, err error) {
 	if b.RevIncludedCommunicationResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded communications not requested")
@@ -558,6 +604,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedCommunicationResourcesReferen
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingSuccessor() (activityDefinitions []ActivityDefinition, err error) {
 	if b.RevIncludedActivityDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -567,6 +614,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom() (activityDefinitions []ActivityDefinition, err error) {
 	if b.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -576,6 +624,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingPredecessor() (activityDefinitions []ActivityDefinition, err error) {
 	if b.RevIncludedActivityDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -585,6 +634,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingComposedof() (activityDefinitions []ActivityDefinition, err error) {
 	if b.RevIncludedActivityDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -594,6 +644,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1() (activityDefinitions []ActivityDefinition, err error) {
 	if b.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -603,6 +654,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2() (activityDefinitions []ActivityDefinition, err error) {
 	if b.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -612,6 +664,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRe
 	return
 }
 
+// GetRevIncludedLinkageResourcesReferencingItem ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedLinkageResourcesReferencingItem() (linkages []Linkage, err error) {
 	if b.RevIncludedLinkageResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded linkages not requested")
@@ -621,6 +674,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedLinkageResourcesReferencingIt
 	return
 }
 
+// GetRevIncludedLinkageResourcesReferencingSource ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedLinkageResourcesReferencingSource() (linkages []Linkage, err error) {
 	if b.RevIncludedLinkageResourcesReferencingSource == nil {
 		err = errors.New("RevIncluded linkages not requested")
@@ -630,6 +684,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedLinkageResourcesReferencingSo
 	return
 }
 
+// GetRevIncludedDeviceRequestResourcesReferencingBasedon ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferencingBasedon() (deviceRequests []DeviceRequest, err error) {
 	if b.RevIncludedDeviceRequestResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded deviceRequests not requested")
@@ -639,6 +694,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferen
 	return
 }
 
+// GetRevIncludedDeviceRequestResourcesReferencingPriorrequest ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferencingPriorrequest() (deviceRequests []DeviceRequest, err error) {
 	if b.RevIncludedDeviceRequestResourcesReferencingPriorrequest == nil {
 		err = errors.New("RevIncluded deviceRequests not requested")
@@ -648,6 +704,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferen
 	return
 }
 
+// GetRevIncludedMessageHeaderResourcesReferencingFocus ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedMessageHeaderResourcesReferencingFocus() (messageHeaders []MessageHeader, err error) {
 	if b.RevIncludedMessageHeaderResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded messageHeaders not requested")
@@ -657,6 +714,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedMessageHeaderResourcesReferen
 	return
 }
 
+// GetRevIncludedImmunizationRecommendationResourcesReferencingInformation ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedImmunizationRecommendationResourcesReferencingInformation() (immunizationRecommendations []ImmunizationRecommendation, err error) {
 	if b.RevIncludedImmunizationRecommendationResourcesReferencingInformation == nil {
 		err = errors.New("RevIncluded immunizationRecommendations not requested")
@@ -666,6 +724,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedImmunizationRecommendationRes
 	return
 }
 
+// GetRevIncludedProvenanceResourcesReferencingEntity ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedProvenanceResourcesReferencingEntity() (provenances []Provenance, err error) {
 	if b.RevIncludedProvenanceResourcesReferencingEntity == nil {
 		err = errors.New("RevIncluded provenances not requested")
@@ -675,6 +734,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedProvenanceResourcesReferencin
 	return
 }
 
+// GetRevIncludedProvenanceResourcesReferencingTarget ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedProvenanceResourcesReferencingTarget() (provenances []Provenance, err error) {
 	if b.RevIncludedProvenanceResourcesReferencingTarget == nil {
 		err = errors.New("RevIncluded provenances not requested")
@@ -684,6 +744,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedProvenanceResourcesReferencin
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingSubject ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedTaskResourcesReferencingSubject() (tasks []Task, err error) {
 	if b.RevIncludedTaskResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -693,6 +754,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedTaskResourcesReferencingSubje
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingFocus ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedTaskResourcesReferencingFocus() (tasks []Task, err error) {
 	if b.RevIncludedTaskResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -702,6 +764,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedTaskResourcesReferencingFocus
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingBasedon ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedTaskResourcesReferencingBasedon() (tasks []Task, err error) {
 	if b.RevIncludedTaskResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -711,6 +774,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedTaskResourcesReferencingBased
 	return
 }
 
+// GetRevIncludedListResourcesReferencingItem ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedListResourcesReferencingItem() (lists []List, err error) {
 	if b.RevIncludedListResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded lists not requested")
@@ -720,6 +784,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedListResourcesReferencingItem(
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingSuccessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingSuccessor() (evidenceVariables []EvidenceVariable, err error) {
 	if b.RevIncludedEvidenceVariableResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -729,6 +794,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesRefe
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom() (evidenceVariables []EvidenceVariable, err error) {
 	if b.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -738,6 +804,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesRefe
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingPredecessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingPredecessor() (evidenceVariables []EvidenceVariable, err error) {
 	if b.RevIncludedEvidenceVariableResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -747,6 +814,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesRefe
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingComposedof ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingComposedof() (evidenceVariables []EvidenceVariable, err error) {
 	if b.RevIncludedEvidenceVariableResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -756,6 +824,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesRefe
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingDependson ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingDependson() (evidenceVariables []EvidenceVariable, err error) {
 	if b.RevIncludedEvidenceVariableResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -765,6 +834,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceVariableResourcesRefe
 	return
 }
 
+// GetRevIncludedObservationResourcesReferencingFocus ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedObservationResourcesReferencingFocus() (observations []Observation, err error) {
 	if b.RevIncludedObservationResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded observations not requested")
@@ -774,6 +844,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedObservationResourcesReferenci
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingSuccessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingSuccessor() (libraries []Library, err error) {
 	if b.RevIncludedLibraryResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -783,6 +854,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingSu
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDerivedfrom() (libraries []Library, err error) {
 	if b.RevIncludedLibraryResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -792,6 +864,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDe
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingPredecessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingPredecessor() (libraries []Library, err error) {
 	if b.RevIncludedLibraryResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -801,6 +874,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingPr
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingComposedof ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingComposedof() (libraries []Library, err error) {
 	if b.RevIncludedLibraryResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -810,6 +884,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingCo
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingDependson ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDependson() (libraries []Library, err error) {
 	if b.RevIncludedLibraryResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -819,6 +894,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDe
 	return
 }
 
+// GetRevIncludedCommunicationRequestResourcesReferencingBasedon ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedCommunicationRequestResourcesReferencingBasedon() (communicationRequests []CommunicationRequest, err error) {
 	if b.RevIncludedCommunicationRequestResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded communicationRequests not requested")
@@ -828,6 +904,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedCommunicationRequestResources
 	return
 }
 
+// GetRevIncludedBasicResourcesReferencingSubject ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedBasicResourcesReferencingSubject() (basics []Basic, err error) {
 	if b.RevIncludedBasicResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded basics not requested")
@@ -837,6 +914,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedBasicResourcesReferencingSubj
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingSuccessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingSuccessor() (evidences []Evidence, err error) {
 	if b.RevIncludedEvidenceResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -846,6 +924,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingS
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDerivedfrom() (evidences []Evidence, err error) {
 	if b.RevIncludedEvidenceResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -855,6 +934,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingD
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingPredecessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingPredecessor() (evidences []Evidence, err error) {
 	if b.RevIncludedEvidenceResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -864,6 +944,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingP
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingComposedof ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingComposedof() (evidences []Evidence, err error) {
 	if b.RevIncludedEvidenceResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -873,6 +954,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingC
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingDependson ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDependson() (evidences []Evidence, err error) {
 	if b.RevIncludedEvidenceResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -882,6 +964,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingD
 	return
 }
 
+// GetRevIncludedAuditEventResourcesReferencingEntity ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedAuditEventResourcesReferencingEntity() (auditEvents []AuditEvent, err error) {
 	if b.RevIncludedAuditEventResourcesReferencingEntity == nil {
 		err = errors.New("RevIncluded auditEvents not requested")
@@ -891,6 +974,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedAuditEventResourcesReferencin
 	return
 }
 
+// GetRevIncludedConditionResourcesReferencingEvidencedetail ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedConditionResourcesReferencingEvidencedetail() (conditions []Condition, err error) {
 	if b.RevIncludedConditionResourcesReferencingEvidencedetail == nil {
 		err = errors.New("RevIncluded conditions not requested")
@@ -900,6 +984,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedConditionResourcesReferencing
 	return
 }
 
+// GetRevIncludedCompositionResourcesReferencingSubject ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedCompositionResourcesReferencingSubject() (compositions []Composition, err error) {
 	if b.RevIncludedCompositionResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded compositions not requested")
@@ -909,6 +994,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedCompositionResourcesReferenci
 	return
 }
 
+// GetRevIncludedCompositionResourcesReferencingEntry ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedCompositionResourcesReferencingEntry() (compositions []Composition, err error) {
 	if b.RevIncludedCompositionResourcesReferencingEntry == nil {
 		err = errors.New("RevIncluded compositions not requested")
@@ -918,6 +1004,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedCompositionResourcesReferenci
 	return
 }
 
+// GetRevIncludedDetectedIssueResourcesReferencingImplicated ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedDetectedIssueResourcesReferencingImplicated() (detectedIssues []DetectedIssue, err error) {
 	if b.RevIncludedDetectedIssueResourcesReferencingImplicated == nil {
 		err = errors.New("RevIncluded detectedIssues not requested")
@@ -927,6 +1014,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedDetectedIssueResourcesReferen
 	return
 }
 
+// GetRevIncludedQuestionnaireResponseResourcesReferencingSubject ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedQuestionnaireResponseResourcesReferencingSubject() (questionnaireResponses []QuestionnaireResponse, err error) {
 	if b.RevIncludedQuestionnaireResponseResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded questionnaireResponses not requested")
@@ -936,6 +1024,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedQuestionnaireResponseResource
 	return
 }
 
+// GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo() (clinicalImpressions []ClinicalImpression, err error) {
 	if b.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo == nil {
 		err = errors.New("RevIncluded clinicalImpressions not requested")
@@ -945,6 +1034,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedClinicalImpressionResourcesRe
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingSuccessor() (planDefinitions []PlanDefinition, err error) {
 	if b.RevIncludedPlanDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -954,6 +1044,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesRefere
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom() (planDefinitions []PlanDefinition, err error) {
 	if b.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -963,6 +1054,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesRefere
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingPredecessor() (planDefinitions []PlanDefinition, err error) {
 	if b.RevIncludedPlanDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -972,6 +1064,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesRefere
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingComposedof() (planDefinitions []PlanDefinition, err error) {
 	if b.RevIncludedPlanDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -981,6 +1074,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesRefere
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1() (planDefinitions []PlanDefinition, err error) {
 	if b.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -990,6 +1084,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesRefere
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2() (planDefinitions []PlanDefinition, err error) {
 	if b.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -999,6 +1094,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedPlanDefinitionResourcesRefere
 	return
 }
 
+// GetIncludedResources ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if b.IncludedCompositionResourcesReferencedByComposition != nil {
@@ -1016,6 +1112,7 @@ func (b *BundlePlusRelatedResources) GetIncludedResources() map[string]interface
 	return resourceMap
 }
 
+// GetRevIncludedResources ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetRevIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if b.RevIncludedAppointmentResourcesReferencingSupportinginfo != nil {
@@ -1531,6 +1628,7 @@ func (b *BundlePlusRelatedResources) GetRevIncludedResources() map[string]interf
 	return resourceMap
 }
 
+// GetIncludedAndRevIncludedResources ... // TODO Write proper comment
 func (b *BundlePlusRelatedResources) GetIncludedAndRevIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if b.IncludedCompositionResourcesReferencedByComposition != nil {

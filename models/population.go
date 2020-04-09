@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Population ... // TODO Write proper comment
 type Population struct {
 	BackboneElement        `bson:",inline"`
 	AgeRange               *Range           `bson:"ageRange,omitempty" json:"ageRange,omitempty"`

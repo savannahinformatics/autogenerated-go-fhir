@@ -1,21 +1,21 @@
-package models
+package fhir
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 )
 
+// Parameters ... // TODO Write proper comment
 type Parameters struct {
 	Resource  `bson:",inline"`
 	Parameter []ParametersParameterComponent `bson:"parameter,omitempty" json:"parameter,omitempty"`
 }
 
 // MarshalJSON is a Custom marshaller to add the resourceType property, as required by the specification
-func (resource *Parameters) MarshalJSON() ([]byte, error) {
-	resource.ResourceType = "Parameters"
+func (x *Parameters) MarshalJSON() ([]byte, error) {
+	x.ResourceType = "Parameters"
 	// Dereferencing the pointer to avoid infinite recursion.
-	return json.Marshal(*resource)
+	return json.Marshal(*x)
 }
 
 // "parameters" sub-type is needed to avoid infinite recursion in UnmarshalJSON
@@ -35,11 +35,12 @@ func (x *Parameters) checkResourceType() error {
 	if x.ResourceType == "" {
 		x.ResourceType = "Parameters"
 	} else if x.ResourceType != "Parameters" {
-		return errors.New(fmt.Sprintf("Expected resourceType to be Parameters, instead received %s", x.ResourceType))
+		return fmt.Errorf("Expected resourceType to be Parameters, instead received %s", x.ResourceType)
 	}
 	return nil
 }
 
+// ParametersParameterComponent ... // TODO Write proper comment
 type ParametersParameterComponent struct {
 	BackboneElement      `bson:",inline"`
 	Name                 string                         `bson:"name,omitempty" json:"name,omitempty"`

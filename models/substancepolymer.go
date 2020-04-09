@@ -1,4 +1,4 @@
-package models
+package fhir
 
 import (
 	"encoding/json"
@@ -6,6 +6,7 @@ import (
 	"fmt"
 )
 
+// SubstancePolymer ... // TODO Write proper comment
 type SubstancePolymer struct {
 	DomainResource        `bson:",inline"`
 	Class                 *CodeableConcept                      `bson:"class,omitempty" json:"class,omitempty"`
@@ -17,10 +18,10 @@ type SubstancePolymer struct {
 }
 
 // MarshalJSON is a Custom marshaller to add the resourceType property, as required by the specification
-func (resource *SubstancePolymer) MarshalJSON() ([]byte, error) {
-	resource.ResourceType = "SubstancePolymer"
+func (x *SubstancePolymer) MarshalJSON() ([]byte, error) {
+	x.ResourceType = "SubstancePolymer"
 	// Dereferencing the pointer to avoid infinite recursion.
-	return json.Marshal(*resource)
+	return json.Marshal(*x)
 }
 
 // "substancePolymer" sub-type is needed to avoid infinite recursion in UnmarshalJSON
@@ -45,17 +46,19 @@ func (x *SubstancePolymer) checkResourceType() error {
 	if x.ResourceType == "" {
 		x.ResourceType = "SubstancePolymer"
 	} else if x.ResourceType != "SubstancePolymer" {
-		return errors.New(fmt.Sprintf("Expected resourceType to be SubstancePolymer, instead received %s", x.ResourceType))
+		return fmt.Errorf("Expected resourceType to be SubstancePolymer, instead received %s", x.ResourceType)
 	}
 	return nil
 }
 
+// SubstancePolymerMonomerSetComponent ... // TODO Write proper comment
 type SubstancePolymerMonomerSetComponent struct {
 	BackboneElement  `bson:",inline"`
 	RatioType        *CodeableConcept                                      `bson:"ratioType,omitempty" json:"ratioType,omitempty"`
 	StartingMaterial []SubstancePolymerMonomerSetStartingMaterialComponent `bson:"startingMaterial,omitempty" json:"startingMaterial,omitempty"`
 }
 
+// SubstancePolymerMonomerSetStartingMaterialComponent ... // TODO Write proper comment
 type SubstancePolymerMonomerSetStartingMaterialComponent struct {
 	BackboneElement `bson:",inline"`
 	Material        *CodeableConcept `bson:"material,omitempty" json:"material,omitempty"`
@@ -64,6 +67,7 @@ type SubstancePolymerMonomerSetStartingMaterialComponent struct {
 	Amount          *SubstanceAmount `bson:"amount,omitempty" json:"amount,omitempty"`
 }
 
+// SubstancePolymerRepeatComponent ... // TODO Write proper comment
 type SubstancePolymerRepeatComponent struct {
 	BackboneElement         `bson:",inline"`
 	NumberOfUnits           *int32                                      `bson:"numberOfUnits,omitempty" json:"numberOfUnits,omitempty"`
@@ -72,6 +76,7 @@ type SubstancePolymerRepeatComponent struct {
 	RepeatUnit              []SubstancePolymerRepeatRepeatUnitComponent `bson:"repeatUnit,omitempty" json:"repeatUnit,omitempty"`
 }
 
+// SubstancePolymerRepeatRepeatUnitComponent ... // TODO Write proper comment
 type SubstancePolymerRepeatRepeatUnitComponent struct {
 	BackboneElement             `bson:",inline"`
 	OrientationOfPolymerisation *CodeableConcept                                                    `bson:"orientationOfPolymerisation,omitempty" json:"orientationOfPolymerisation,omitempty"`
@@ -81,12 +86,14 @@ type SubstancePolymerRepeatRepeatUnitComponent struct {
 	StructuralRepresentation    []SubstancePolymerRepeatRepeatUnitStructuralRepresentationComponent `bson:"structuralRepresentation,omitempty" json:"structuralRepresentation,omitempty"`
 }
 
+// SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisationComponent ... // TODO Write proper comment
 type SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisationComponent struct {
 	BackboneElement `bson:",inline"`
 	Degree          *CodeableConcept `bson:"degree,omitempty" json:"degree,omitempty"`
 	Amount          *SubstanceAmount `bson:"amount,omitempty" json:"amount,omitempty"`
 }
 
+// SubstancePolymerRepeatRepeatUnitStructuralRepresentationComponent ... // TODO Write proper comment
 type SubstancePolymerRepeatRepeatUnitStructuralRepresentationComponent struct {
 	BackboneElement `bson:",inline"`
 	Type            *CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`
@@ -94,11 +101,13 @@ type SubstancePolymerRepeatRepeatUnitStructuralRepresentationComponent struct {
 	Attachment      *Attachment      `bson:"attachment,omitempty" json:"attachment,omitempty"`
 }
 
+// SubstancePolymerPlus ... // TODO Write proper comment
 type SubstancePolymerPlus struct {
 	SubstancePolymer                     `bson:",inline"`
 	SubstancePolymerPlusRelatedResources `bson:",inline"`
 }
 
+// SubstancePolymerPlusRelatedResources ... // TODO Write proper comment
 type SubstancePolymerPlusRelatedResources struct {
 	RevIncludedAppointmentResourcesReferencingSupportinginfo               *[]Appointment                `bson:"_revIncludedAppointmentResourcesReferencingSupportinginfo,omitempty"`
 	RevIncludedEventDefinitionResourcesReferencingSuccessor                *[]EventDefinition            `bson:"_revIncludedEventDefinitionResourcesReferencingSuccessor,omitempty"`
@@ -187,6 +196,7 @@ type SubstancePolymerPlusRelatedResources struct {
 	RevIncludedPlanDefinitionResourcesReferencingDependsonPath2            *[]PlanDefinition             `bson:"_revIncludedPlanDefinitionResourcesReferencingDependsonPath2,omitempty"`
 }
 
+// GetRevIncludedAppointmentResourcesReferencingSupportinginfo ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedAppointmentResourcesReferencingSupportinginfo() (appointments []Appointment, err error) {
 	if s.RevIncludedAppointmentResourcesReferencingSupportinginfo == nil {
 		err = errors.New("RevIncluded appointments not requested")
@@ -196,6 +206,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedAppointmentResource
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingSuccessor() (eventDefinitions []EventDefinition, err error) {
 	if s.RevIncludedEventDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -205,6 +216,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEventDefinitionReso
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom() (eventDefinitions []EventDefinition, err error) {
 	if s.RevIncludedEventDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -214,6 +226,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEventDefinitionReso
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingPredecessor() (eventDefinitions []EventDefinition, err error) {
 	if s.RevIncludedEventDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -223,6 +236,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEventDefinitionReso
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingComposedof() (eventDefinitions []EventDefinition, err error) {
 	if s.RevIncludedEventDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -232,6 +246,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEventDefinitionReso
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingDependson ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingDependson() (eventDefinitions []EventDefinition, err error) {
 	if s.RevIncludedEventDefinitionResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -241,6 +256,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEventDefinitionReso
 	return
 }
 
+// GetRevIncludedDocumentManifestResourcesReferencingItem ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDocumentManifestResourcesReferencingItem() (documentManifests []DocumentManifest, err error) {
 	if s.RevIncludedDocumentManifestResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded documentManifests not requested")
@@ -250,6 +266,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDocumentManifestRes
 	return
 }
 
+// GetRevIncludedDocumentManifestResourcesReferencingRelatedref ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDocumentManifestResourcesReferencingRelatedref() (documentManifests []DocumentManifest, err error) {
 	if s.RevIncludedDocumentManifestResourcesReferencingRelatedref == nil {
 		err = errors.New("RevIncluded documentManifests not requested")
@@ -259,6 +276,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDocumentManifestRes
 	return
 }
 
+// GetRevIncludedConsentResourcesReferencingData ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedConsentResourcesReferencingData() (consents []Consent, err error) {
 	if s.RevIncludedConsentResourcesReferencingData == nil {
 		err = errors.New("RevIncluded consents not requested")
@@ -268,6 +286,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedConsentResourcesRef
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingSuccessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingSuccessor() (measures []Measure, err error) {
 	if s.RevIncludedMeasureResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -277,6 +296,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesRef
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDerivedfrom() (measures []Measure, err error) {
 	if s.RevIncludedMeasureResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -286,6 +306,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesRef
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingPredecessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingPredecessor() (measures []Measure, err error) {
 	if s.RevIncludedMeasureResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -295,6 +316,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesRef
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingComposedof ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingComposedof() (measures []Measure, err error) {
 	if s.RevIncludedMeasureResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -304,6 +326,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesRef
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDependsonPath1() (measures []Measure, err error) {
 	if s.RevIncludedMeasureResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -313,6 +336,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesRef
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDependsonPath2() (measures []Measure, err error) {
 	if s.RevIncludedMeasureResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -322,6 +346,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureResourcesRef
 	return
 }
 
+// GetRevIncludedDocumentReferenceResourcesReferencingRelated ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDocumentReferenceResourcesReferencingRelated() (documentReferences []DocumentReference, err error) {
 	if s.RevIncludedDocumentReferenceResourcesReferencingRelated == nil {
 		err = errors.New("RevIncluded documentReferences not requested")
@@ -331,6 +356,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDocumentReferenceRe
 	return
 }
 
+// GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource() (measureReports []MeasureReport, err error) {
 	if s.RevIncludedMeasureReportResourcesReferencingEvaluatedresource == nil {
 		err = errors.New("RevIncluded measureReports not requested")
@@ -340,6 +366,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMeasureReportResour
 	return
 }
 
+// GetRevIncludedVerificationResultResourcesReferencingTarget ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedVerificationResultResourcesReferencingTarget() (verificationResults []VerificationResult, err error) {
 	if s.RevIncludedVerificationResultResourcesReferencingTarget == nil {
 		err = errors.New("RevIncluded verificationResults not requested")
@@ -349,6 +376,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedVerificationResultR
 	return
 }
 
+// GetRevIncludedContractResourcesReferencingSubject ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedContractResourcesReferencingSubject() (contracts []Contract, err error) {
 	if s.RevIncludedContractResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded contracts not requested")
@@ -358,6 +386,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedContractResourcesRe
 	return
 }
 
+// GetRevIncludedPaymentNoticeResourcesReferencingRequest ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferencingRequest() (paymentNotices []PaymentNotice, err error) {
 	if s.RevIncludedPaymentNoticeResourcesReferencingRequest == nil {
 		err = errors.New("RevIncluded paymentNotices not requested")
@@ -367,6 +396,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPaymentNoticeResour
 	return
 }
 
+// GetRevIncludedPaymentNoticeResourcesReferencingResponse ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferencingResponse() (paymentNotices []PaymentNotice, err error) {
 	if s.RevIncludedPaymentNoticeResourcesReferencingResponse == nil {
 		err = errors.New("RevIncluded paymentNotices not requested")
@@ -376,6 +406,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPaymentNoticeResour
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingSuccessor() (researchDefinitions []ResearchDefinition, err error) {
 	if s.RevIncludedResearchDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -385,6 +416,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionR
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom() (researchDefinitions []ResearchDefinition, err error) {
 	if s.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -394,6 +426,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionR
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingPredecessor() (researchDefinitions []ResearchDefinition, err error) {
 	if s.RevIncludedResearchDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -403,6 +436,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionR
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingComposedof() (researchDefinitions []ResearchDefinition, err error) {
 	if s.RevIncludedResearchDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -412,6 +446,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionR
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1() (researchDefinitions []ResearchDefinition, err error) {
 	if s.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -421,6 +456,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionR
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2() (researchDefinitions []ResearchDefinition, err error) {
 	if s.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -430,6 +466,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchDefinitionR
 	return
 }
 
+// GetRevIncludedImplementationGuideResourcesReferencingResource ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedImplementationGuideResourcesReferencingResource() (implementationGuides []ImplementationGuide, err error) {
 	if s.RevIncludedImplementationGuideResourcesReferencingResource == nil {
 		err = errors.New("RevIncluded implementationGuides not requested")
@@ -439,6 +476,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedImplementationGuide
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if s.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -448,6 +486,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefi
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if s.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -457,6 +496,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefi
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if s.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -466,6 +506,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefi
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if s.RevIncludedResearchElementDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -475,6 +516,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefi
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if s.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -484,6 +526,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefi
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if s.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -493,6 +536,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResearchElementDefi
 	return
 }
 
+// GetRevIncludedCommunicationResourcesReferencingPartof ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedCommunicationResourcesReferencingPartof() (communications []Communication, err error) {
 	if s.RevIncludedCommunicationResourcesReferencingPartof == nil {
 		err = errors.New("RevIncluded communications not requested")
@@ -502,6 +546,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedCommunicationResour
 	return
 }
 
+// GetRevIncludedCommunicationResourcesReferencingBasedon ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedCommunicationResourcesReferencingBasedon() (communications []Communication, err error) {
 	if s.RevIncludedCommunicationResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded communications not requested")
@@ -511,6 +556,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedCommunicationResour
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingSuccessor() (activityDefinitions []ActivityDefinition, err error) {
 	if s.RevIncludedActivityDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -520,6 +566,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionR
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom() (activityDefinitions []ActivityDefinition, err error) {
 	if s.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -529,6 +576,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionR
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingPredecessor() (activityDefinitions []ActivityDefinition, err error) {
 	if s.RevIncludedActivityDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -538,6 +586,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionR
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingComposedof() (activityDefinitions []ActivityDefinition, err error) {
 	if s.RevIncludedActivityDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -547,6 +596,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionR
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1() (activityDefinitions []ActivityDefinition, err error) {
 	if s.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -556,6 +606,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionR
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2() (activityDefinitions []ActivityDefinition, err error) {
 	if s.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -565,6 +616,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedActivityDefinitionR
 	return
 }
 
+// GetRevIncludedLinkageResourcesReferencingItem ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLinkageResourcesReferencingItem() (linkages []Linkage, err error) {
 	if s.RevIncludedLinkageResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded linkages not requested")
@@ -574,6 +626,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLinkageResourcesRef
 	return
 }
 
+// GetRevIncludedLinkageResourcesReferencingSource ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLinkageResourcesReferencingSource() (linkages []Linkage, err error) {
 	if s.RevIncludedLinkageResourcesReferencingSource == nil {
 		err = errors.New("RevIncluded linkages not requested")
@@ -583,6 +636,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLinkageResourcesRef
 	return
 }
 
+// GetRevIncludedDeviceRequestResourcesReferencingBasedon ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferencingBasedon() (deviceRequests []DeviceRequest, err error) {
 	if s.RevIncludedDeviceRequestResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded deviceRequests not requested")
@@ -592,6 +646,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDeviceRequestResour
 	return
 }
 
+// GetRevIncludedDeviceRequestResourcesReferencingPriorrequest ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferencingPriorrequest() (deviceRequests []DeviceRequest, err error) {
 	if s.RevIncludedDeviceRequestResourcesReferencingPriorrequest == nil {
 		err = errors.New("RevIncluded deviceRequests not requested")
@@ -601,6 +656,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDeviceRequestResour
 	return
 }
 
+// GetRevIncludedMessageHeaderResourcesReferencingFocus ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMessageHeaderResourcesReferencingFocus() (messageHeaders []MessageHeader, err error) {
 	if s.RevIncludedMessageHeaderResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded messageHeaders not requested")
@@ -610,6 +666,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedMessageHeaderResour
 	return
 }
 
+// GetRevIncludedImmunizationRecommendationResourcesReferencingInformation ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedImmunizationRecommendationResourcesReferencingInformation() (immunizationRecommendations []ImmunizationRecommendation, err error) {
 	if s.RevIncludedImmunizationRecommendationResourcesReferencingInformation == nil {
 		err = errors.New("RevIncluded immunizationRecommendations not requested")
@@ -619,6 +676,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedImmunizationRecomme
 	return
 }
 
+// GetRevIncludedProvenanceResourcesReferencingEntity ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedProvenanceResourcesReferencingEntity() (provenances []Provenance, err error) {
 	if s.RevIncludedProvenanceResourcesReferencingEntity == nil {
 		err = errors.New("RevIncluded provenances not requested")
@@ -628,6 +686,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedProvenanceResources
 	return
 }
 
+// GetRevIncludedProvenanceResourcesReferencingTarget ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedProvenanceResourcesReferencingTarget() (provenances []Provenance, err error) {
 	if s.RevIncludedProvenanceResourcesReferencingTarget == nil {
 		err = errors.New("RevIncluded provenances not requested")
@@ -637,6 +696,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedProvenanceResources
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingSubject ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedTaskResourcesReferencingSubject() (tasks []Task, err error) {
 	if s.RevIncludedTaskResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -646,6 +706,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedTaskResourcesRefere
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingFocus ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedTaskResourcesReferencingFocus() (tasks []Task, err error) {
 	if s.RevIncludedTaskResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -655,6 +716,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedTaskResourcesRefere
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingBasedon ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedTaskResourcesReferencingBasedon() (tasks []Task, err error) {
 	if s.RevIncludedTaskResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -664,6 +726,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedTaskResourcesRefere
 	return
 }
 
+// GetRevIncludedListResourcesReferencingItem ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedListResourcesReferencingItem() (lists []List, err error) {
 	if s.RevIncludedListResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded lists not requested")
@@ -673,6 +736,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedListResourcesRefere
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingSuccessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingSuccessor() (evidenceVariables []EvidenceVariable, err error) {
 	if s.RevIncludedEvidenceVariableResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -682,6 +746,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceVariableRes
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom() (evidenceVariables []EvidenceVariable, err error) {
 	if s.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -691,6 +756,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceVariableRes
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingPredecessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingPredecessor() (evidenceVariables []EvidenceVariable, err error) {
 	if s.RevIncludedEvidenceVariableResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -700,6 +766,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceVariableRes
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingComposedof ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingComposedof() (evidenceVariables []EvidenceVariable, err error) {
 	if s.RevIncludedEvidenceVariableResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -709,6 +776,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceVariableRes
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingDependson ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingDependson() (evidenceVariables []EvidenceVariable, err error) {
 	if s.RevIncludedEvidenceVariableResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -718,6 +786,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceVariableRes
 	return
 }
 
+// GetRevIncludedObservationResourcesReferencingFocus ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedObservationResourcesReferencingFocus() (observations []Observation, err error) {
 	if s.RevIncludedObservationResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded observations not requested")
@@ -727,6 +796,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedObservationResource
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingSuccessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingSuccessor() (libraries []Library, err error) {
 	if s.RevIncludedLibraryResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -736,6 +806,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLibraryResourcesRef
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDerivedfrom() (libraries []Library, err error) {
 	if s.RevIncludedLibraryResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -745,6 +816,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLibraryResourcesRef
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingPredecessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingPredecessor() (libraries []Library, err error) {
 	if s.RevIncludedLibraryResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -754,6 +826,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLibraryResourcesRef
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingComposedof ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingComposedof() (libraries []Library, err error) {
 	if s.RevIncludedLibraryResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -763,6 +836,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLibraryResourcesRef
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingDependson ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDependson() (libraries []Library, err error) {
 	if s.RevIncludedLibraryResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -772,6 +846,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedLibraryResourcesRef
 	return
 }
 
+// GetRevIncludedCommunicationRequestResourcesReferencingBasedon ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedCommunicationRequestResourcesReferencingBasedon() (communicationRequests []CommunicationRequest, err error) {
 	if s.RevIncludedCommunicationRequestResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded communicationRequests not requested")
@@ -781,6 +856,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedCommunicationReques
 	return
 }
 
+// GetRevIncludedBasicResourcesReferencingSubject ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedBasicResourcesReferencingSubject() (basics []Basic, err error) {
 	if s.RevIncludedBasicResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded basics not requested")
@@ -790,6 +866,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedBasicResourcesRefer
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingSuccessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingSuccessor() (evidences []Evidence, err error) {
 	if s.RevIncludedEvidenceResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -799,6 +876,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceResourcesRe
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDerivedfrom() (evidences []Evidence, err error) {
 	if s.RevIncludedEvidenceResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -808,6 +886,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceResourcesRe
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingPredecessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingPredecessor() (evidences []Evidence, err error) {
 	if s.RevIncludedEvidenceResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -817,6 +896,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceResourcesRe
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingComposedof ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingComposedof() (evidences []Evidence, err error) {
 	if s.RevIncludedEvidenceResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -826,6 +906,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceResourcesRe
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingDependson ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDependson() (evidences []Evidence, err error) {
 	if s.RevIncludedEvidenceResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -835,6 +916,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedEvidenceResourcesRe
 	return
 }
 
+// GetRevIncludedAuditEventResourcesReferencingEntity ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedAuditEventResourcesReferencingEntity() (auditEvents []AuditEvent, err error) {
 	if s.RevIncludedAuditEventResourcesReferencingEntity == nil {
 		err = errors.New("RevIncluded auditEvents not requested")
@@ -844,6 +926,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedAuditEventResources
 	return
 }
 
+// GetRevIncludedConditionResourcesReferencingEvidencedetail ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedConditionResourcesReferencingEvidencedetail() (conditions []Condition, err error) {
 	if s.RevIncludedConditionResourcesReferencingEvidencedetail == nil {
 		err = errors.New("RevIncluded conditions not requested")
@@ -853,6 +936,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedConditionResourcesR
 	return
 }
 
+// GetRevIncludedCompositionResourcesReferencingSubject ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedCompositionResourcesReferencingSubject() (compositions []Composition, err error) {
 	if s.RevIncludedCompositionResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded compositions not requested")
@@ -862,6 +946,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedCompositionResource
 	return
 }
 
+// GetRevIncludedCompositionResourcesReferencingEntry ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedCompositionResourcesReferencingEntry() (compositions []Composition, err error) {
 	if s.RevIncludedCompositionResourcesReferencingEntry == nil {
 		err = errors.New("RevIncluded compositions not requested")
@@ -871,6 +956,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedCompositionResource
 	return
 }
 
+// GetRevIncludedDetectedIssueResourcesReferencingImplicated ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDetectedIssueResourcesReferencingImplicated() (detectedIssues []DetectedIssue, err error) {
 	if s.RevIncludedDetectedIssueResourcesReferencingImplicated == nil {
 		err = errors.New("RevIncluded detectedIssues not requested")
@@ -880,6 +966,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedDetectedIssueResour
 	return
 }
 
+// GetRevIncludedQuestionnaireResponseResourcesReferencingSubject ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedQuestionnaireResponseResourcesReferencingSubject() (questionnaireResponses []QuestionnaireResponse, err error) {
 	if s.RevIncludedQuestionnaireResponseResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded questionnaireResponses not requested")
@@ -889,6 +976,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedQuestionnaireRespon
 	return
 }
 
+// GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo() (clinicalImpressions []ClinicalImpression, err error) {
 	if s.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo == nil {
 		err = errors.New("RevIncluded clinicalImpressions not requested")
@@ -898,6 +986,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedClinicalImpressionR
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingSuccessor() (planDefinitions []PlanDefinition, err error) {
 	if s.RevIncludedPlanDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -907,6 +996,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResou
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom() (planDefinitions []PlanDefinition, err error) {
 	if s.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -916,6 +1006,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResou
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingPredecessor() (planDefinitions []PlanDefinition, err error) {
 	if s.RevIncludedPlanDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -925,6 +1016,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResou
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingComposedof() (planDefinitions []PlanDefinition, err error) {
 	if s.RevIncludedPlanDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -934,6 +1026,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResou
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1() (planDefinitions []PlanDefinition, err error) {
 	if s.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -943,6 +1036,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResou
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2() (planDefinitions []PlanDefinition, err error) {
 	if s.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -952,11 +1046,13 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedPlanDefinitionResou
 	return
 }
 
+// GetIncludedResources ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	return resourceMap
 }
 
+// GetRevIncludedResources ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if s.RevIncludedAppointmentResourcesReferencingSupportinginfo != nil {
@@ -1472,6 +1568,7 @@ func (s *SubstancePolymerPlusRelatedResources) GetRevIncludedResources() map[str
 	return resourceMap
 }
 
+// GetIncludedAndRevIncludedResources ... // TODO Write proper comment
 func (s *SubstancePolymerPlusRelatedResources) GetIncludedAndRevIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if s.RevIncludedAppointmentResourcesReferencingSupportinginfo != nil {

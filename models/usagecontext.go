@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// UsageContext ... // TODO Write proper comment
 type UsageContext struct {
 	Code                 *Coding          `bson:"code,omitempty" json:"code,omitempty"`
 	ValueCodeableConcept *CodeableConcept `bson:"valueCodeableConcept,omitempty" json:"valueCodeableConcept,omitempty"`

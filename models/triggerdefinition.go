@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// TriggerDefinition ... // TODO Write proper comment
 type TriggerDefinition struct {
 	Type            string            `bson:"type,omitempty" json:"type,omitempty"`
 	Name            string            `bson:"name,omitempty" json:"name,omitempty"`

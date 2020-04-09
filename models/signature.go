@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Signature ... // TODO Write proper comment
 type Signature struct {
 	Type         []Coding      `bson:"type,omitempty" json:"type,omitempty"`
 	When         *FHIRDateTime `bson:"when,omitempty" json:"when,omitempty"`

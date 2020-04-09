@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Extension ... // TODO Write proper comment
 type Extension struct {
 	Url                  string           `bson:"url,omitempty" json:"url,omitempty"`
 	ValueAddress         *Address         `bson:"valueAddress,omitempty" json:"valueAddress,omitempty"`

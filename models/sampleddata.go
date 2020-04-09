@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// SampledData ... // TODO Write proper comment
 type SampledData struct {
 	Origin     *Quantity `bson:"origin,omitempty" json:"origin,omitempty"`
 	Period     *float64  `bson:"period,omitempty" json:"period,omitempty"`

@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// DataRequirement ... // TODO Write proper comment
 type DataRequirement struct {
 	Type                   string                               `bson:"type,omitempty" json:"type,omitempty"`
 	Profile                []Canonical                          `bson:"profile,omitempty" json:"profile,omitempty"`
@@ -12,6 +13,7 @@ type DataRequirement struct {
 	Sort                   []DataRequirementSortComponent       `bson:"sort,omitempty" json:"sort,omitempty"`
 }
 
+// DataRequirementCodeFilterComponent ... // TODO Write proper comment
 type DataRequirementCodeFilterComponent struct {
 	BackboneElement `bson:",inline"`
 	Path            string     `bson:"path,omitempty" json:"path,omitempty"`
@@ -20,6 +22,7 @@ type DataRequirementCodeFilterComponent struct {
 	Code            []Coding   `bson:"code,omitempty" json:"code,omitempty"`
 }
 
+// DataRequirementDateFilterComponent ... // TODO Write proper comment
 type DataRequirementDateFilterComponent struct {
 	BackboneElement `bson:",inline"`
 	Path            string        `bson:"path,omitempty" json:"path,omitempty"`
@@ -29,6 +32,7 @@ type DataRequirementDateFilterComponent struct {
 	ValueDuration   *Quantity     `bson:"valueDuration,omitempty" json:"valueDuration,omitempty"`
 }
 
+// DataRequirementSortComponent ... // TODO Write proper comment
 type DataRequirementSortComponent struct {
 	BackboneElement `bson:",inline"`
 	Path            string `bson:"path,omitempty" json:"path,omitempty"`

@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Annotation ... // TODO Write proper comment
 type Annotation struct {
 	AuthorReference *Reference    `bson:"authorReference,omitempty" json:"authorReference,omitempty"`
 	AuthorString    string        `bson:"authorString,omitempty" json:"authorString,omitempty"`

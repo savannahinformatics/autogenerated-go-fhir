@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Coding ... // TODO Write proper comment
 type Coding struct {
 	System       string `bson:"system,omitempty" json:"system,omitempty"`
 	Version      string `bson:"version,omitempty" json:"version,omitempty"`

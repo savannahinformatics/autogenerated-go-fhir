@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// DomainResource ... // TODO Write proper comment
 type DomainResource struct {
 	Resource          `bson:",inline"`
 	Text              *Narrative    `bson:"text,omitempty" json:"text,omitempty"`

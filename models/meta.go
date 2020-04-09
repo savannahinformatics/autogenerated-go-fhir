@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Meta ... // TODO Write proper comment
 type Meta struct {
 	Element     `bson:",inline"`
 	VersionId   string        `bson:"versionId,omitempty" json:"versionId,omitempty"`

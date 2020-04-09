@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Timing ... // TODO Write proper comment
 type Timing struct {
 	BackboneElement `bson:",inline"`
 	Event           []FHIRDateTime         `bson:"event,omitempty" json:"event,omitempty"`
@@ -7,6 +8,7 @@ type Timing struct {
 	Code            *CodeableConcept       `bson:"code,omitempty" json:"code,omitempty"`
 }
 
+// TimingRepeatComponent ... // TODO Write proper comment
 type TimingRepeatComponent struct {
 	BackboneElement `bson:",inline"`
 	BoundsDuration  *Quantity      `bson:"boundsDuration,omitempty" json:"boundsDuration,omitempty"`

@@ -24,8 +24,9 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-package models
+package fhir
 
+// Reference ... // TODO Write proper comment
 type Reference struct {
 	Reference    string `bson:"reference,omitempty" json:"reference,omitempty"`
 	Display      string `bson:"display,omitempty" json:"display,omitempty"`

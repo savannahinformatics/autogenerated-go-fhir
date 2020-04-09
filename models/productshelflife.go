@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// ProductShelfLife ... // TODO Write proper comment
 type ProductShelfLife struct {
 	BackboneElement              `bson:",inline"`
 	Identifier                   *Identifier       `bson:"identifier,omitempty" json:"identifier,omitempty"`

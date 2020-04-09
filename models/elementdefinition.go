@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// ElementDefinition ... // TODO Write proper comment
 type ElementDefinition struct {
 	BackboneElement             `bson:",inline"`
 	Path                        string                                 `bson:"path,omitempty" json:"path,omitempty"`
@@ -150,6 +151,7 @@ type ElementDefinition struct {
 	Mapping                     []ElementDefinitionMappingComponent    `bson:"mapping,omitempty" json:"mapping,omitempty"`
 }
 
+// ElementDefinitionSlicingComponent ... // TODO Write proper comment
 type ElementDefinitionSlicingComponent struct {
 	BackboneElement `bson:",inline"`
 	Discriminator   []ElementDefinitionSlicingDiscriminatorComponent `bson:"discriminator,omitempty" json:"discriminator,omitempty"`
@@ -158,12 +160,14 @@ type ElementDefinitionSlicingComponent struct {
 	Rules           string                                           `bson:"rules,omitempty" json:"rules,omitempty"`
 }
 
+// ElementDefinitionSlicingDiscriminatorComponent ... // TODO Write proper comment
 type ElementDefinitionSlicingDiscriminatorComponent struct {
 	BackboneElement `bson:",inline"`
 	Type            string `bson:"type,omitempty" json:"type,omitempty"`
 	Path            string `bson:"path,omitempty" json:"path,omitempty"`
 }
 
+// ElementDefinitionBaseComponent ... // TODO Write proper comment
 type ElementDefinitionBaseComponent struct {
 	BackboneElement `bson:",inline"`
 	Path            string  `bson:"path,omitempty" json:"path,omitempty"`
@@ -171,6 +175,7 @@ type ElementDefinitionBaseComponent struct {
 	Max             string  `bson:"max,omitempty" json:"max,omitempty"`
 }
 
+// ElementDefinitionTypeRefComponent ... // TODO Write proper comment
 type ElementDefinitionTypeRefComponent struct {
 	BackboneElement `bson:",inline"`
 	Code            string      `bson:"code,omitempty" json:"code,omitempty"`
@@ -180,6 +185,7 @@ type ElementDefinitionTypeRefComponent struct {
 	Versioning      string      `bson:"versioning,omitempty" json:"versioning,omitempty"`
 }
 
+// ElementDefinitionExampleComponent ... // TODO Write proper comment
 type ElementDefinitionExampleComponent struct {
 	BackboneElement      `bson:",inline"`
 	Label                string           `bson:"label,omitempty" json:"label,omitempty"`
@@ -218,6 +224,7 @@ type ElementDefinitionExampleComponent struct {
 	ValueUri             string           `bson:"valueUri,omitempty" json:"valueUri,omitempty"`
 }
 
+// ElementDefinitionConstraintComponent ... // TODO Write proper comment
 type ElementDefinitionConstraintComponent struct {
 	BackboneElement `bson:",inline"`
 	Key             string     `bson:"key,omitempty" json:"key,omitempty"`
@@ -229,6 +236,7 @@ type ElementDefinitionConstraintComponent struct {
 	Source          *Canonical `bson:"source,omitempty" json:"source,omitempty"`
 }
 
+// ElementDefinitionBindingComponent ... // TODO Write proper comment
 type ElementDefinitionBindingComponent struct {
 	BackboneElement `bson:",inline"`
 	Strength        string     `bson:"strength,omitempty" json:"strength,omitempty"`
@@ -236,6 +244,7 @@ type ElementDefinitionBindingComponent struct {
 	ValueSet        *Canonical `bson:"valueSet,omitempty" json:"valueSet,omitempty"`
 }
 
+// ElementDefinitionMappingComponent ... // TODO Write proper comment
 type ElementDefinitionMappingComponent struct {
 	BackboneElement `bson:",inline"`
 	Identity        string `bson:"identity,omitempty" json:"identity,omitempty"`

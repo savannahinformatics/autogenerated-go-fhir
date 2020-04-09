@@ -1,4 +1,4 @@
-package models
+package fhir
 
 import (
 	"encoding/json"
@@ -6,6 +6,7 @@ import (
 	"fmt"
 )
 
+// Media ... // TODO Write proper comment
 type Media struct {
 	DomainResource  `bson:",inline"`
 	Identifier      []Identifier      `bson:"identifier,omitempty" json:"identifier,omitempty"`
@@ -34,10 +35,10 @@ type Media struct {
 }
 
 // MarshalJSON is a Custom marshaller to add the resourceType property, as required by the specification
-func (resource *Media) MarshalJSON() ([]byte, error) {
-	resource.ResourceType = "Media"
+func (x *Media) MarshalJSON() ([]byte, error) {
+	x.ResourceType = "Media"
 	// Dereferencing the pointer to avoid infinite recursion.
-	return json.Marshal(*resource)
+	return json.Marshal(*x)
 }
 
 // "media" sub-type is needed to avoid infinite recursion in UnmarshalJSON
@@ -62,16 +63,18 @@ func (x *Media) checkResourceType() error {
 	if x.ResourceType == "" {
 		x.ResourceType = "Media"
 	} else if x.ResourceType != "Media" {
-		return errors.New(fmt.Sprintf("Expected resourceType to be Media, instead received %s", x.ResourceType))
+		return fmt.Errorf("Expected resourceType to be Media, instead received %s", x.ResourceType)
 	}
 	return nil
 }
 
+// MediaPlus ... // TODO Write proper comment
 type MediaPlus struct {
 	Media                     `bson:",inline"`
 	MediaPlusRelatedResources `bson:",inline"`
 }
 
+// MediaPlusRelatedResources ... // TODO Write proper comment
 type MediaPlusRelatedResources struct {
 	IncludedPractitionerResourcesReferencedBySubject                       *[]Practitioner               `bson:"_includedPractitionerResourcesReferencedBySubject,omitempty"`
 	IncludedGroupResourcesReferencedBySubject                              *[]Group                      `bson:"_includedGroupResourcesReferencedBySubject,omitempty"`
@@ -185,6 +188,7 @@ type MediaPlusRelatedResources struct {
 	RevIncludedPlanDefinitionResourcesReferencingDependsonPath2            *[]PlanDefinition             `bson:"_revIncludedPlanDefinitionResourcesReferencingDependsonPath2,omitempty"`
 }
 
+// GetIncludedPractitionerResourceReferencedBySubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedPractitionerResourceReferencedBySubject() (practitioner *Practitioner, err error) {
 	if m.IncludedPractitionerResourcesReferencedBySubject == nil {
 		err = errors.New("Included practitioners not requested")
@@ -196,6 +200,7 @@ func (m *MediaPlusRelatedResources) GetIncludedPractitionerResourceReferencedByS
 	return
 }
 
+// GetIncludedGroupResourceReferencedBySubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedGroupResourceReferencedBySubject() (group *Group, err error) {
 	if m.IncludedGroupResourcesReferencedBySubject == nil {
 		err = errors.New("Included groups not requested")
@@ -207,6 +212,7 @@ func (m *MediaPlusRelatedResources) GetIncludedGroupResourceReferencedBySubject(
 	return
 }
 
+// GetIncludedSpecimenResourceReferencedBySubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedSpecimenResourceReferencedBySubject() (specimen *Specimen, err error) {
 	if m.IncludedSpecimenResourcesReferencedBySubject == nil {
 		err = errors.New("Included specimen not requested")
@@ -218,6 +224,7 @@ func (m *MediaPlusRelatedResources) GetIncludedSpecimenResourceReferencedBySubje
 	return
 }
 
+// GetIncludedDeviceResourceReferencedBySubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedDeviceResourceReferencedBySubject() (device *Device, err error) {
 	if m.IncludedDeviceResourcesReferencedBySubject == nil {
 		err = errors.New("Included devices not requested")
@@ -229,6 +236,7 @@ func (m *MediaPlusRelatedResources) GetIncludedDeviceResourceReferencedBySubject
 	return
 }
 
+// GetIncludedPatientResourceReferencedBySubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedPatientResourceReferencedBySubject() (patient *Patient, err error) {
 	if m.IncludedPatientResourcesReferencedBySubject == nil {
 		err = errors.New("Included patients not requested")
@@ -240,6 +248,7 @@ func (m *MediaPlusRelatedResources) GetIncludedPatientResourceReferencedBySubjec
 	return
 }
 
+// GetIncludedPractitionerRoleResourceReferencedBySubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedPractitionerRoleResourceReferencedBySubject() (practitionerRole *PractitionerRole, err error) {
 	if m.IncludedPractitionerRoleResourcesReferencedBySubject == nil {
 		err = errors.New("Included practitionerroles not requested")
@@ -251,6 +260,7 @@ func (m *MediaPlusRelatedResources) GetIncludedPractitionerRoleResourceReference
 	return
 }
 
+// GetIncludedLocationResourceReferencedBySubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedLocationResourceReferencedBySubject() (location *Location, err error) {
 	if m.IncludedLocationResourcesReferencedBySubject == nil {
 		err = errors.New("Included locations not requested")
@@ -262,6 +272,7 @@ func (m *MediaPlusRelatedResources) GetIncludedLocationResourceReferencedBySubje
 	return
 }
 
+// GetIncludedEncounterResourceReferencedByEncounter ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedEncounterResourceReferencedByEncounter() (encounter *Encounter, err error) {
 	if m.IncludedEncounterResourcesReferencedByEncounter == nil {
 		err = errors.New("Included encounters not requested")
@@ -273,6 +284,7 @@ func (m *MediaPlusRelatedResources) GetIncludedEncounterResourceReferencedByEnco
 	return
 }
 
+// GetIncludedPractitionerResourceReferencedByOperator ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedPractitionerResourceReferencedByOperator() (practitioner *Practitioner, err error) {
 	if m.IncludedPractitionerResourcesReferencedByOperator == nil {
 		err = errors.New("Included practitioners not requested")
@@ -284,6 +296,7 @@ func (m *MediaPlusRelatedResources) GetIncludedPractitionerResourceReferencedByO
 	return
 }
 
+// GetIncludedOrganizationResourceReferencedByOperator ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedOrganizationResourceReferencedByOperator() (organization *Organization, err error) {
 	if m.IncludedOrganizationResourcesReferencedByOperator == nil {
 		err = errors.New("Included organizations not requested")
@@ -295,6 +308,7 @@ func (m *MediaPlusRelatedResources) GetIncludedOrganizationResourceReferencedByO
 	return
 }
 
+// GetIncludedCareTeamResourceReferencedByOperator ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedCareTeamResourceReferencedByOperator() (careTeam *CareTeam, err error) {
 	if m.IncludedCareTeamResourcesReferencedByOperator == nil {
 		err = errors.New("Included careteams not requested")
@@ -306,6 +320,7 @@ func (m *MediaPlusRelatedResources) GetIncludedCareTeamResourceReferencedByOpera
 	return
 }
 
+// GetIncludedDeviceResourceReferencedByOperator ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedDeviceResourceReferencedByOperator() (device *Device, err error) {
 	if m.IncludedDeviceResourcesReferencedByOperator == nil {
 		err = errors.New("Included devices not requested")
@@ -317,6 +332,7 @@ func (m *MediaPlusRelatedResources) GetIncludedDeviceResourceReferencedByOperato
 	return
 }
 
+// GetIncludedPatientResourceReferencedByOperator ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedPatientResourceReferencedByOperator() (patient *Patient, err error) {
 	if m.IncludedPatientResourcesReferencedByOperator == nil {
 		err = errors.New("Included patients not requested")
@@ -328,6 +344,7 @@ func (m *MediaPlusRelatedResources) GetIncludedPatientResourceReferencedByOperat
 	return
 }
 
+// GetIncludedPractitionerRoleResourceReferencedByOperator ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedPractitionerRoleResourceReferencedByOperator() (practitionerRole *PractitionerRole, err error) {
 	if m.IncludedPractitionerRoleResourcesReferencedByOperator == nil {
 		err = errors.New("Included practitionerroles not requested")
@@ -339,6 +356,7 @@ func (m *MediaPlusRelatedResources) GetIncludedPractitionerRoleResourceReference
 	return
 }
 
+// GetIncludedRelatedPersonResourceReferencedByOperator ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedRelatedPersonResourceReferencedByOperator() (relatedPerson *RelatedPerson, err error) {
 	if m.IncludedRelatedPersonResourcesReferencedByOperator == nil {
 		err = errors.New("Included relatedpeople not requested")
@@ -350,6 +368,7 @@ func (m *MediaPlusRelatedResources) GetIncludedRelatedPersonResourceReferencedBy
 	return
 }
 
+// GetIncludedCarePlanResourcesReferencedByBasedon ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedCarePlanResourcesReferencedByBasedon() (carePlans []CarePlan, err error) {
 	if m.IncludedCarePlanResourcesReferencedByBasedon == nil {
 		err = errors.New("Included carePlans not requested")
@@ -359,6 +378,7 @@ func (m *MediaPlusRelatedResources) GetIncludedCarePlanResourcesReferencedByBase
 	return
 }
 
+// GetIncludedServiceRequestResourcesReferencedByBasedon ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedServiceRequestResourcesReferencedByBasedon() (serviceRequests []ServiceRequest, err error) {
 	if m.IncludedServiceRequestResourcesReferencedByBasedon == nil {
 		err = errors.New("Included serviceRequests not requested")
@@ -368,6 +388,7 @@ func (m *MediaPlusRelatedResources) GetIncludedServiceRequestResourcesReferenced
 	return
 }
 
+// GetIncludedPatientResourceReferencedByPatient ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedPatientResourceReferencedByPatient() (patient *Patient, err error) {
 	if m.IncludedPatientResourcesReferencedByPatient == nil {
 		err = errors.New("Included patients not requested")
@@ -379,6 +400,7 @@ func (m *MediaPlusRelatedResources) GetIncludedPatientResourceReferencedByPatien
 	return
 }
 
+// GetIncludedDeviceResourceReferencedByDevice ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedDeviceResourceReferencedByDevice() (device *Device, err error) {
 	if m.IncludedDeviceResourcesReferencedByDevice == nil {
 		err = errors.New("Included devices not requested")
@@ -390,6 +412,7 @@ func (m *MediaPlusRelatedResources) GetIncludedDeviceResourceReferencedByDevice(
 	return
 }
 
+// GetIncludedDeviceMetricResourceReferencedByDevice ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedDeviceMetricResourceReferencedByDevice() (deviceMetric *DeviceMetric, err error) {
 	if m.IncludedDeviceMetricResourcesReferencedByDevice == nil {
 		err = errors.New("Included devicemetrics not requested")
@@ -401,6 +424,7 @@ func (m *MediaPlusRelatedResources) GetIncludedDeviceMetricResourceReferencedByD
 	return
 }
 
+// GetRevIncludedAppointmentResourcesReferencingSupportinginfo ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedAppointmentResourcesReferencingSupportinginfo() (appointments []Appointment, err error) {
 	if m.RevIncludedAppointmentResourcesReferencingSupportinginfo == nil {
 		err = errors.New("RevIncluded appointments not requested")
@@ -410,6 +434,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedAppointmentResourcesReferencin
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingSuccessor() (eventDefinitions []EventDefinition, err error) {
 	if m.RevIncludedEventDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -419,6 +444,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEventDefinitionResourcesRefere
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom() (eventDefinitions []EventDefinition, err error) {
 	if m.RevIncludedEventDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -428,6 +454,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEventDefinitionResourcesRefere
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingPredecessor() (eventDefinitions []EventDefinition, err error) {
 	if m.RevIncludedEventDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -437,6 +464,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEventDefinitionResourcesRefere
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingComposedof() (eventDefinitions []EventDefinition, err error) {
 	if m.RevIncludedEventDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -446,6 +474,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEventDefinitionResourcesRefere
 	return
 }
 
+// GetRevIncludedEventDefinitionResourcesReferencingDependson ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingDependson() (eventDefinitions []EventDefinition, err error) {
 	if m.RevIncludedEventDefinitionResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -455,6 +484,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEventDefinitionResourcesRefere
 	return
 }
 
+// GetRevIncludedDocumentManifestResourcesReferencingItem ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedDocumentManifestResourcesReferencingItem() (documentManifests []DocumentManifest, err error) {
 	if m.RevIncludedDocumentManifestResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded documentManifests not requested")
@@ -464,6 +494,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedDocumentManifestResourcesRefer
 	return
 }
 
+// GetRevIncludedDocumentManifestResourcesReferencingRelatedref ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedDocumentManifestResourcesReferencingRelatedref() (documentManifests []DocumentManifest, err error) {
 	if m.RevIncludedDocumentManifestResourcesReferencingRelatedref == nil {
 		err = errors.New("RevIncluded documentManifests not requested")
@@ -473,6 +504,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedDocumentManifestResourcesRefer
 	return
 }
 
+// GetRevIncludedConsentResourcesReferencingData ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedConsentResourcesReferencingData() (consents []Consent, err error) {
 	if m.RevIncludedConsentResourcesReferencingData == nil {
 		err = errors.New("RevIncluded consents not requested")
@@ -482,6 +514,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedConsentResourcesReferencingDat
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingSuccessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingSuccessor() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -491,6 +524,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingSuc
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDerivedfrom() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -500,6 +534,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDer
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingPredecessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingPredecessor() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -509,6 +544,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingPre
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingComposedof ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingComposedof() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -518,6 +554,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingCom
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDependsonPath1() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -527,6 +564,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDep
 	return
 }
 
+// GetRevIncludedMeasureResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDependsonPath2() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -536,6 +574,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDep
 	return
 }
 
+// GetRevIncludedDocumentReferenceResourcesReferencingRelated ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedDocumentReferenceResourcesReferencingRelated() (documentReferences []DocumentReference, err error) {
 	if m.RevIncludedDocumentReferenceResourcesReferencingRelated == nil {
 		err = errors.New("RevIncluded documentReferences not requested")
@@ -545,6 +584,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedDocumentReferenceResourcesRefe
 	return
 }
 
+// GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource() (measureReports []MeasureReport, err error) {
 	if m.RevIncludedMeasureReportResourcesReferencingEvaluatedresource == nil {
 		err = errors.New("RevIncluded measureReports not requested")
@@ -554,6 +594,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedMeasureReportResourcesReferenc
 	return
 }
 
+// GetRevIncludedVerificationResultResourcesReferencingTarget ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedVerificationResultResourcesReferencingTarget() (verificationResults []VerificationResult, err error) {
 	if m.RevIncludedVerificationResultResourcesReferencingTarget == nil {
 		err = errors.New("RevIncluded verificationResults not requested")
@@ -563,6 +604,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedVerificationResultResourcesRef
 	return
 }
 
+// GetRevIncludedContractResourcesReferencingSubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedContractResourcesReferencingSubject() (contracts []Contract, err error) {
 	if m.RevIncludedContractResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded contracts not requested")
@@ -572,6 +614,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedContractResourcesReferencingSu
 	return
 }
 
+// GetRevIncludedPaymentNoticeResourcesReferencingRequest ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferencingRequest() (paymentNotices []PaymentNotice, err error) {
 	if m.RevIncludedPaymentNoticeResourcesReferencingRequest == nil {
 		err = errors.New("RevIncluded paymentNotices not requested")
@@ -581,6 +624,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferenc
 	return
 }
 
+// GetRevIncludedPaymentNoticeResourcesReferencingResponse ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferencingResponse() (paymentNotices []PaymentNotice, err error) {
 	if m.RevIncludedPaymentNoticeResourcesReferencingResponse == nil {
 		err = errors.New("RevIncluded paymentNotices not requested")
@@ -590,6 +634,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferenc
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingSuccessor() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -599,6 +644,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -608,6 +654,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingPredecessor() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -617,6 +664,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingComposedof() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -626,6 +674,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -635,6 +684,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -644,6 +694,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedImplementationGuideResourcesReferencingResource ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedImplementationGuideResourcesReferencingResource() (implementationGuides []ImplementationGuide, err error) {
 	if m.RevIncludedImplementationGuideResourcesReferencingResource == nil {
 		err = errors.New("RevIncluded implementationGuides not requested")
@@ -653,6 +704,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedImplementationGuideResourcesRe
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -662,6 +714,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResou
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -671,6 +724,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResou
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -680,6 +734,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResou
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -689,6 +744,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResou
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -698,6 +754,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResou
 	return
 }
 
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -707,6 +764,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResearchElementDefinitionResou
 	return
 }
 
+// GetRevIncludedCommunicationResourcesReferencingPartof ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedCommunicationResourcesReferencingPartof() (communications []Communication, err error) {
 	if m.RevIncludedCommunicationResourcesReferencingPartof == nil {
 		err = errors.New("RevIncluded communications not requested")
@@ -716,6 +774,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedCommunicationResourcesReferenc
 	return
 }
 
+// GetRevIncludedCommunicationResourcesReferencingBasedon ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedCommunicationResourcesReferencingBasedon() (communications []Communication, err error) {
 	if m.RevIncludedCommunicationResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded communications not requested")
@@ -725,6 +784,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedCommunicationResourcesReferenc
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingSuccessor() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -734,6 +794,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -743,6 +804,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingPredecessor() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -752,6 +814,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingComposedof() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -761,6 +824,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -770,6 +834,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -779,6 +844,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesRef
 	return
 }
 
+// GetRevIncludedLinkageResourcesReferencingItem ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedLinkageResourcesReferencingItem() (linkages []Linkage, err error) {
 	if m.RevIncludedLinkageResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded linkages not requested")
@@ -788,6 +854,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedLinkageResourcesReferencingIte
 	return
 }
 
+// GetRevIncludedLinkageResourcesReferencingSource ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedLinkageResourcesReferencingSource() (linkages []Linkage, err error) {
 	if m.RevIncludedLinkageResourcesReferencingSource == nil {
 		err = errors.New("RevIncluded linkages not requested")
@@ -797,6 +864,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedLinkageResourcesReferencingSou
 	return
 }
 
+// GetRevIncludedDeviceRequestResourcesReferencingBasedon ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferencingBasedon() (deviceRequests []DeviceRequest, err error) {
 	if m.RevIncludedDeviceRequestResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded deviceRequests not requested")
@@ -806,6 +874,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferenc
 	return
 }
 
+// GetRevIncludedDeviceRequestResourcesReferencingPriorrequest ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferencingPriorrequest() (deviceRequests []DeviceRequest, err error) {
 	if m.RevIncludedDeviceRequestResourcesReferencingPriorrequest == nil {
 		err = errors.New("RevIncluded deviceRequests not requested")
@@ -815,6 +884,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferenc
 	return
 }
 
+// GetRevIncludedMessageHeaderResourcesReferencingFocus ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedMessageHeaderResourcesReferencingFocus() (messageHeaders []MessageHeader, err error) {
 	if m.RevIncludedMessageHeaderResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded messageHeaders not requested")
@@ -824,6 +894,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedMessageHeaderResourcesReferenc
 	return
 }
 
+// GetRevIncludedImmunizationRecommendationResourcesReferencingInformation ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedImmunizationRecommendationResourcesReferencingInformation() (immunizationRecommendations []ImmunizationRecommendation, err error) {
 	if m.RevIncludedImmunizationRecommendationResourcesReferencingInformation == nil {
 		err = errors.New("RevIncluded immunizationRecommendations not requested")
@@ -833,6 +904,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedImmunizationRecommendationReso
 	return
 }
 
+// GetRevIncludedProvenanceResourcesReferencingEntity ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedProvenanceResourcesReferencingEntity() (provenances []Provenance, err error) {
 	if m.RevIncludedProvenanceResourcesReferencingEntity == nil {
 		err = errors.New("RevIncluded provenances not requested")
@@ -842,6 +914,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedProvenanceResourcesReferencing
 	return
 }
 
+// GetRevIncludedProvenanceResourcesReferencingTarget ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedProvenanceResourcesReferencingTarget() (provenances []Provenance, err error) {
 	if m.RevIncludedProvenanceResourcesReferencingTarget == nil {
 		err = errors.New("RevIncluded provenances not requested")
@@ -851,6 +924,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedProvenanceResourcesReferencing
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingSubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedTaskResourcesReferencingSubject() (tasks []Task, err error) {
 	if m.RevIncludedTaskResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -860,6 +934,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedTaskResourcesReferencingSubjec
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingFocus ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedTaskResourcesReferencingFocus() (tasks []Task, err error) {
 	if m.RevIncludedTaskResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -869,6 +944,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedTaskResourcesReferencingFocus(
 	return
 }
 
+// GetRevIncludedTaskResourcesReferencingBasedon ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedTaskResourcesReferencingBasedon() (tasks []Task, err error) {
 	if m.RevIncludedTaskResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -878,6 +954,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedTaskResourcesReferencingBasedo
 	return
 }
 
+// GetRevIncludedListResourcesReferencingItem ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedListResourcesReferencingItem() (lists []List, err error) {
 	if m.RevIncludedListResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded lists not requested")
@@ -887,6 +964,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedListResourcesReferencingItem()
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingSuccessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingSuccessor() (evidenceVariables []EvidenceVariable, err error) {
 	if m.RevIncludedEvidenceVariableResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -896,6 +974,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesRefer
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom() (evidenceVariables []EvidenceVariable, err error) {
 	if m.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -905,6 +984,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesRefer
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingPredecessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingPredecessor() (evidenceVariables []EvidenceVariable, err error) {
 	if m.RevIncludedEvidenceVariableResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -914,6 +994,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesRefer
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingComposedof ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingComposedof() (evidenceVariables []EvidenceVariable, err error) {
 	if m.RevIncludedEvidenceVariableResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -923,6 +1004,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesRefer
 	return
 }
 
+// GetRevIncludedEvidenceVariableResourcesReferencingDependson ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingDependson() (evidenceVariables []EvidenceVariable, err error) {
 	if m.RevIncludedEvidenceVariableResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -932,6 +1014,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesRefer
 	return
 }
 
+// GetRevIncludedObservationResourcesReferencingFocus ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedObservationResourcesReferencingFocus() (observations []Observation, err error) {
 	if m.RevIncludedObservationResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded observations not requested")
@@ -941,6 +1024,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedObservationResourcesReferencin
 	return
 }
 
+// GetRevIncludedObservationResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedObservationResourcesReferencingDerivedfrom() (observations []Observation, err error) {
 	if m.RevIncludedObservationResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded observations not requested")
@@ -950,6 +1034,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedObservationResourcesReferencin
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingSuccessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingSuccessor() (libraries []Library, err error) {
 	if m.RevIncludedLibraryResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -959,6 +1044,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingSuc
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDerivedfrom() (libraries []Library, err error) {
 	if m.RevIncludedLibraryResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -968,6 +1054,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDer
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingPredecessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingPredecessor() (libraries []Library, err error) {
 	if m.RevIncludedLibraryResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -977,6 +1064,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingPre
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingComposedof ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingComposedof() (libraries []Library, err error) {
 	if m.RevIncludedLibraryResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -986,6 +1074,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingCom
 	return
 }
 
+// GetRevIncludedLibraryResourcesReferencingDependson ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDependson() (libraries []Library, err error) {
 	if m.RevIncludedLibraryResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -995,6 +1084,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDep
 	return
 }
 
+// GetRevIncludedCommunicationRequestResourcesReferencingBasedon ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedCommunicationRequestResourcesReferencingBasedon() (communicationRequests []CommunicationRequest, err error) {
 	if m.RevIncludedCommunicationRequestResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded communicationRequests not requested")
@@ -1004,6 +1094,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedCommunicationRequestResourcesR
 	return
 }
 
+// GetRevIncludedBasicResourcesReferencingSubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedBasicResourcesReferencingSubject() (basics []Basic, err error) {
 	if m.RevIncludedBasicResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded basics not requested")
@@ -1013,6 +1104,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedBasicResourcesReferencingSubje
 	return
 }
 
+// GetRevIncludedDiagnosticReportResourcesReferencingMedia ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedDiagnosticReportResourcesReferencingMedia() (diagnosticReports []DiagnosticReport, err error) {
 	if m.RevIncludedDiagnosticReportResourcesReferencingMedia == nil {
 		err = errors.New("RevIncluded diagnosticReports not requested")
@@ -1022,6 +1114,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedDiagnosticReportResourcesRefer
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingSuccessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingSuccessor() (evidences []Evidence, err error) {
 	if m.RevIncludedEvidenceResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -1031,6 +1124,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingSu
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDerivedfrom() (evidences []Evidence, err error) {
 	if m.RevIncludedEvidenceResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -1040,6 +1134,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDe
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingPredecessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingPredecessor() (evidences []Evidence, err error) {
 	if m.RevIncludedEvidenceResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -1049,6 +1144,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingPr
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingComposedof ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingComposedof() (evidences []Evidence, err error) {
 	if m.RevIncludedEvidenceResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -1058,6 +1154,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingCo
 	return
 }
 
+// GetRevIncludedEvidenceResourcesReferencingDependson ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDependson() (evidences []Evidence, err error) {
 	if m.RevIncludedEvidenceResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -1067,6 +1164,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDe
 	return
 }
 
+// GetRevIncludedAuditEventResourcesReferencingEntity ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedAuditEventResourcesReferencingEntity() (auditEvents []AuditEvent, err error) {
 	if m.RevIncludedAuditEventResourcesReferencingEntity == nil {
 		err = errors.New("RevIncluded auditEvents not requested")
@@ -1076,6 +1174,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedAuditEventResourcesReferencing
 	return
 }
 
+// GetRevIncludedConditionResourcesReferencingEvidencedetail ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedConditionResourcesReferencingEvidencedetail() (conditions []Condition, err error) {
 	if m.RevIncludedConditionResourcesReferencingEvidencedetail == nil {
 		err = errors.New("RevIncluded conditions not requested")
@@ -1085,6 +1184,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedConditionResourcesReferencingE
 	return
 }
 
+// GetRevIncludedCompositionResourcesReferencingSubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedCompositionResourcesReferencingSubject() (compositions []Composition, err error) {
 	if m.RevIncludedCompositionResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded compositions not requested")
@@ -1094,6 +1194,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedCompositionResourcesReferencin
 	return
 }
 
+// GetRevIncludedCompositionResourcesReferencingEntry ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedCompositionResourcesReferencingEntry() (compositions []Composition, err error) {
 	if m.RevIncludedCompositionResourcesReferencingEntry == nil {
 		err = errors.New("RevIncluded compositions not requested")
@@ -1103,6 +1204,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedCompositionResourcesReferencin
 	return
 }
 
+// GetRevIncludedDetectedIssueResourcesReferencingImplicated ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedDetectedIssueResourcesReferencingImplicated() (detectedIssues []DetectedIssue, err error) {
 	if m.RevIncludedDetectedIssueResourcesReferencingImplicated == nil {
 		err = errors.New("RevIncluded detectedIssues not requested")
@@ -1112,6 +1214,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedDetectedIssueResourcesReferenc
 	return
 }
 
+// GetRevIncludedMedicationKnowledgeResourcesReferencingMonograph ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedMedicationKnowledgeResourcesReferencingMonograph() (medicationKnowledges []MedicationKnowledge, err error) {
 	if m.RevIncludedMedicationKnowledgeResourcesReferencingMonograph == nil {
 		err = errors.New("RevIncluded medicationKnowledges not requested")
@@ -1121,6 +1224,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedMedicationKnowledgeResourcesRe
 	return
 }
 
+// GetRevIncludedQuestionnaireResponseResourcesReferencingSubject ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedQuestionnaireResponseResourcesReferencingSubject() (questionnaireResponses []QuestionnaireResponse, err error) {
 	if m.RevIncludedQuestionnaireResponseResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded questionnaireResponses not requested")
@@ -1130,6 +1234,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedQuestionnaireResponseResources
 	return
 }
 
+// GetRevIncludedClinicalImpressionResourcesReferencingFindingref ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedClinicalImpressionResourcesReferencingFindingref() (clinicalImpressions []ClinicalImpression, err error) {
 	if m.RevIncludedClinicalImpressionResourcesReferencingFindingref == nil {
 		err = errors.New("RevIncluded clinicalImpressions not requested")
@@ -1139,6 +1244,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedClinicalImpressionResourcesRef
 	return
 }
 
+// GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo() (clinicalImpressions []ClinicalImpression, err error) {
 	if m.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo == nil {
 		err = errors.New("RevIncluded clinicalImpressions not requested")
@@ -1148,6 +1254,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedClinicalImpressionResourcesRef
 	return
 }
 
+// GetRevIncludedClinicalImpressionResourcesReferencingInvestigation ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedClinicalImpressionResourcesReferencingInvestigation() (clinicalImpressions []ClinicalImpression, err error) {
 	if m.RevIncludedClinicalImpressionResourcesReferencingInvestigation == nil {
 		err = errors.New("RevIncluded clinicalImpressions not requested")
@@ -1157,6 +1264,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedClinicalImpressionResourcesRef
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingSuccessor() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1166,6 +1274,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferen
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1175,6 +1284,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferen
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingPredecessor() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1184,6 +1294,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferen
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingComposedof() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1193,6 +1304,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferen
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1202,6 +1314,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferen
 	return
 }
 
+// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1211,6 +1324,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferen
 	return
 }
 
+// GetIncludedResources ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if m.IncludedPractitionerResourcesReferencedBySubject != nil {
@@ -1336,6 +1450,7 @@ func (m *MediaPlusRelatedResources) GetIncludedResources() map[string]interface{
 	return resourceMap
 }
 
+// GetRevIncludedResources ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetRevIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if m.RevIncludedAppointmentResourcesReferencingSupportinginfo != nil {
@@ -1881,6 +1996,7 @@ func (m *MediaPlusRelatedResources) GetRevIncludedResources() map[string]interfa
 	return resourceMap
 }
 
+// GetIncludedAndRevIncludedResources ... // TODO Write proper comment
 func (m *MediaPlusRelatedResources) GetIncludedAndRevIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if m.IncludedPractitionerResourcesReferencedBySubject != nil {

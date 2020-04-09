@@ -1,6 +1,4 @@
-package models
-
-// TODO Implement URL serialization and deserialization
+package fhir
 
 // URL is a Uniform Resource Locator (RFC 1738 ). Note URLs are accessed
 // directly using the specified protocol. Common URL protocols are

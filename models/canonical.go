@@ -1,6 +1,4 @@
-package models
-
-// TODO Implement validation, serialization etc for Canonical
+package fhir
 
 // Canonical is a URI that refers to a resource by its Canonical URL
 // (resources with a url property). The Canonical type differs from a uri in

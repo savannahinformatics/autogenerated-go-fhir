@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Identifier ... // TODO Write proper comment
 type Identifier struct {
 	Use      string           `bson:"use,omitempty" json:"use,omitempty"`
 	Type     *CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`

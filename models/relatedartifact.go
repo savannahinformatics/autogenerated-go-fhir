@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// RelatedArtifact ... // TODO Write proper comment
 type RelatedArtifact struct {
 	Type     string      `bson:"type,omitempty" json:"type,omitempty"`
 	Label    string      `bson:"label,omitempty" json:"label,omitempty"`

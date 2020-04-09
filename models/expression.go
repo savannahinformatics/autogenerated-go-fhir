@@ -1,5 +1,6 @@
-package models
+package fhir
 
+// Expression ... // TODO Write proper comment
 type Expression struct {
 	Element     `bson:",inline"`
 	Description string `bson:"description,omitempty" json:"description,omitempty"`
