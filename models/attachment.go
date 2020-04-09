@@ -1,6 +1,6 @@
 package fhir
 
-// Attachment is a FHIR attachment resource
+// Attachment is a FHIR attachment structure
 type Attachment struct {
 	ContentType string        `bson:"contentType,omitempty" json:"contentType,omitempty"`
 	Language    string        `bson:"language,omitempty" json:"language,omitempty"`

@@ -1,6 +1,6 @@
 package fhir
 
-// Count ... // TODO Write proper comment
+// Count ...
 type Count struct {
 	Quantity `bson:",inline"`
 }

@@ -1,6 +1,6 @@
 package fhir
 
-// Distance ... // TODO Write proper comment
+// Distance ...
 type Distance struct {
 	Quantity `bson:",inline"`
 }

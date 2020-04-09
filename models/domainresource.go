@@ -1,6 +1,6 @@
 package fhir
 
-// DomainResource ... // TODO Write proper comment
+// DomainResource ...
 type DomainResource struct {
 	Resource          `bson:",inline"`
 	Text              *Narrative    `bson:"text,omitempty" json:"text,omitempty"`

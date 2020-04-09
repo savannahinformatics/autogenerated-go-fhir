@@ -1,6 +1,6 @@
 package fhir
 
-// Quantity ... // TODO Write proper comment
+// Quantity ...
 type Quantity struct {
 	Value      *float64 `bson:"value,omitempty" json:"value,omitempty"`
 	Comparator string   `bson:"comparator,omitempty" json:"comparator,omitempty"`

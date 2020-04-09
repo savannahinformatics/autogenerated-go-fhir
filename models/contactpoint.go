@@ -1,6 +1,6 @@
 package fhir
 
-// ContactPoint ... // TODO Write proper comment
+// ContactPoint ...
 type ContactPoint struct {
 	System string  `bson:"system,omitempty" json:"system,omitempty"`
 	Value  string  `bson:"value,omitempty" json:"value,omitempty"`

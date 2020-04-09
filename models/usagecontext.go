@@ -1,6 +1,6 @@
 package fhir
 
-// UsageContext ... // TODO Write proper comment
+// UsageContext is a FHIR UsageContext
 type UsageContext struct {
 	Code                 *Coding          `bson:"code,omitempty" json:"code,omitempty"`
 	ValueCodeableConcept *CodeableConcept `bson:"valueCodeableConcept,omitempty" json:"valueCodeableConcept,omitempty"`

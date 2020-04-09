@@ -1,6 +1,6 @@
 package fhir
 
-// SubstanceAmount ... // TODO Write proper comment
+// SubstanceAmount ...
 type SubstanceAmount struct {
 	BackboneElement `bson:",inline"`
 	AmountQuantity  *Quantity                               `bson:"amountQuantity,omitempty" json:"amountQuantity,omitempty"`
@@ -11,7 +11,7 @@ type SubstanceAmount struct {
 	ReferenceRange  *SubstanceAmountReferenceRangeComponent `bson:"referenceRange,omitempty" json:"referenceRange,omitempty"`
 }
 
-// SubstanceAmountReferenceRangeComponent ... // TODO Write proper comment
+// SubstanceAmountReferenceRangeComponent ...
 type SubstanceAmountReferenceRangeComponent struct {
 	BackboneElement `bson:",inline"`
 	LowLimit        *Quantity `bson:"lowLimit,omitempty" json:"lowLimit,omitempty"`

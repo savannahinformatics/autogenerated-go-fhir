@@ -1,8 +1,8 @@
 package fhir
 
-// Extension ... // TODO Write proper comment
+// Extension ...
 type Extension struct {
-	Url                  string           `bson:"url,omitempty" json:"url,omitempty"`
+	URL                  string           `bson:"url,omitempty" json:"url,omitempty"`
 	ValueAddress         *Address         `bson:"valueAddress,omitempty" json:"valueAddress,omitempty"`
 	ValueAnnotation      *Annotation      `bson:"valueAnnotation,omitempty" json:"valueAnnotation,omitempty"`
 	ValueAttachment      *Attachment      `bson:"valueAttachment,omitempty" json:"valueAttachment,omitempty"`
@@ -16,13 +16,13 @@ type Extension struct {
 	ValueDateTime        *FHIRDateTime    `bson:"valueDateTime,omitempty" json:"valueDateTime,omitempty"`
 	ValueDecimal         *float64         `bson:"valueDecimal,omitempty" json:"valueDecimal,omitempty"`
 	ValueHumanName       *HumanName       `bson:"valueHumanName,omitempty" json:"valueHumanName,omitempty"`
-	ValueId              string           `bson:"valueId,omitempty" json:"valueId,omitempty"`
+	ValueID              string           `bson:"valueId,omitempty" json:"valueId,omitempty"`
 	ValueIdentifier      *Identifier      `bson:"valueIdentifier,omitempty" json:"valueIdentifier,omitempty"`
 	ValueInstant         *FHIRDateTime    `bson:"valueInstant,omitempty" json:"valueInstant,omitempty"`
 	ValueInteger         *int32           `bson:"valueInteger,omitempty" json:"valueInteger,omitempty"`
 	ValueMarkdown        string           `bson:"valueMarkdown,omitempty" json:"valueMarkdown,omitempty"`
 	ValueMeta            *Meta            `bson:"valueMeta,omitempty" json:"valueMeta,omitempty"`
-	ValueOid             string           `bson:"valueOid,omitempty" json:"valueOid,omitempty"`
+	ValueOID             string           `bson:"valueOid,omitempty" json:"valueOid,omitempty"`
 	ValuePeriod          *Period          `bson:"valuePeriod,omitempty" json:"valuePeriod,omitempty"`
 	ValuePositiveInt     *uint32          `bson:"valuePositiveInt,omitempty" json:"valuePositiveInt,omitempty"`
 	ValueQuantity        *Quantity        `bson:"valueQuantity,omitempty" json:"valueQuantity,omitempty"`
@@ -35,5 +35,5 @@ type Extension struct {
 	ValueTime            *FHIRDateTime    `bson:"valueTime,omitempty" json:"valueTime,omitempty"`
 	ValueTiming          *Timing          `bson:"valueTiming,omitempty" json:"valueTiming,omitempty"`
 	ValueUnsignedInt     *uint32          `bson:"valueUnsignedInt,omitempty" json:"valueUnsignedInt,omitempty"`
-	ValueUri             string           `bson:"valueUri,omitempty" json:"valueUri,omitempty"`
+	ValueURI             string           `bson:"valueUri,omitempty" json:"valueUri,omitempty"`
 }

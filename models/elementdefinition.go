@@ -1,6 +1,6 @@
 package fhir
 
-// ElementDefinition ... // TODO Write proper comment
+// ElementDefinition ...
 type ElementDefinition struct {
 	BackboneElement             `bson:",inline"`
 	Path                        string                                 `bson:"path,omitempty" json:"path,omitempty"`
@@ -33,13 +33,13 @@ type ElementDefinition struct {
 	DefaultValueDateTime        *FHIRDateTime                          `bson:"defaultValueDateTime,omitempty" json:"defaultValueDateTime,omitempty"`
 	DefaultValueDecimal         *float64                               `bson:"defaultValueDecimal,omitempty" json:"defaultValueDecimal,omitempty"`
 	DefaultValueHumanName       *HumanName                             `bson:"defaultValueHumanName,omitempty" json:"defaultValueHumanName,omitempty"`
-	DefaultValueId              string                                 `bson:"defaultValueId,omitempty" json:"defaultValueId,omitempty"`
+	DefaultValueID              string                                 `bson:"defaultValueId,omitempty" json:"defaultValueId,omitempty"`
 	DefaultValueIdentifier      *Identifier                            `bson:"defaultValueIdentifier,omitempty" json:"defaultValueIdentifier,omitempty"`
 	DefaultValueInstant         *FHIRDateTime                          `bson:"defaultValueInstant,omitempty" json:"defaultValueInstant,omitempty"`
 	DefaultValueInteger         *int32                                 `bson:"defaultValueInteger,omitempty" json:"defaultValueInteger,omitempty"`
 	DefaultValueMarkdown        string                                 `bson:"defaultValueMarkdown,omitempty" json:"defaultValueMarkdown,omitempty"`
 	DefaultValueMeta            *Meta                                  `bson:"defaultValueMeta,omitempty" json:"defaultValueMeta,omitempty"`
-	DefaultValueOid             string                                 `bson:"defaultValueOid,omitempty" json:"defaultValueOid,omitempty"`
+	DefaultValueOID             string                                 `bson:"defaultValueOid,omitempty" json:"defaultValueOid,omitempty"`
 	DefaultValuePeriod          *Period                                `bson:"defaultValuePeriod,omitempty" json:"defaultValuePeriod,omitempty"`
 	DefaultValuePositiveInt     *uint32                                `bson:"defaultValuePositiveInt,omitempty" json:"defaultValuePositiveInt,omitempty"`
 	DefaultValueQuantity        *Quantity                              `bson:"defaultValueQuantity,omitempty" json:"defaultValueQuantity,omitempty"`
@@ -52,7 +52,7 @@ type ElementDefinition struct {
 	DefaultValueTime            *FHIRDateTime                          `bson:"defaultValueTime,omitempty" json:"defaultValueTime,omitempty"`
 	DefaultValueTiming          *Timing                                `bson:"defaultValueTiming,omitempty" json:"defaultValueTiming,omitempty"`
 	DefaultValueUnsignedInt     *uint32                                `bson:"defaultValueUnsignedInt,omitempty" json:"defaultValueUnsignedInt,omitempty"`
-	DefaultValueUri             string                                 `bson:"defaultValueUri,omitempty" json:"defaultValueUri,omitempty"`
+	DefaultValueURI             string                                 `bson:"defaultValueUri,omitempty" json:"defaultValueUri,omitempty"`
 	MeaningWhenMissing          string                                 `bson:"meaningWhenMissing,omitempty" json:"meaningWhenMissing,omitempty"`
 	OrderMeaning                string                                 `bson:"orderMeaning,omitempty" json:"orderMeaning,omitempty"`
 	FixedAddress                *Address                               `bson:"fixedAddress,omitempty" json:"fixedAddress,omitempty"`
@@ -68,13 +68,13 @@ type ElementDefinition struct {
 	FixedDateTime               *FHIRDateTime                          `bson:"fixedDateTime,omitempty" json:"fixedDateTime,omitempty"`
 	FixedDecimal                *float64                               `bson:"fixedDecimal,omitempty" json:"fixedDecimal,omitempty"`
 	FixedHumanName              *HumanName                             `bson:"fixedHumanName,omitempty" json:"fixedHumanName,omitempty"`
-	FixedId                     string                                 `bson:"fixedId,omitempty" json:"fixedId,omitempty"`
+	FixedID                     string                                 `bson:"fixedId,omitempty" json:"fixedId,omitempty"`
 	FixedIdentifier             *Identifier                            `bson:"fixedIdentifier,omitempty" json:"fixedIdentifier,omitempty"`
 	FixedInstant                *FHIRDateTime                          `bson:"fixedInstant,omitempty" json:"fixedInstant,omitempty"`
 	FixedInteger                *int32                                 `bson:"fixedInteger,omitempty" json:"fixedInteger,omitempty"`
 	FixedMarkdown               string                                 `bson:"fixedMarkdown,omitempty" json:"fixedMarkdown,omitempty"`
 	FixedMeta                   *Meta                                  `bson:"fixedMeta,omitempty" json:"fixedMeta,omitempty"`
-	FixedOid                    string                                 `bson:"fixedOid,omitempty" json:"fixedOid,omitempty"`
+	FixedOID                    string                                 `bson:"fixedOid,omitempty" json:"fixedOid,omitempty"`
 	FixedPeriod                 *Period                                `bson:"fixedPeriod,omitempty" json:"fixedPeriod,omitempty"`
 	FixedPositiveInt            *uint32                                `bson:"fixedPositiveInt,omitempty" json:"fixedPositiveInt,omitempty"`
 	FixedQuantity               *Quantity                              `bson:"fixedQuantity,omitempty" json:"fixedQuantity,omitempty"`
@@ -87,7 +87,7 @@ type ElementDefinition struct {
 	FixedTime                   *FHIRDateTime                          `bson:"fixedTime,omitempty" json:"fixedTime,omitempty"`
 	FixedTiming                 *Timing                                `bson:"fixedTiming,omitempty" json:"fixedTiming,omitempty"`
 	FixedUnsignedInt            *uint32                                `bson:"fixedUnsignedInt,omitempty" json:"fixedUnsignedInt,omitempty"`
-	FixedUri                    string                                 `bson:"fixedUri,omitempty" json:"fixedUri,omitempty"`
+	FixedURI                    string                                 `bson:"fixedUri,omitempty" json:"fixedUri,omitempty"`
 	PatternAddress              *Address                               `bson:"patternAddress,omitempty" json:"patternAddress,omitempty"`
 	PatternAnnotation           *Annotation                            `bson:"patternAnnotation,omitempty" json:"patternAnnotation,omitempty"`
 	PatternAttachment           *Attachment                            `bson:"patternAttachment,omitempty" json:"patternAttachment,omitempty"`
@@ -101,13 +101,13 @@ type ElementDefinition struct {
 	PatternDateTime             *FHIRDateTime                          `bson:"patternDateTime,omitempty" json:"patternDateTime,omitempty"`
 	PatternDecimal              *float64                               `bson:"patternDecimal,omitempty" json:"patternDecimal,omitempty"`
 	PatternHumanName            *HumanName                             `bson:"patternHumanName,omitempty" json:"patternHumanName,omitempty"`
-	PatternId                   string                                 `bson:"patternId,omitempty" json:"patternId,omitempty"`
+	PatternID                   string                                 `bson:"patternId,omitempty" json:"patternId,omitempty"`
 	PatternIdentifier           *Identifier                            `bson:"patternIdentifier,omitempty" json:"patternIdentifier,omitempty"`
 	PatternInstant              *FHIRDateTime                          `bson:"patternInstant,omitempty" json:"patternInstant,omitempty"`
 	PatternInteger              *int32                                 `bson:"patternInteger,omitempty" json:"patternInteger,omitempty"`
 	PatternMarkdown             string                                 `bson:"patternMarkdown,omitempty" json:"patternMarkdown,omitempty"`
 	PatternMeta                 *Meta                                  `bson:"patternMeta,omitempty" json:"patternMeta,omitempty"`
-	PatternOid                  string                                 `bson:"patternOid,omitempty" json:"patternOid,omitempty"`
+	PatternOID                  string                                 `bson:"patternOid,omitempty" json:"patternOid,omitempty"`
 	PatternPeriod               *Period                                `bson:"patternPeriod,omitempty" json:"patternPeriod,omitempty"`
 	PatternPositiveInt          *uint32                                `bson:"patternPositiveInt,omitempty" json:"patternPositiveInt,omitempty"`
 	PatternQuantity             *Quantity                              `bson:"patternQuantity,omitempty" json:"patternQuantity,omitempty"`
@@ -120,7 +120,7 @@ type ElementDefinition struct {
 	PatternTime                 *FHIRDateTime                          `bson:"patternTime,omitempty" json:"patternTime,omitempty"`
 	PatternTiming               *Timing                                `bson:"patternTiming,omitempty" json:"patternTiming,omitempty"`
 	PatternUnsignedInt          *uint32                                `bson:"patternUnsignedInt,omitempty" json:"patternUnsignedInt,omitempty"`
-	PatternUri                  string                                 `bson:"patternUri,omitempty" json:"patternUri,omitempty"`
+	PatternURI                  string                                 `bson:"patternUri,omitempty" json:"patternUri,omitempty"`
 	Example                     []ElementDefinitionExampleComponent    `bson:"example,omitempty" json:"example,omitempty"`
 	MinValueDate                *FHIRDateTime                          `bson:"minValueDate,omitempty" json:"minValueDate,omitempty"`
 	MinValueDateTime            *FHIRDateTime                          `bson:"minValueDateTime,omitempty" json:"minValueDateTime,omitempty"`
@@ -151,7 +151,7 @@ type ElementDefinition struct {
 	Mapping                     []ElementDefinitionMappingComponent    `bson:"mapping,omitempty" json:"mapping,omitempty"`
 }
 
-// ElementDefinitionSlicingComponent ... // TODO Write proper comment
+// ElementDefinitionSlicingComponent ...
 type ElementDefinitionSlicingComponent struct {
 	BackboneElement `bson:",inline"`
 	Discriminator   []ElementDefinitionSlicingDiscriminatorComponent `bson:"discriminator,omitempty" json:"discriminator,omitempty"`
@@ -160,14 +160,14 @@ type ElementDefinitionSlicingComponent struct {
 	Rules           string                                           `bson:"rules,omitempty" json:"rules,omitempty"`
 }
 
-// ElementDefinitionSlicingDiscriminatorComponent ... // TODO Write proper comment
+// ElementDefinitionSlicingDiscriminatorComponent ...
 type ElementDefinitionSlicingDiscriminatorComponent struct {
 	BackboneElement `bson:",inline"`
 	Type            string `bson:"type,omitempty" json:"type,omitempty"`
 	Path            string `bson:"path,omitempty" json:"path,omitempty"`
 }
 
-// ElementDefinitionBaseComponent ... // TODO Write proper comment
+// ElementDefinitionBaseComponent ...
 type ElementDefinitionBaseComponent struct {
 	BackboneElement `bson:",inline"`
 	Path            string  `bson:"path,omitempty" json:"path,omitempty"`
@@ -175,7 +175,7 @@ type ElementDefinitionBaseComponent struct {
 	Max             string  `bson:"max,omitempty" json:"max,omitempty"`
 }
 
-// ElementDefinitionTypeRefComponent ... // TODO Write proper comment
+// ElementDefinitionTypeRefComponent ...
 type ElementDefinitionTypeRefComponent struct {
 	BackboneElement `bson:",inline"`
 	Code            string      `bson:"code,omitempty" json:"code,omitempty"`
@@ -185,7 +185,7 @@ type ElementDefinitionTypeRefComponent struct {
 	Versioning      string      `bson:"versioning,omitempty" json:"versioning,omitempty"`
 }
 
-// ElementDefinitionExampleComponent ... // TODO Write proper comment
+// ElementDefinitionExampleComponent ...
 type ElementDefinitionExampleComponent struct {
 	BackboneElement      `bson:",inline"`
 	Label                string           `bson:"label,omitempty" json:"label,omitempty"`
@@ -202,13 +202,13 @@ type ElementDefinitionExampleComponent struct {
 	ValueDateTime        *FHIRDateTime    `bson:"valueDateTime,omitempty" json:"valueDateTime,omitempty"`
 	ValueDecimal         *float64         `bson:"valueDecimal,omitempty" json:"valueDecimal,omitempty"`
 	ValueHumanName       *HumanName       `bson:"valueHumanName,omitempty" json:"valueHumanName,omitempty"`
-	ValueId              string           `bson:"valueId,omitempty" json:"valueId,omitempty"`
+	ValueID              string           `bson:"valueId,omitempty" json:"valueId,omitempty"`
 	ValueIdentifier      *Identifier      `bson:"valueIdentifier,omitempty" json:"valueIdentifier,omitempty"`
 	ValueInstant         *FHIRDateTime    `bson:"valueInstant,omitempty" json:"valueInstant,omitempty"`
 	ValueInteger         *int32           `bson:"valueInteger,omitempty" json:"valueInteger,omitempty"`
 	ValueMarkdown        string           `bson:"valueMarkdown,omitempty" json:"valueMarkdown,omitempty"`
 	ValueMeta            *Meta            `bson:"valueMeta,omitempty" json:"valueMeta,omitempty"`
-	ValueOid             string           `bson:"valueOid,omitempty" json:"valueOid,omitempty"`
+	ValueOID             string           `bson:"valueOid,omitempty" json:"valueOid,omitempty"`
 	ValuePeriod          *Period          `bson:"valuePeriod,omitempty" json:"valuePeriod,omitempty"`
 	ValuePositiveInt     *uint32          `bson:"valuePositiveInt,omitempty" json:"valuePositiveInt,omitempty"`
 	ValueQuantity        *Quantity        `bson:"valueQuantity,omitempty" json:"valueQuantity,omitempty"`
@@ -221,10 +221,10 @@ type ElementDefinitionExampleComponent struct {
 	ValueTime            *FHIRDateTime    `bson:"valueTime,omitempty" json:"valueTime,omitempty"`
 	ValueTiming          *Timing          `bson:"valueTiming,omitempty" json:"valueTiming,omitempty"`
 	ValueUnsignedInt     *uint32          `bson:"valueUnsignedInt,omitempty" json:"valueUnsignedInt,omitempty"`
-	ValueUri             string           `bson:"valueUri,omitempty" json:"valueUri,omitempty"`
+	ValueURI             string           `bson:"valueUri,omitempty" json:"valueUri,omitempty"`
 }
 
-// ElementDefinitionConstraintComponent ... // TODO Write proper comment
+// ElementDefinitionConstraintComponent ...
 type ElementDefinitionConstraintComponent struct {
 	BackboneElement `bson:",inline"`
 	Key             string     `bson:"key,omitempty" json:"key,omitempty"`
@@ -236,7 +236,7 @@ type ElementDefinitionConstraintComponent struct {
 	Source          *Canonical `bson:"source,omitempty" json:"source,omitempty"`
 }
 
-// ElementDefinitionBindingComponent ... // TODO Write proper comment
+// ElementDefinitionBindingComponent ...
 type ElementDefinitionBindingComponent struct {
 	BackboneElement `bson:",inline"`
 	Strength        string     `bson:"strength,omitempty" json:"strength,omitempty"`
@@ -244,7 +244,7 @@ type ElementDefinitionBindingComponent struct {
 	ValueSet        *Canonical `bson:"valueSet,omitempty" json:"valueSet,omitempty"`
 }
 
-// ElementDefinitionMappingComponent ... // TODO Write proper comment
+// ElementDefinitionMappingComponent ...
 type ElementDefinitionMappingComponent struct {
 	BackboneElement `bson:",inline"`
 	Identity        string `bson:"identity,omitempty" json:"identity,omitempty"`

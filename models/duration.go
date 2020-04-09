@@ -1,6 +1,6 @@
 package fhir
 
-// Duration ... // TODO Write proper comment
+// Duration ...
 type Duration struct {
 	Quantity `bson:",inline"`
 }

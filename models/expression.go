@@ -1,6 +1,6 @@
 package fhir
 
-// Expression ... // TODO Write proper comment
+// Expression ...
 type Expression struct {
 	Element     `bson:",inline"`
 	Description string `bson:"description,omitempty" json:"description,omitempty"`

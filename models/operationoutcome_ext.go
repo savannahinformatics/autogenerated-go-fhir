@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Error ... // TODO Write proper comment
+// Error ...
 func (o *OperationOutcome) Error() string {
 	if len(o.Issue) == 0 {
 		return "Unspecified OperationOutome"

@@ -1,6 +1,6 @@
 package fhir
 
-// ProdCharacteristic ... // TODO Write proper comment
+// ProdCharacteristic ...
 type ProdCharacteristic struct {
 	BackboneElement  `bson:",inline"`
 	Height           *Quantity        `bson:"height,omitempty" json:"height,omitempty"`

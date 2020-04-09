@@ -1,9 +1,9 @@
 package fhir
 
-// Meta ... // TODO Write proper comment
+// Meta ...
 type Meta struct {
 	Element     `bson:",inline"`
-	VersionId   string        `bson:"versionId,omitempty" json:"versionId,omitempty"`
+	VersionID   string        `bson:"versionId,omitempty" json:"versionId,omitempty"`
 	LastUpdated *FHIRDateTime `bson:"lastUpdated,omitempty" json:"lastUpdated,omitempty"`
 	Source      string        `bson:"source,omitempty" json:"source,omitempty"`
 	Profile     []Canonical   `bson:"profile,omitempty" json:"profile,omitempty"`

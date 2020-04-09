@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// MarshalJSON ... // TODO Write proper comment
+// MarshalJSON ...
 func (r *Reference) MarshalJSON() ([]byte, error) {
 	m := map[string]string{
 		"reference": r.Reference,
@@ -18,7 +18,7 @@ func (r *Reference) MarshalJSON() ([]byte, error) {
 
 type reference Reference
 
-// UnmarshalJSON ... // TODO Write proper comment
+// UnmarshalJSON ...
 func (r *Reference) UnmarshalJSON(data []byte) (err error) {
 	ref := reference{}
 	if err = json.Unmarshal(data, &ref); err == nil {

@@ -1,6 +1,6 @@
 package fhir
 
-// BackboneElement ... // TODO Write proper comment
+// BackboneElement ...
 type BackboneElement struct {
 	Element           `bson:",inline"`
 	ModifierExtension []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`

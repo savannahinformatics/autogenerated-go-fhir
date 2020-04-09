@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-// MeasureReport ... // TODO Write proper comment
+// MeasureReport ...
 type MeasureReport struct {
 	DomainResource      `bson:",inline"`
 	Identifier          []Identifier                  `bson:"identifier,omitempty" json:"identifier,omitempty"`
@@ -56,7 +56,7 @@ func (x *MeasureReport) checkResourceType() error {
 	return nil
 }
 
-// MeasureReportGroupComponent ... // TODO Write proper comment
+// MeasureReportGroupComponent ...
 type MeasureReportGroupComponent struct {
 	BackboneElement `bson:",inline"`
 	Code            *CodeableConcept                        `bson:"code,omitempty" json:"code,omitempty"`
@@ -65,7 +65,7 @@ type MeasureReportGroupComponent struct {
 	Stratifier      []MeasureReportGroupStratifierComponent `bson:"stratifier,omitempty" json:"stratifier,omitempty"`
 }
 
-// MeasureReportGroupPopulationComponent ... // TODO Write proper comment
+// MeasureReportGroupPopulationComponent ...
 type MeasureReportGroupPopulationComponent struct {
 	BackboneElement `bson:",inline"`
 	Code            *CodeableConcept `bson:"code,omitempty" json:"code,omitempty"`
@@ -73,14 +73,14 @@ type MeasureReportGroupPopulationComponent struct {
 	SubjectResults  *Reference       `bson:"subjectResults,omitempty" json:"subjectResults,omitempty"`
 }
 
-// MeasureReportGroupStratifierComponent ... // TODO Write proper comment
+// MeasureReportGroupStratifierComponent ...
 type MeasureReportGroupStratifierComponent struct {
 	BackboneElement `bson:",inline"`
 	Code            []CodeableConcept                       `bson:"code,omitempty" json:"code,omitempty"`
 	Stratum         []MeasureReportStratifierGroupComponent `bson:"stratum,omitempty" json:"stratum,omitempty"`
 }
 
-// MeasureReportStratifierGroupComponent ... // TODO Write proper comment
+// MeasureReportStratifierGroupComponent ...
 type MeasureReportStratifierGroupComponent struct {
 	BackboneElement `bson:",inline"`
 	Value           *CodeableConcept                                  `bson:"value,omitempty" json:"value,omitempty"`
@@ -89,14 +89,14 @@ type MeasureReportStratifierGroupComponent struct {
 	MeasureScore    *Quantity                                         `bson:"measureScore,omitempty" json:"measureScore,omitempty"`
 }
 
-// MeasureReportStratifierGroupComponentComponent ... // TODO Write proper comment
+// MeasureReportStratifierGroupComponentComponent ...
 type MeasureReportStratifierGroupComponentComponent struct {
 	BackboneElement `bson:",inline"`
 	Code            *CodeableConcept `bson:"code,omitempty" json:"code,omitempty"`
 	Value           *CodeableConcept `bson:"value,omitempty" json:"value,omitempty"`
 }
 
-// MeasureReportStratifierGroupPopulationComponent ... // TODO Write proper comment
+// MeasureReportStratifierGroupPopulationComponent ...
 type MeasureReportStratifierGroupPopulationComponent struct {
 	BackboneElement `bson:",inline"`
 	Code            *CodeableConcept `bson:"code,omitempty" json:"code,omitempty"`
@@ -104,13 +104,13 @@ type MeasureReportStratifierGroupPopulationComponent struct {
 	SubjectResults  *Reference       `bson:"subjectResults,omitempty" json:"subjectResults,omitempty"`
 }
 
-// MeasureReportPlus ... // TODO Write proper comment
+// MeasureReportPlus ...
 type MeasureReportPlus struct {
 	MeasureReport                     `bson:",inline"`
 	MeasureReportPlusRelatedResources `bson:",inline"`
 }
 
-// MeasureReportPlusRelatedResources ... // TODO Write proper comment
+// MeasureReportPlusRelatedResources ...
 type MeasureReportPlusRelatedResources struct {
 	IncludedMeasureResourcesReferencedByMeasure                            *[]Measure                    `bson:"_includedMeasureResourcesReferencedByMeasure,omitempty"`
 	IncludedPatientResourcesReferencedByPatient                            *[]Patient                    `bson:"_includedPatientResourcesReferencedByPatient,omitempty"`
@@ -212,7 +212,7 @@ type MeasureReportPlusRelatedResources struct {
 	RevIncludedPlanDefinitionResourcesReferencingDependsonPath2            *[]PlanDefinition             `bson:"_revIncludedPlanDefinitionResourcesReferencingDependsonPath2,omitempty"`
 }
 
-// GetIncludedMeasureResourceReferencedByMeasure ... // TODO Write proper comment
+// GetIncludedMeasureResourceReferencedByMeasure ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedMeasureResourceReferencedByMeasure() (measure *Measure, err error) {
 	if m.IncludedMeasureResourcesReferencedByMeasure == nil {
 		err = errors.New("Included measures not requested")
@@ -224,7 +224,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedMeasureResourceReferenced
 	return
 }
 
-// GetIncludedPatientResourceReferencedByPatient ... // TODO Write proper comment
+// GetIncludedPatientResourceReferencedByPatient ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedPatientResourceReferencedByPatient() (patient *Patient, err error) {
 	if m.IncludedPatientResourcesReferencedByPatient == nil {
 		err = errors.New("Included patients not requested")
@@ -236,7 +236,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedPatientResourceReferenced
 	return
 }
 
-// GetIncludedPractitionerResourceReferencedBySubject ... // TODO Write proper comment
+// GetIncludedPractitionerResourceReferencedBySubject ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedPractitionerResourceReferencedBySubject() (practitioner *Practitioner, err error) {
 	if m.IncludedPractitionerResourcesReferencedBySubject == nil {
 		err = errors.New("Included practitioners not requested")
@@ -248,7 +248,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedPractitionerResourceRefer
 	return
 }
 
-// GetIncludedGroupResourceReferencedBySubject ... // TODO Write proper comment
+// GetIncludedGroupResourceReferencedBySubject ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedGroupResourceReferencedBySubject() (group *Group, err error) {
 	if m.IncludedGroupResourcesReferencedBySubject == nil {
 		err = errors.New("Included groups not requested")
@@ -260,7 +260,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedGroupResourceReferencedBy
 	return
 }
 
-// GetIncludedDeviceResourceReferencedBySubject ... // TODO Write proper comment
+// GetIncludedDeviceResourceReferencedBySubject ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedDeviceResourceReferencedBySubject() (device *Device, err error) {
 	if m.IncludedDeviceResourcesReferencedBySubject == nil {
 		err = errors.New("Included devices not requested")
@@ -272,7 +272,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedDeviceResourceReferencedB
 	return
 }
 
-// GetIncludedPatientResourceReferencedBySubject ... // TODO Write proper comment
+// GetIncludedPatientResourceReferencedBySubject ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedPatientResourceReferencedBySubject() (patient *Patient, err error) {
 	if m.IncludedPatientResourcesReferencedBySubject == nil {
 		err = errors.New("Included patients not requested")
@@ -284,7 +284,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedPatientResourceReferenced
 	return
 }
 
-// GetIncludedPractitionerRoleResourceReferencedBySubject ... // TODO Write proper comment
+// GetIncludedPractitionerRoleResourceReferencedBySubject ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedPractitionerRoleResourceReferencedBySubject() (practitionerRole *PractitionerRole, err error) {
 	if m.IncludedPractitionerRoleResourcesReferencedBySubject == nil {
 		err = errors.New("Included practitionerroles not requested")
@@ -296,7 +296,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedPractitionerRoleResourceR
 	return
 }
 
-// GetIncludedRelatedPersonResourceReferencedBySubject ... // TODO Write proper comment
+// GetIncludedRelatedPersonResourceReferencedBySubject ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedRelatedPersonResourceReferencedBySubject() (relatedPerson *RelatedPerson, err error) {
 	if m.IncludedRelatedPersonResourcesReferencedBySubject == nil {
 		err = errors.New("Included relatedpeople not requested")
@@ -308,7 +308,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedRelatedPersonResourceRefe
 	return
 }
 
-// GetIncludedLocationResourceReferencedBySubject ... // TODO Write proper comment
+// GetIncludedLocationResourceReferencedBySubject ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedLocationResourceReferencedBySubject() (location *Location, err error) {
 	if m.IncludedLocationResourcesReferencedBySubject == nil {
 		err = errors.New("Included locations not requested")
@@ -320,7 +320,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedLocationResourceReference
 	return
 }
 
-// GetIncludedPractitionerResourceReferencedByReporter ... // TODO Write proper comment
+// GetIncludedPractitionerResourceReferencedByReporter ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedPractitionerResourceReferencedByReporter() (practitioner *Practitioner, err error) {
 	if m.IncludedPractitionerResourcesReferencedByReporter == nil {
 		err = errors.New("Included practitioners not requested")
@@ -332,7 +332,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedPractitionerResourceRefer
 	return
 }
 
-// GetIncludedOrganizationResourceReferencedByReporter ... // TODO Write proper comment
+// GetIncludedOrganizationResourceReferencedByReporter ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedOrganizationResourceReferencedByReporter() (organization *Organization, err error) {
 	if m.IncludedOrganizationResourcesReferencedByReporter == nil {
 		err = errors.New("Included organizations not requested")
@@ -344,7 +344,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedOrganizationResourceRefer
 	return
 }
 
-// GetIncludedPractitionerRoleResourceReferencedByReporter ... // TODO Write proper comment
+// GetIncludedPractitionerRoleResourceReferencedByReporter ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedPractitionerRoleResourceReferencedByReporter() (practitionerRole *PractitionerRole, err error) {
 	if m.IncludedPractitionerRoleResourcesReferencedByReporter == nil {
 		err = errors.New("Included practitionerroles not requested")
@@ -356,7 +356,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedPractitionerRoleResourceR
 	return
 }
 
-// GetIncludedLocationResourceReferencedByReporter ... // TODO Write proper comment
+// GetIncludedLocationResourceReferencedByReporter ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedLocationResourceReferencedByReporter() (location *Location, err error) {
 	if m.IncludedLocationResourcesReferencedByReporter == nil {
 		err = errors.New("Included locations not requested")
@@ -368,7 +368,7 @@ func (m *MeasureReportPlusRelatedResources) GetIncludedLocationResourceReference
 	return
 }
 
-// GetRevIncludedAppointmentResourcesReferencingSupportinginfo ... // TODO Write proper comment
+// GetRevIncludedAppointmentResourcesReferencingSupportinginfo ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedAppointmentResourcesReferencingSupportinginfo() (appointments []Appointment, err error) {
 	if m.RevIncludedAppointmentResourcesReferencingSupportinginfo == nil {
 		err = errors.New("RevIncluded appointments not requested")
@@ -378,7 +378,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedAppointmentResourcesRe
 	return
 }
 
-// GetRevIncludedEventDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
+// GetRevIncludedEventDefinitionResourcesReferencingSuccessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingSuccessor() (eventDefinitions []EventDefinition, err error) {
 	if m.RevIncludedEventDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -388,7 +388,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEventDefinitionResourc
 	return
 }
 
-// GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
+// GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingDerivedfrom() (eventDefinitions []EventDefinition, err error) {
 	if m.RevIncludedEventDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -398,7 +398,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEventDefinitionResourc
 	return
 }
 
-// GetRevIncludedEventDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
+// GetRevIncludedEventDefinitionResourcesReferencingPredecessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingPredecessor() (eventDefinitions []EventDefinition, err error) {
 	if m.RevIncludedEventDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -408,7 +408,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEventDefinitionResourc
 	return
 }
 
-// GetRevIncludedEventDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
+// GetRevIncludedEventDefinitionResourcesReferencingComposedof ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingComposedof() (eventDefinitions []EventDefinition, err error) {
 	if m.RevIncludedEventDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -418,7 +418,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEventDefinitionResourc
 	return
 }
 
-// GetRevIncludedEventDefinitionResourcesReferencingDependson ... // TODO Write proper comment
+// GetRevIncludedEventDefinitionResourcesReferencingDependson ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEventDefinitionResourcesReferencingDependson() (eventDefinitions []EventDefinition, err error) {
 	if m.RevIncludedEventDefinitionResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded eventDefinitions not requested")
@@ -428,7 +428,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEventDefinitionResourc
 	return
 }
 
-// GetRevIncludedDocumentManifestResourcesReferencingItem ... // TODO Write proper comment
+// GetRevIncludedDocumentManifestResourcesReferencingItem ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedDocumentManifestResourcesReferencingItem() (documentManifests []DocumentManifest, err error) {
 	if m.RevIncludedDocumentManifestResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded documentManifests not requested")
@@ -438,7 +438,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedDocumentManifestResour
 	return
 }
 
-// GetRevIncludedDocumentManifestResourcesReferencingRelatedref ... // TODO Write proper comment
+// GetRevIncludedDocumentManifestResourcesReferencingRelatedref ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedDocumentManifestResourcesReferencingRelatedref() (documentManifests []DocumentManifest, err error) {
 	if m.RevIncludedDocumentManifestResourcesReferencingRelatedref == nil {
 		err = errors.New("RevIncluded documentManifests not requested")
@@ -448,7 +448,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedDocumentManifestResour
 	return
 }
 
-// GetRevIncludedConsentResourcesReferencingData ... // TODO Write proper comment
+// GetRevIncludedConsentResourcesReferencingData ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedConsentResourcesReferencingData() (consents []Consent, err error) {
 	if m.RevIncludedConsentResourcesReferencingData == nil {
 		err = errors.New("RevIncluded consents not requested")
@@ -458,7 +458,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedConsentResourcesRefere
 	return
 }
 
-// GetRevIncludedMeasureResourcesReferencingSuccessor ... // TODO Write proper comment
+// GetRevIncludedMeasureResourcesReferencingSuccessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingSuccessor() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -468,7 +468,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesRefere
 	return
 }
 
-// GetRevIncludedMeasureResourcesReferencingDerivedfrom ... // TODO Write proper comment
+// GetRevIncludedMeasureResourcesReferencingDerivedfrom ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDerivedfrom() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -478,7 +478,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesRefere
 	return
 }
 
-// GetRevIncludedMeasureResourcesReferencingPredecessor ... // TODO Write proper comment
+// GetRevIncludedMeasureResourcesReferencingPredecessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingPredecessor() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -488,7 +488,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesRefere
 	return
 }
 
-// GetRevIncludedMeasureResourcesReferencingComposedof ... // TODO Write proper comment
+// GetRevIncludedMeasureResourcesReferencingComposedof ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingComposedof() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -498,7 +498,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesRefere
 	return
 }
 
-// GetRevIncludedMeasureResourcesReferencingDependsonPath1 ... // TODO Write proper comment
+// GetRevIncludedMeasureResourcesReferencingDependsonPath1 ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDependsonPath1() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -508,7 +508,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesRefere
 	return
 }
 
-// GetRevIncludedMeasureResourcesReferencingDependsonPath2 ... // TODO Write proper comment
+// GetRevIncludedMeasureResourcesReferencingDependsonPath2 ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesReferencingDependsonPath2() (measures []Measure, err error) {
 	if m.RevIncludedMeasureResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded measures not requested")
@@ -518,7 +518,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureResourcesRefere
 	return
 }
 
-// GetRevIncludedDocumentReferenceResourcesReferencingRelated ... // TODO Write proper comment
+// GetRevIncludedDocumentReferenceResourcesReferencingRelated ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedDocumentReferenceResourcesReferencingRelated() (documentReferences []DocumentReference, err error) {
 	if m.RevIncludedDocumentReferenceResourcesReferencingRelated == nil {
 		err = errors.New("RevIncluded documentReferences not requested")
@@ -528,7 +528,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedDocumentReferenceResou
 	return
 }
 
-// GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource ... // TODO Write proper comment
+// GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureReportResourcesReferencingEvaluatedresource() (measureReports []MeasureReport, err error) {
 	if m.RevIncludedMeasureReportResourcesReferencingEvaluatedresource == nil {
 		err = errors.New("RevIncluded measureReports not requested")
@@ -538,7 +538,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedMeasureReportResources
 	return
 }
 
-// GetRevIncludedVerificationResultResourcesReferencingTarget ... // TODO Write proper comment
+// GetRevIncludedVerificationResultResourcesReferencingTarget ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedVerificationResultResourcesReferencingTarget() (verificationResults []VerificationResult, err error) {
 	if m.RevIncludedVerificationResultResourcesReferencingTarget == nil {
 		err = errors.New("RevIncluded verificationResults not requested")
@@ -548,7 +548,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedVerificationResultReso
 	return
 }
 
-// GetRevIncludedContractResourcesReferencingSubject ... // TODO Write proper comment
+// GetRevIncludedContractResourcesReferencingSubject ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedContractResourcesReferencingSubject() (contracts []Contract, err error) {
 	if m.RevIncludedContractResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded contracts not requested")
@@ -558,7 +558,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedContractResourcesRefer
 	return
 }
 
-// GetRevIncludedPaymentNoticeResourcesReferencingRequest ... // TODO Write proper comment
+// GetRevIncludedPaymentNoticeResourcesReferencingRequest ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferencingRequest() (paymentNotices []PaymentNotice, err error) {
 	if m.RevIncludedPaymentNoticeResourcesReferencingRequest == nil {
 		err = errors.New("RevIncluded paymentNotices not requested")
@@ -568,7 +568,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedPaymentNoticeResources
 	return
 }
 
-// GetRevIncludedPaymentNoticeResourcesReferencingResponse ... // TODO Write proper comment
+// GetRevIncludedPaymentNoticeResourcesReferencingResponse ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedPaymentNoticeResourcesReferencingResponse() (paymentNotices []PaymentNotice, err error) {
 	if m.RevIncludedPaymentNoticeResourcesReferencingResponse == nil {
 		err = errors.New("RevIncluded paymentNotices not requested")
@@ -578,7 +578,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedPaymentNoticeResources
 	return
 }
 
-// GetRevIncludedResearchDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
+// GetRevIncludedResearchDefinitionResourcesReferencingSuccessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingSuccessor() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -588,7 +588,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionReso
 	return
 }
 
-// GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
+// GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDerivedfrom() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -598,7 +598,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionReso
 	return
 }
 
-// GetRevIncludedResearchDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
+// GetRevIncludedResearchDefinitionResourcesReferencingPredecessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingPredecessor() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -608,7 +608,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionReso
 	return
 }
 
-// GetRevIncludedResearchDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
+// GetRevIncludedResearchDefinitionResourcesReferencingComposedof ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingComposedof() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -618,7 +618,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionReso
 	return
 }
 
-// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
+// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1 ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath1() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -628,7 +628,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionReso
 	return
 }
 
-// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
+// GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2 ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionResourcesReferencingDependsonPath2() (researchDefinitions []ResearchDefinition, err error) {
 	if m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded researchDefinitions not requested")
@@ -638,7 +638,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchDefinitionReso
 	return
 }
 
-// GetRevIncludedImplementationGuideResourcesReferencingResource ... // TODO Write proper comment
+// GetRevIncludedImplementationGuideResourcesReferencingResource ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedImplementationGuideResourcesReferencingResource() (implementationGuides []ImplementationGuide, err error) {
 	if m.RevIncludedImplementationGuideResourcesReferencingResource == nil {
 		err = errors.New("RevIncluded implementationGuides not requested")
@@ -648,7 +648,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedImplementationGuideRes
 	return
 }
 
-// GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
+// GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingSuccessor() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -658,7 +658,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinit
 	return
 }
 
-// GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -668,7 +668,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinit
 	return
 }
 
-// GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
+// GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingPredecessor() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -678,7 +678,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinit
 	return
 }
 
-// GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
+// GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingComposedof() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -688,7 +688,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinit
 	return
 }
 
-// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -698,7 +698,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinit
 	return
 }
 
-// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
+// GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2() (researchElementDefinitions []ResearchElementDefinition, err error) {
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded researchElementDefinitions not requested")
@@ -708,7 +708,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedResearchElementDefinit
 	return
 }
 
-// GetRevIncludedCommunicationResourcesReferencingPartof ... // TODO Write proper comment
+// GetRevIncludedCommunicationResourcesReferencingPartof ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedCommunicationResourcesReferencingPartof() (communications []Communication, err error) {
 	if m.RevIncludedCommunicationResourcesReferencingPartof == nil {
 		err = errors.New("RevIncluded communications not requested")
@@ -718,7 +718,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedCommunicationResources
 	return
 }
 
-// GetRevIncludedCommunicationResourcesReferencingBasedon ... // TODO Write proper comment
+// GetRevIncludedCommunicationResourcesReferencingBasedon ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedCommunicationResourcesReferencingBasedon() (communications []Communication, err error) {
 	if m.RevIncludedCommunicationResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded communications not requested")
@@ -728,7 +728,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedCommunicationResources
 	return
 }
 
-// GetRevIncludedActivityDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
+// GetRevIncludedActivityDefinitionResourcesReferencingSuccessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingSuccessor() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -738,7 +738,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionReso
 	return
 }
 
-// GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
+// GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDerivedfrom() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -748,7 +748,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionReso
 	return
 }
 
-// GetRevIncludedActivityDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
+// GetRevIncludedActivityDefinitionResourcesReferencingPredecessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingPredecessor() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -758,7 +758,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionReso
 	return
 }
 
-// GetRevIncludedActivityDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
+// GetRevIncludedActivityDefinitionResourcesReferencingComposedof ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingComposedof() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -768,7 +768,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionReso
 	return
 }
 
-// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
+// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1 ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath1() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -778,7 +778,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionReso
 	return
 }
 
-// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
+// GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2 ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionResourcesReferencingDependsonPath2() (activityDefinitions []ActivityDefinition, err error) {
 	if m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded activityDefinitions not requested")
@@ -788,7 +788,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedActivityDefinitionReso
 	return
 }
 
-// GetRevIncludedLinkageResourcesReferencingItem ... // TODO Write proper comment
+// GetRevIncludedLinkageResourcesReferencingItem ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedLinkageResourcesReferencingItem() (linkages []Linkage, err error) {
 	if m.RevIncludedLinkageResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded linkages not requested")
@@ -798,7 +798,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedLinkageResourcesRefere
 	return
 }
 
-// GetRevIncludedLinkageResourcesReferencingSource ... // TODO Write proper comment
+// GetRevIncludedLinkageResourcesReferencingSource ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedLinkageResourcesReferencingSource() (linkages []Linkage, err error) {
 	if m.RevIncludedLinkageResourcesReferencingSource == nil {
 		err = errors.New("RevIncluded linkages not requested")
@@ -808,7 +808,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedLinkageResourcesRefere
 	return
 }
 
-// GetRevIncludedDeviceRequestResourcesReferencingBasedon ... // TODO Write proper comment
+// GetRevIncludedDeviceRequestResourcesReferencingBasedon ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferencingBasedon() (deviceRequests []DeviceRequest, err error) {
 	if m.RevIncludedDeviceRequestResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded deviceRequests not requested")
@@ -818,7 +818,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedDeviceRequestResources
 	return
 }
 
-// GetRevIncludedDeviceRequestResourcesReferencingPriorrequest ... // TODO Write proper comment
+// GetRevIncludedDeviceRequestResourcesReferencingPriorrequest ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedDeviceRequestResourcesReferencingPriorrequest() (deviceRequests []DeviceRequest, err error) {
 	if m.RevIncludedDeviceRequestResourcesReferencingPriorrequest == nil {
 		err = errors.New("RevIncluded deviceRequests not requested")
@@ -828,7 +828,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedDeviceRequestResources
 	return
 }
 
-// GetRevIncludedMessageHeaderResourcesReferencingFocus ... // TODO Write proper comment
+// GetRevIncludedMessageHeaderResourcesReferencingFocus ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedMessageHeaderResourcesReferencingFocus() (messageHeaders []MessageHeader, err error) {
 	if m.RevIncludedMessageHeaderResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded messageHeaders not requested")
@@ -838,7 +838,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedMessageHeaderResources
 	return
 }
 
-// GetRevIncludedImmunizationRecommendationResourcesReferencingInformation ... // TODO Write proper comment
+// GetRevIncludedImmunizationRecommendationResourcesReferencingInformation ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedImmunizationRecommendationResourcesReferencingInformation() (immunizationRecommendations []ImmunizationRecommendation, err error) {
 	if m.RevIncludedImmunizationRecommendationResourcesReferencingInformation == nil {
 		err = errors.New("RevIncluded immunizationRecommendations not requested")
@@ -848,7 +848,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedImmunizationRecommenda
 	return
 }
 
-// GetRevIncludedProvenanceResourcesReferencingEntity ... // TODO Write proper comment
+// GetRevIncludedProvenanceResourcesReferencingEntity ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedProvenanceResourcesReferencingEntity() (provenances []Provenance, err error) {
 	if m.RevIncludedProvenanceResourcesReferencingEntity == nil {
 		err = errors.New("RevIncluded provenances not requested")
@@ -858,7 +858,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedProvenanceResourcesRef
 	return
 }
 
-// GetRevIncludedProvenanceResourcesReferencingTarget ... // TODO Write proper comment
+// GetRevIncludedProvenanceResourcesReferencingTarget ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedProvenanceResourcesReferencingTarget() (provenances []Provenance, err error) {
 	if m.RevIncludedProvenanceResourcesReferencingTarget == nil {
 		err = errors.New("RevIncluded provenances not requested")
@@ -868,7 +868,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedProvenanceResourcesRef
 	return
 }
 
-// GetRevIncludedTaskResourcesReferencingSubject ... // TODO Write proper comment
+// GetRevIncludedTaskResourcesReferencingSubject ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedTaskResourcesReferencingSubject() (tasks []Task, err error) {
 	if m.RevIncludedTaskResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -878,7 +878,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedTaskResourcesReferenci
 	return
 }
 
-// GetRevIncludedTaskResourcesReferencingFocus ... // TODO Write proper comment
+// GetRevIncludedTaskResourcesReferencingFocus ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedTaskResourcesReferencingFocus() (tasks []Task, err error) {
 	if m.RevIncludedTaskResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -888,7 +888,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedTaskResourcesReferenci
 	return
 }
 
-// GetRevIncludedTaskResourcesReferencingBasedon ... // TODO Write proper comment
+// GetRevIncludedTaskResourcesReferencingBasedon ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedTaskResourcesReferencingBasedon() (tasks []Task, err error) {
 	if m.RevIncludedTaskResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded tasks not requested")
@@ -898,7 +898,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedTaskResourcesReferenci
 	return
 }
 
-// GetRevIncludedListResourcesReferencingItem ... // TODO Write proper comment
+// GetRevIncludedListResourcesReferencingItem ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedListResourcesReferencingItem() (lists []List, err error) {
 	if m.RevIncludedListResourcesReferencingItem == nil {
 		err = errors.New("RevIncluded lists not requested")
@@ -908,7 +908,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedListResourcesReferenci
 	return
 }
 
-// GetRevIncludedEvidenceVariableResourcesReferencingSuccessor ... // TODO Write proper comment
+// GetRevIncludedEvidenceVariableResourcesReferencingSuccessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingSuccessor() (evidenceVariables []EvidenceVariable, err error) {
 	if m.RevIncludedEvidenceVariableResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -918,7 +918,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceVariableResour
 	return
 }
 
-// GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom ... // TODO Write proper comment
+// GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingDerivedfrom() (evidenceVariables []EvidenceVariable, err error) {
 	if m.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -928,7 +928,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceVariableResour
 	return
 }
 
-// GetRevIncludedEvidenceVariableResourcesReferencingPredecessor ... // TODO Write proper comment
+// GetRevIncludedEvidenceVariableResourcesReferencingPredecessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingPredecessor() (evidenceVariables []EvidenceVariable, err error) {
 	if m.RevIncludedEvidenceVariableResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -938,7 +938,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceVariableResour
 	return
 }
 
-// GetRevIncludedEvidenceVariableResourcesReferencingComposedof ... // TODO Write proper comment
+// GetRevIncludedEvidenceVariableResourcesReferencingComposedof ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingComposedof() (evidenceVariables []EvidenceVariable, err error) {
 	if m.RevIncludedEvidenceVariableResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -948,7 +948,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceVariableResour
 	return
 }
 
-// GetRevIncludedEvidenceVariableResourcesReferencingDependson ... // TODO Write proper comment
+// GetRevIncludedEvidenceVariableResourcesReferencingDependson ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceVariableResourcesReferencingDependson() (evidenceVariables []EvidenceVariable, err error) {
 	if m.RevIncludedEvidenceVariableResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded evidenceVariables not requested")
@@ -958,7 +958,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceVariableResour
 	return
 }
 
-// GetRevIncludedObservationResourcesReferencingFocus ... // TODO Write proper comment
+// GetRevIncludedObservationResourcesReferencingFocus ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedObservationResourcesReferencingFocus() (observations []Observation, err error) {
 	if m.RevIncludedObservationResourcesReferencingFocus == nil {
 		err = errors.New("RevIncluded observations not requested")
@@ -968,7 +968,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedObservationResourcesRe
 	return
 }
 
-// GetRevIncludedLibraryResourcesReferencingSuccessor ... // TODO Write proper comment
+// GetRevIncludedLibraryResourcesReferencingSuccessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingSuccessor() (libraries []Library, err error) {
 	if m.RevIncludedLibraryResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -978,7 +978,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedLibraryResourcesRefere
 	return
 }
 
-// GetRevIncludedLibraryResourcesReferencingDerivedfrom ... // TODO Write proper comment
+// GetRevIncludedLibraryResourcesReferencingDerivedfrom ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDerivedfrom() (libraries []Library, err error) {
 	if m.RevIncludedLibraryResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -988,7 +988,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedLibraryResourcesRefere
 	return
 }
 
-// GetRevIncludedLibraryResourcesReferencingPredecessor ... // TODO Write proper comment
+// GetRevIncludedLibraryResourcesReferencingPredecessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingPredecessor() (libraries []Library, err error) {
 	if m.RevIncludedLibraryResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -998,7 +998,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedLibraryResourcesRefere
 	return
 }
 
-// GetRevIncludedLibraryResourcesReferencingComposedof ... // TODO Write proper comment
+// GetRevIncludedLibraryResourcesReferencingComposedof ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingComposedof() (libraries []Library, err error) {
 	if m.RevIncludedLibraryResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -1008,7 +1008,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedLibraryResourcesRefere
 	return
 }
 
-// GetRevIncludedLibraryResourcesReferencingDependson ... // TODO Write proper comment
+// GetRevIncludedLibraryResourcesReferencingDependson ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedLibraryResourcesReferencingDependson() (libraries []Library, err error) {
 	if m.RevIncludedLibraryResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded libraries not requested")
@@ -1018,7 +1018,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedLibraryResourcesRefere
 	return
 }
 
-// GetRevIncludedCommunicationRequestResourcesReferencingBasedon ... // TODO Write proper comment
+// GetRevIncludedCommunicationRequestResourcesReferencingBasedon ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedCommunicationRequestResourcesReferencingBasedon() (communicationRequests []CommunicationRequest, err error) {
 	if m.RevIncludedCommunicationRequestResourcesReferencingBasedon == nil {
 		err = errors.New("RevIncluded communicationRequests not requested")
@@ -1028,7 +1028,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedCommunicationRequestRe
 	return
 }
 
-// GetRevIncludedBasicResourcesReferencingSubject ... // TODO Write proper comment
+// GetRevIncludedBasicResourcesReferencingSubject ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedBasicResourcesReferencingSubject() (basics []Basic, err error) {
 	if m.RevIncludedBasicResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded basics not requested")
@@ -1038,7 +1038,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedBasicResourcesReferenc
 	return
 }
 
-// GetRevIncludedEvidenceResourcesReferencingSuccessor ... // TODO Write proper comment
+// GetRevIncludedEvidenceResourcesReferencingSuccessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingSuccessor() (evidences []Evidence, err error) {
 	if m.RevIncludedEvidenceResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -1048,7 +1048,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceResourcesRefer
 	return
 }
 
-// GetRevIncludedEvidenceResourcesReferencingDerivedfrom ... // TODO Write proper comment
+// GetRevIncludedEvidenceResourcesReferencingDerivedfrom ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDerivedfrom() (evidences []Evidence, err error) {
 	if m.RevIncludedEvidenceResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -1058,7 +1058,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceResourcesRefer
 	return
 }
 
-// GetRevIncludedEvidenceResourcesReferencingPredecessor ... // TODO Write proper comment
+// GetRevIncludedEvidenceResourcesReferencingPredecessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingPredecessor() (evidences []Evidence, err error) {
 	if m.RevIncludedEvidenceResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -1068,7 +1068,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceResourcesRefer
 	return
 }
 
-// GetRevIncludedEvidenceResourcesReferencingComposedof ... // TODO Write proper comment
+// GetRevIncludedEvidenceResourcesReferencingComposedof ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingComposedof() (evidences []Evidence, err error) {
 	if m.RevIncludedEvidenceResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -1078,7 +1078,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceResourcesRefer
 	return
 }
 
-// GetRevIncludedEvidenceResourcesReferencingDependson ... // TODO Write proper comment
+// GetRevIncludedEvidenceResourcesReferencingDependson ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceResourcesReferencingDependson() (evidences []Evidence, err error) {
 	if m.RevIncludedEvidenceResourcesReferencingDependson == nil {
 		err = errors.New("RevIncluded evidences not requested")
@@ -1088,7 +1088,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedEvidenceResourcesRefer
 	return
 }
 
-// GetRevIncludedAuditEventResourcesReferencingEntity ... // TODO Write proper comment
+// GetRevIncludedAuditEventResourcesReferencingEntity ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedAuditEventResourcesReferencingEntity() (auditEvents []AuditEvent, err error) {
 	if m.RevIncludedAuditEventResourcesReferencingEntity == nil {
 		err = errors.New("RevIncluded auditEvents not requested")
@@ -1098,7 +1098,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedAuditEventResourcesRef
 	return
 }
 
-// GetRevIncludedConditionResourcesReferencingEvidencedetail ... // TODO Write proper comment
+// GetRevIncludedConditionResourcesReferencingEvidencedetail ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedConditionResourcesReferencingEvidencedetail() (conditions []Condition, err error) {
 	if m.RevIncludedConditionResourcesReferencingEvidencedetail == nil {
 		err = errors.New("RevIncluded conditions not requested")
@@ -1108,7 +1108,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedConditionResourcesRefe
 	return
 }
 
-// GetRevIncludedCompositionResourcesReferencingSubject ... // TODO Write proper comment
+// GetRevIncludedCompositionResourcesReferencingSubject ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedCompositionResourcesReferencingSubject() (compositions []Composition, err error) {
 	if m.RevIncludedCompositionResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded compositions not requested")
@@ -1118,7 +1118,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedCompositionResourcesRe
 	return
 }
 
-// GetRevIncludedCompositionResourcesReferencingEntry ... // TODO Write proper comment
+// GetRevIncludedCompositionResourcesReferencingEntry ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedCompositionResourcesReferencingEntry() (compositions []Composition, err error) {
 	if m.RevIncludedCompositionResourcesReferencingEntry == nil {
 		err = errors.New("RevIncluded compositions not requested")
@@ -1128,7 +1128,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedCompositionResourcesRe
 	return
 }
 
-// GetRevIncludedDetectedIssueResourcesReferencingImplicated ... // TODO Write proper comment
+// GetRevIncludedDetectedIssueResourcesReferencingImplicated ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedDetectedIssueResourcesReferencingImplicated() (detectedIssues []DetectedIssue, err error) {
 	if m.RevIncludedDetectedIssueResourcesReferencingImplicated == nil {
 		err = errors.New("RevIncluded detectedIssues not requested")
@@ -1138,7 +1138,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedDetectedIssueResources
 	return
 }
 
-// GetRevIncludedQuestionnaireResponseResourcesReferencingSubject ... // TODO Write proper comment
+// GetRevIncludedQuestionnaireResponseResourcesReferencingSubject ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedQuestionnaireResponseResourcesReferencingSubject() (questionnaireResponses []QuestionnaireResponse, err error) {
 	if m.RevIncludedQuestionnaireResponseResourcesReferencingSubject == nil {
 		err = errors.New("RevIncluded questionnaireResponses not requested")
@@ -1148,7 +1148,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedQuestionnaireResponseR
 	return
 }
 
-// GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo ... // TODO Write proper comment
+// GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedClinicalImpressionResourcesReferencingSupportinginfo() (clinicalImpressions []ClinicalImpression, err error) {
 	if m.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo == nil {
 		err = errors.New("RevIncluded clinicalImpressions not requested")
@@ -1158,7 +1158,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedClinicalImpressionReso
 	return
 }
 
-// GetRevIncludedPlanDefinitionResourcesReferencingSuccessor ... // TODO Write proper comment
+// GetRevIncludedPlanDefinitionResourcesReferencingSuccessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingSuccessor() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingSuccessor == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1168,7 +1168,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResource
 	return
 }
 
-// GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom ... // TODO Write proper comment
+// GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDerivedfrom() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1178,7 +1178,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResource
 	return
 }
 
-// GetRevIncludedPlanDefinitionResourcesReferencingPredecessor ... // TODO Write proper comment
+// GetRevIncludedPlanDefinitionResourcesReferencingPredecessor ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingPredecessor() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingPredecessor == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1188,7 +1188,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResource
 	return
 }
 
-// GetRevIncludedPlanDefinitionResourcesReferencingComposedof ... // TODO Write proper comment
+// GetRevIncludedPlanDefinitionResourcesReferencingComposedof ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingComposedof() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingComposedof == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1198,7 +1198,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResource
 	return
 }
 
-// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1 ... // TODO Write proper comment
+// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1 ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath1() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1 == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1208,7 +1208,7 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResource
 	return
 }
 
-// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2 ... // TODO Write proper comment
+// GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2 ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResourcesReferencingDependsonPath2() (planDefinitions []PlanDefinition, err error) {
 	if m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2 == nil {
 		err = errors.New("RevIncluded planDefinitions not requested")
@@ -1218,1195 +1218,1195 @@ func (m *MeasureReportPlusRelatedResources) GetRevIncludedPlanDefinitionResource
 	return
 }
 
-// GetIncludedResources ... // TODO Write proper comment
+// GetIncludedResources ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if m.IncludedMeasureResourcesReferencedByMeasure != nil {
 		for idx := range *m.IncludedMeasureResourcesReferencedByMeasure {
 			rsc := (*m.IncludedMeasureResourcesReferencedByMeasure)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPatientResourcesReferencedByPatient != nil {
 		for idx := range *m.IncludedPatientResourcesReferencedByPatient {
 			rsc := (*m.IncludedPatientResourcesReferencedByPatient)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPractitionerResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedPractitionerResourcesReferencedBySubject {
 			rsc := (*m.IncludedPractitionerResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedGroupResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedGroupResourcesReferencedBySubject {
 			rsc := (*m.IncludedGroupResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedDeviceResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedDeviceResourcesReferencedBySubject {
 			rsc := (*m.IncludedDeviceResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPatientResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedPatientResourcesReferencedBySubject {
 			rsc := (*m.IncludedPatientResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPractitionerRoleResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedPractitionerRoleResourcesReferencedBySubject {
 			rsc := (*m.IncludedPractitionerRoleResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedRelatedPersonResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedRelatedPersonResourcesReferencedBySubject {
 			rsc := (*m.IncludedRelatedPersonResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedLocationResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedLocationResourcesReferencedBySubject {
 			rsc := (*m.IncludedLocationResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPractitionerResourcesReferencedByReporter != nil {
 		for idx := range *m.IncludedPractitionerResourcesReferencedByReporter {
 			rsc := (*m.IncludedPractitionerResourcesReferencedByReporter)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedOrganizationResourcesReferencedByReporter != nil {
 		for idx := range *m.IncludedOrganizationResourcesReferencedByReporter {
 			rsc := (*m.IncludedOrganizationResourcesReferencedByReporter)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPractitionerRoleResourcesReferencedByReporter != nil {
 		for idx := range *m.IncludedPractitionerRoleResourcesReferencedByReporter {
 			rsc := (*m.IncludedPractitionerRoleResourcesReferencedByReporter)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedLocationResourcesReferencedByReporter != nil {
 		for idx := range *m.IncludedLocationResourcesReferencedByReporter {
 			rsc := (*m.IncludedLocationResourcesReferencedByReporter)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	return resourceMap
 }
 
-// GetRevIncludedResources ... // TODO Write proper comment
+// GetRevIncludedResources ...
 func (m *MeasureReportPlusRelatedResources) GetRevIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if m.RevIncludedAppointmentResourcesReferencingSupportinginfo != nil {
 		for idx := range *m.RevIncludedAppointmentResourcesReferencingSupportinginfo {
 			rsc := (*m.RevIncludedAppointmentResourcesReferencingSupportinginfo)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEventDefinitionResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedEventDefinitionResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedEventDefinitionResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEventDefinitionResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedEventDefinitionResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedEventDefinitionResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEventDefinitionResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedEventDefinitionResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedEventDefinitionResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEventDefinitionResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedEventDefinitionResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedEventDefinitionResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEventDefinitionResourcesReferencingDependson != nil {
 		for idx := range *m.RevIncludedEventDefinitionResourcesReferencingDependson {
 			rsc := (*m.RevIncludedEventDefinitionResourcesReferencingDependson)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDocumentManifestResourcesReferencingItem != nil {
 		for idx := range *m.RevIncludedDocumentManifestResourcesReferencingItem {
 			rsc := (*m.RevIncludedDocumentManifestResourcesReferencingItem)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDocumentManifestResourcesReferencingRelatedref != nil {
 		for idx := range *m.RevIncludedDocumentManifestResourcesReferencingRelatedref {
 			rsc := (*m.RevIncludedDocumentManifestResourcesReferencingRelatedref)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedConsentResourcesReferencingData != nil {
 		for idx := range *m.RevIncludedConsentResourcesReferencingData {
 			rsc := (*m.RevIncludedConsentResourcesReferencingData)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingDependsonPath1 != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingDependsonPath1 {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingDependsonPath1)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingDependsonPath2 != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingDependsonPath2 {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingDependsonPath2)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDocumentReferenceResourcesReferencingRelated != nil {
 		for idx := range *m.RevIncludedDocumentReferenceResourcesReferencingRelated {
 			rsc := (*m.RevIncludedDocumentReferenceResourcesReferencingRelated)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureReportResourcesReferencingEvaluatedresource != nil {
 		for idx := range *m.RevIncludedMeasureReportResourcesReferencingEvaluatedresource {
 			rsc := (*m.RevIncludedMeasureReportResourcesReferencingEvaluatedresource)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedVerificationResultResourcesReferencingTarget != nil {
 		for idx := range *m.RevIncludedVerificationResultResourcesReferencingTarget {
 			rsc := (*m.RevIncludedVerificationResultResourcesReferencingTarget)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedContractResourcesReferencingSubject != nil {
 		for idx := range *m.RevIncludedContractResourcesReferencingSubject {
 			rsc := (*m.RevIncludedContractResourcesReferencingSubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPaymentNoticeResourcesReferencingRequest != nil {
 		for idx := range *m.RevIncludedPaymentNoticeResourcesReferencingRequest {
 			rsc := (*m.RevIncludedPaymentNoticeResourcesReferencingRequest)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPaymentNoticeResourcesReferencingResponse != nil {
 		for idx := range *m.RevIncludedPaymentNoticeResourcesReferencingResponse {
 			rsc := (*m.RevIncludedPaymentNoticeResourcesReferencingResponse)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1 != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1 {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2 != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2 {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedImplementationGuideResourcesReferencingResource != nil {
 		for idx := range *m.RevIncludedImplementationGuideResourcesReferencingResource {
 			rsc := (*m.RevIncludedImplementationGuideResourcesReferencingResource)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedCommunicationResourcesReferencingPartof != nil {
 		for idx := range *m.RevIncludedCommunicationResourcesReferencingPartof {
 			rsc := (*m.RevIncludedCommunicationResourcesReferencingPartof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedCommunicationResourcesReferencingBasedon != nil {
 		for idx := range *m.RevIncludedCommunicationResourcesReferencingBasedon {
 			rsc := (*m.RevIncludedCommunicationResourcesReferencingBasedon)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1 != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1 {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2 != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2 {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLinkageResourcesReferencingItem != nil {
 		for idx := range *m.RevIncludedLinkageResourcesReferencingItem {
 			rsc := (*m.RevIncludedLinkageResourcesReferencingItem)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLinkageResourcesReferencingSource != nil {
 		for idx := range *m.RevIncludedLinkageResourcesReferencingSource {
 			rsc := (*m.RevIncludedLinkageResourcesReferencingSource)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDeviceRequestResourcesReferencingBasedon != nil {
 		for idx := range *m.RevIncludedDeviceRequestResourcesReferencingBasedon {
 			rsc := (*m.RevIncludedDeviceRequestResourcesReferencingBasedon)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDeviceRequestResourcesReferencingPriorrequest != nil {
 		for idx := range *m.RevIncludedDeviceRequestResourcesReferencingPriorrequest {
 			rsc := (*m.RevIncludedDeviceRequestResourcesReferencingPriorrequest)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMessageHeaderResourcesReferencingFocus != nil {
 		for idx := range *m.RevIncludedMessageHeaderResourcesReferencingFocus {
 			rsc := (*m.RevIncludedMessageHeaderResourcesReferencingFocus)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedImmunizationRecommendationResourcesReferencingInformation != nil {
 		for idx := range *m.RevIncludedImmunizationRecommendationResourcesReferencingInformation {
 			rsc := (*m.RevIncludedImmunizationRecommendationResourcesReferencingInformation)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedProvenanceResourcesReferencingEntity != nil {
 		for idx := range *m.RevIncludedProvenanceResourcesReferencingEntity {
 			rsc := (*m.RevIncludedProvenanceResourcesReferencingEntity)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedProvenanceResourcesReferencingTarget != nil {
 		for idx := range *m.RevIncludedProvenanceResourcesReferencingTarget {
 			rsc := (*m.RevIncludedProvenanceResourcesReferencingTarget)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedTaskResourcesReferencingSubject != nil {
 		for idx := range *m.RevIncludedTaskResourcesReferencingSubject {
 			rsc := (*m.RevIncludedTaskResourcesReferencingSubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedTaskResourcesReferencingFocus != nil {
 		for idx := range *m.RevIncludedTaskResourcesReferencingFocus {
 			rsc := (*m.RevIncludedTaskResourcesReferencingFocus)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedTaskResourcesReferencingBasedon != nil {
 		for idx := range *m.RevIncludedTaskResourcesReferencingBasedon {
 			rsc := (*m.RevIncludedTaskResourcesReferencingBasedon)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedListResourcesReferencingItem != nil {
 		for idx := range *m.RevIncludedListResourcesReferencingItem {
 			rsc := (*m.RevIncludedListResourcesReferencingItem)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceVariableResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedEvidenceVariableResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedEvidenceVariableResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceVariableResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedEvidenceVariableResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedEvidenceVariableResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceVariableResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedEvidenceVariableResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedEvidenceVariableResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceVariableResourcesReferencingDependson != nil {
 		for idx := range *m.RevIncludedEvidenceVariableResourcesReferencingDependson {
 			rsc := (*m.RevIncludedEvidenceVariableResourcesReferencingDependson)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedObservationResourcesReferencingFocus != nil {
 		for idx := range *m.RevIncludedObservationResourcesReferencingFocus {
 			rsc := (*m.RevIncludedObservationResourcesReferencingFocus)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLibraryResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedLibraryResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedLibraryResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLibraryResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedLibraryResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedLibraryResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLibraryResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedLibraryResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedLibraryResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLibraryResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedLibraryResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedLibraryResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLibraryResourcesReferencingDependson != nil {
 		for idx := range *m.RevIncludedLibraryResourcesReferencingDependson {
 			rsc := (*m.RevIncludedLibraryResourcesReferencingDependson)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedCommunicationRequestResourcesReferencingBasedon != nil {
 		for idx := range *m.RevIncludedCommunicationRequestResourcesReferencingBasedon {
 			rsc := (*m.RevIncludedCommunicationRequestResourcesReferencingBasedon)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedBasicResourcesReferencingSubject != nil {
 		for idx := range *m.RevIncludedBasicResourcesReferencingSubject {
 			rsc := (*m.RevIncludedBasicResourcesReferencingSubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedEvidenceResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedEvidenceResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedEvidenceResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedEvidenceResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedEvidenceResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedEvidenceResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedEvidenceResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedEvidenceResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceResourcesReferencingDependson != nil {
 		for idx := range *m.RevIncludedEvidenceResourcesReferencingDependson {
 			rsc := (*m.RevIncludedEvidenceResourcesReferencingDependson)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedAuditEventResourcesReferencingEntity != nil {
 		for idx := range *m.RevIncludedAuditEventResourcesReferencingEntity {
 			rsc := (*m.RevIncludedAuditEventResourcesReferencingEntity)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedConditionResourcesReferencingEvidencedetail != nil {
 		for idx := range *m.RevIncludedConditionResourcesReferencingEvidencedetail {
 			rsc := (*m.RevIncludedConditionResourcesReferencingEvidencedetail)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedCompositionResourcesReferencingSubject != nil {
 		for idx := range *m.RevIncludedCompositionResourcesReferencingSubject {
 			rsc := (*m.RevIncludedCompositionResourcesReferencingSubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedCompositionResourcesReferencingEntry != nil {
 		for idx := range *m.RevIncludedCompositionResourcesReferencingEntry {
 			rsc := (*m.RevIncludedCompositionResourcesReferencingEntry)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDetectedIssueResourcesReferencingImplicated != nil {
 		for idx := range *m.RevIncludedDetectedIssueResourcesReferencingImplicated {
 			rsc := (*m.RevIncludedDetectedIssueResourcesReferencingImplicated)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedQuestionnaireResponseResourcesReferencingSubject != nil {
 		for idx := range *m.RevIncludedQuestionnaireResponseResourcesReferencingSubject {
 			rsc := (*m.RevIncludedQuestionnaireResponseResourcesReferencingSubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo != nil {
 		for idx := range *m.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo {
 			rsc := (*m.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1 != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1 {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2 != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2 {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	return resourceMap
 }
 
-// GetIncludedAndRevIncludedResources ... // TODO Write proper comment
+// GetIncludedAndRevIncludedResources ...
 func (m *MeasureReportPlusRelatedResources) GetIncludedAndRevIncludedResources() map[string]interface{} {
 	resourceMap := make(map[string]interface{})
 	if m.IncludedMeasureResourcesReferencedByMeasure != nil {
 		for idx := range *m.IncludedMeasureResourcesReferencedByMeasure {
 			rsc := (*m.IncludedMeasureResourcesReferencedByMeasure)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPatientResourcesReferencedByPatient != nil {
 		for idx := range *m.IncludedPatientResourcesReferencedByPatient {
 			rsc := (*m.IncludedPatientResourcesReferencedByPatient)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPractitionerResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedPractitionerResourcesReferencedBySubject {
 			rsc := (*m.IncludedPractitionerResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedGroupResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedGroupResourcesReferencedBySubject {
 			rsc := (*m.IncludedGroupResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedDeviceResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedDeviceResourcesReferencedBySubject {
 			rsc := (*m.IncludedDeviceResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPatientResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedPatientResourcesReferencedBySubject {
 			rsc := (*m.IncludedPatientResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPractitionerRoleResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedPractitionerRoleResourcesReferencedBySubject {
 			rsc := (*m.IncludedPractitionerRoleResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedRelatedPersonResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedRelatedPersonResourcesReferencedBySubject {
 			rsc := (*m.IncludedRelatedPersonResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedLocationResourcesReferencedBySubject != nil {
 		for idx := range *m.IncludedLocationResourcesReferencedBySubject {
 			rsc := (*m.IncludedLocationResourcesReferencedBySubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPractitionerResourcesReferencedByReporter != nil {
 		for idx := range *m.IncludedPractitionerResourcesReferencedByReporter {
 			rsc := (*m.IncludedPractitionerResourcesReferencedByReporter)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedOrganizationResourcesReferencedByReporter != nil {
 		for idx := range *m.IncludedOrganizationResourcesReferencedByReporter {
 			rsc := (*m.IncludedOrganizationResourcesReferencedByReporter)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedPractitionerRoleResourcesReferencedByReporter != nil {
 		for idx := range *m.IncludedPractitionerRoleResourcesReferencedByReporter {
 			rsc := (*m.IncludedPractitionerRoleResourcesReferencedByReporter)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.IncludedLocationResourcesReferencedByReporter != nil {
 		for idx := range *m.IncludedLocationResourcesReferencedByReporter {
 			rsc := (*m.IncludedLocationResourcesReferencedByReporter)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedAppointmentResourcesReferencingSupportinginfo != nil {
 		for idx := range *m.RevIncludedAppointmentResourcesReferencingSupportinginfo {
 			rsc := (*m.RevIncludedAppointmentResourcesReferencingSupportinginfo)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEventDefinitionResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedEventDefinitionResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedEventDefinitionResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEventDefinitionResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedEventDefinitionResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedEventDefinitionResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEventDefinitionResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedEventDefinitionResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedEventDefinitionResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEventDefinitionResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedEventDefinitionResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedEventDefinitionResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEventDefinitionResourcesReferencingDependson != nil {
 		for idx := range *m.RevIncludedEventDefinitionResourcesReferencingDependson {
 			rsc := (*m.RevIncludedEventDefinitionResourcesReferencingDependson)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDocumentManifestResourcesReferencingItem != nil {
 		for idx := range *m.RevIncludedDocumentManifestResourcesReferencingItem {
 			rsc := (*m.RevIncludedDocumentManifestResourcesReferencingItem)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDocumentManifestResourcesReferencingRelatedref != nil {
 		for idx := range *m.RevIncludedDocumentManifestResourcesReferencingRelatedref {
 			rsc := (*m.RevIncludedDocumentManifestResourcesReferencingRelatedref)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedConsentResourcesReferencingData != nil {
 		for idx := range *m.RevIncludedConsentResourcesReferencingData {
 			rsc := (*m.RevIncludedConsentResourcesReferencingData)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingDependsonPath1 != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingDependsonPath1 {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingDependsonPath1)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureResourcesReferencingDependsonPath2 != nil {
 		for idx := range *m.RevIncludedMeasureResourcesReferencingDependsonPath2 {
 			rsc := (*m.RevIncludedMeasureResourcesReferencingDependsonPath2)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDocumentReferenceResourcesReferencingRelated != nil {
 		for idx := range *m.RevIncludedDocumentReferenceResourcesReferencingRelated {
 			rsc := (*m.RevIncludedDocumentReferenceResourcesReferencingRelated)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMeasureReportResourcesReferencingEvaluatedresource != nil {
 		for idx := range *m.RevIncludedMeasureReportResourcesReferencingEvaluatedresource {
 			rsc := (*m.RevIncludedMeasureReportResourcesReferencingEvaluatedresource)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedVerificationResultResourcesReferencingTarget != nil {
 		for idx := range *m.RevIncludedVerificationResultResourcesReferencingTarget {
 			rsc := (*m.RevIncludedVerificationResultResourcesReferencingTarget)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedContractResourcesReferencingSubject != nil {
 		for idx := range *m.RevIncludedContractResourcesReferencingSubject {
 			rsc := (*m.RevIncludedContractResourcesReferencingSubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPaymentNoticeResourcesReferencingRequest != nil {
 		for idx := range *m.RevIncludedPaymentNoticeResourcesReferencingRequest {
 			rsc := (*m.RevIncludedPaymentNoticeResourcesReferencingRequest)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPaymentNoticeResourcesReferencingResponse != nil {
 		for idx := range *m.RevIncludedPaymentNoticeResourcesReferencingResponse {
 			rsc := (*m.RevIncludedPaymentNoticeResourcesReferencingResponse)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1 != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1 {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath1)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2 != nil {
 		for idx := range *m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2 {
 			rsc := (*m.RevIncludedResearchDefinitionResourcesReferencingDependsonPath2)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedImplementationGuideResourcesReferencingResource != nil {
 		for idx := range *m.RevIncludedImplementationGuideResourcesReferencingResource {
 			rsc := (*m.RevIncludedImplementationGuideResourcesReferencingResource)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1 {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath1)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 != nil {
 		for idx := range *m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2 {
 			rsc := (*m.RevIncludedResearchElementDefinitionResourcesReferencingDependsonPath2)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedCommunicationResourcesReferencingPartof != nil {
 		for idx := range *m.RevIncludedCommunicationResourcesReferencingPartof {
 			rsc := (*m.RevIncludedCommunicationResourcesReferencingPartof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedCommunicationResourcesReferencingBasedon != nil {
 		for idx := range *m.RevIncludedCommunicationResourcesReferencingBasedon {
 			rsc := (*m.RevIncludedCommunicationResourcesReferencingBasedon)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1 != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1 {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath1)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2 != nil {
 		for idx := range *m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2 {
 			rsc := (*m.RevIncludedActivityDefinitionResourcesReferencingDependsonPath2)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLinkageResourcesReferencingItem != nil {
 		for idx := range *m.RevIncludedLinkageResourcesReferencingItem {
 			rsc := (*m.RevIncludedLinkageResourcesReferencingItem)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLinkageResourcesReferencingSource != nil {
 		for idx := range *m.RevIncludedLinkageResourcesReferencingSource {
 			rsc := (*m.RevIncludedLinkageResourcesReferencingSource)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDeviceRequestResourcesReferencingBasedon != nil {
 		for idx := range *m.RevIncludedDeviceRequestResourcesReferencingBasedon {
 			rsc := (*m.RevIncludedDeviceRequestResourcesReferencingBasedon)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDeviceRequestResourcesReferencingPriorrequest != nil {
 		for idx := range *m.RevIncludedDeviceRequestResourcesReferencingPriorrequest {
 			rsc := (*m.RevIncludedDeviceRequestResourcesReferencingPriorrequest)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedMessageHeaderResourcesReferencingFocus != nil {
 		for idx := range *m.RevIncludedMessageHeaderResourcesReferencingFocus {
 			rsc := (*m.RevIncludedMessageHeaderResourcesReferencingFocus)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedImmunizationRecommendationResourcesReferencingInformation != nil {
 		for idx := range *m.RevIncludedImmunizationRecommendationResourcesReferencingInformation {
 			rsc := (*m.RevIncludedImmunizationRecommendationResourcesReferencingInformation)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedProvenanceResourcesReferencingEntity != nil {
 		for idx := range *m.RevIncludedProvenanceResourcesReferencingEntity {
 			rsc := (*m.RevIncludedProvenanceResourcesReferencingEntity)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedProvenanceResourcesReferencingTarget != nil {
 		for idx := range *m.RevIncludedProvenanceResourcesReferencingTarget {
 			rsc := (*m.RevIncludedProvenanceResourcesReferencingTarget)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedTaskResourcesReferencingSubject != nil {
 		for idx := range *m.RevIncludedTaskResourcesReferencingSubject {
 			rsc := (*m.RevIncludedTaskResourcesReferencingSubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedTaskResourcesReferencingFocus != nil {
 		for idx := range *m.RevIncludedTaskResourcesReferencingFocus {
 			rsc := (*m.RevIncludedTaskResourcesReferencingFocus)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedTaskResourcesReferencingBasedon != nil {
 		for idx := range *m.RevIncludedTaskResourcesReferencingBasedon {
 			rsc := (*m.RevIncludedTaskResourcesReferencingBasedon)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedListResourcesReferencingItem != nil {
 		for idx := range *m.RevIncludedListResourcesReferencingItem {
 			rsc := (*m.RevIncludedListResourcesReferencingItem)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceVariableResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedEvidenceVariableResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedEvidenceVariableResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedEvidenceVariableResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceVariableResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedEvidenceVariableResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedEvidenceVariableResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceVariableResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedEvidenceVariableResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedEvidenceVariableResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceVariableResourcesReferencingDependson != nil {
 		for idx := range *m.RevIncludedEvidenceVariableResourcesReferencingDependson {
 			rsc := (*m.RevIncludedEvidenceVariableResourcesReferencingDependson)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedObservationResourcesReferencingFocus != nil {
 		for idx := range *m.RevIncludedObservationResourcesReferencingFocus {
 			rsc := (*m.RevIncludedObservationResourcesReferencingFocus)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLibraryResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedLibraryResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedLibraryResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLibraryResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedLibraryResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedLibraryResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLibraryResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedLibraryResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedLibraryResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLibraryResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedLibraryResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedLibraryResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedLibraryResourcesReferencingDependson != nil {
 		for idx := range *m.RevIncludedLibraryResourcesReferencingDependson {
 			rsc := (*m.RevIncludedLibraryResourcesReferencingDependson)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedCommunicationRequestResourcesReferencingBasedon != nil {
 		for idx := range *m.RevIncludedCommunicationRequestResourcesReferencingBasedon {
 			rsc := (*m.RevIncludedCommunicationRequestResourcesReferencingBasedon)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedBasicResourcesReferencingSubject != nil {
 		for idx := range *m.RevIncludedBasicResourcesReferencingSubject {
 			rsc := (*m.RevIncludedBasicResourcesReferencingSubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedEvidenceResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedEvidenceResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedEvidenceResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedEvidenceResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedEvidenceResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedEvidenceResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedEvidenceResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedEvidenceResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedEvidenceResourcesReferencingDependson != nil {
 		for idx := range *m.RevIncludedEvidenceResourcesReferencingDependson {
 			rsc := (*m.RevIncludedEvidenceResourcesReferencingDependson)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedAuditEventResourcesReferencingEntity != nil {
 		for idx := range *m.RevIncludedAuditEventResourcesReferencingEntity {
 			rsc := (*m.RevIncludedAuditEventResourcesReferencingEntity)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedConditionResourcesReferencingEvidencedetail != nil {
 		for idx := range *m.RevIncludedConditionResourcesReferencingEvidencedetail {
 			rsc := (*m.RevIncludedConditionResourcesReferencingEvidencedetail)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedCompositionResourcesReferencingSubject != nil {
 		for idx := range *m.RevIncludedCompositionResourcesReferencingSubject {
 			rsc := (*m.RevIncludedCompositionResourcesReferencingSubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedCompositionResourcesReferencingEntry != nil {
 		for idx := range *m.RevIncludedCompositionResourcesReferencingEntry {
 			rsc := (*m.RevIncludedCompositionResourcesReferencingEntry)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedDetectedIssueResourcesReferencingImplicated != nil {
 		for idx := range *m.RevIncludedDetectedIssueResourcesReferencingImplicated {
 			rsc := (*m.RevIncludedDetectedIssueResourcesReferencingImplicated)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedQuestionnaireResponseResourcesReferencingSubject != nil {
 		for idx := range *m.RevIncludedQuestionnaireResponseResourcesReferencingSubject {
 			rsc := (*m.RevIncludedQuestionnaireResponseResourcesReferencingSubject)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo != nil {
 		for idx := range *m.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo {
 			rsc := (*m.RevIncludedClinicalImpressionResourcesReferencingSupportinginfo)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingSuccessor != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingSuccessor {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingSuccessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingDerivedfrom)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingPredecessor != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingPredecessor {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingPredecessor)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingComposedof != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingComposedof {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingComposedof)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1 != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1 {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath1)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	if m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2 != nil {
 		for idx := range *m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2 {
 			rsc := (*m.RevIncludedPlanDefinitionResourcesReferencingDependsonPath2)[idx]
-			resourceMap[rsc.Id] = &rsc
+			resourceMap[rsc.ID] = &rsc
 		}
 	}
 	return resourceMap

@@ -1,6 +1,6 @@
 package fhir
 
-// ParameterDefinition ... // TODO Write proper comment
+// ParameterDefinition ...
 type ParameterDefinition struct {
 	Name          string     `bson:"name,omitempty" json:"name,omitempty"`
 	Use           string     `bson:"use,omitempty" json:"use,omitempty"`

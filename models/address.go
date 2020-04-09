@@ -1,6 +1,6 @@
 package fhir
 
-// Address ... // TODO Write proper comment
+// Address is a FHIR Address structure
 type Address struct {
 	Use        string   `bson:"use,omitempty" json:"use,omitempty"`
 	Type       string   `bson:"type,omitempty" json:"type,omitempty"`

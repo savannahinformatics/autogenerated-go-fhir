@@ -5,23 +5,23 @@ import (
 	"time"
 )
 
-// Precision ... // TODO Write proper comment
+// Precision ...
 type Precision string
 
 const (
-	// Date ... // TODO Write proper comment
+	// Date ...
 	Date = "date"
-	// Timestamp ... // TODO Write proper comment
+	// Timestamp ...
 	Timestamp = "timestamp"
 )
 
-// FHIRDateTime ... // TODO Write proper comment
+// FHIRDateTime ...
 type FHIRDateTime struct {
 	Time      time.Time
 	Precision Precision
 }
 
-// UnmarshalJSON ... // TODO Write proper comment
+// UnmarshalJSON ...
 func (f *FHIRDateTime) UnmarshalJSON(data []byte) (err error) {
 	if len(data) <= 12 {
 		f.Precision = Precision("date")
@@ -34,7 +34,7 @@ func (f *FHIRDateTime) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-// MarshalJSON ... // TODO Write proper comment
+// MarshalJSON ...
 func (f FHIRDateTime) MarshalJSON() ([]byte, error) {
 	if f.Precision == Timestamp {
 		return json.Marshal(f.Time.Format(time.RFC3339))

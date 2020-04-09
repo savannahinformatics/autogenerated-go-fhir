@@ -1,6 +1,6 @@
 package fhir
 
-// Population ... // TODO Write proper comment
+// Population ...
 type Population struct {
 	BackboneElement        `bson:",inline"`
 	AgeRange               *Range           `bson:"ageRange,omitempty" json:"ageRange,omitempty"`

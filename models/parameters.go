@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// Parameters ... // TODO Write proper comment
+// Parameters ...
 type Parameters struct {
 	Resource  `bson:",inline"`
 	Parameter []ParametersParameterComponent `bson:"parameter,omitempty" json:"parameter,omitempty"`
@@ -40,7 +40,7 @@ func (x *Parameters) checkResourceType() error {
 	return nil
 }
 
-// ParametersParameterComponent ... // TODO Write proper comment
+// ParametersParameterComponent ...
 type ParametersParameterComponent struct {
 	BackboneElement      `bson:",inline"`
 	Name                 string                         `bson:"name,omitempty" json:"name,omitempty"`
@@ -57,13 +57,13 @@ type ParametersParameterComponent struct {
 	ValueDateTime        *FHIRDateTime                  `bson:"valueDateTime,omitempty" json:"valueDateTime,omitempty"`
 	ValueDecimal         *float64                       `bson:"valueDecimal,omitempty" json:"valueDecimal,omitempty"`
 	ValueHumanName       *HumanName                     `bson:"valueHumanName,omitempty" json:"valueHumanName,omitempty"`
-	ValueId              string                         `bson:"valueId,omitempty" json:"valueId,omitempty"`
+	ValueID              string                         `bson:"valueId,omitempty" json:"valueId,omitempty"`
 	ValueIdentifier      *Identifier                    `bson:"valueIdentifier,omitempty" json:"valueIdentifier,omitempty"`
 	ValueInstant         *FHIRDateTime                  `bson:"valueInstant,omitempty" json:"valueInstant,omitempty"`
 	ValueInteger         *int32                         `bson:"valueInteger,omitempty" json:"valueInteger,omitempty"`
 	ValueMarkdown        string                         `bson:"valueMarkdown,omitempty" json:"valueMarkdown,omitempty"`
 	ValueMeta            *Meta                          `bson:"valueMeta,omitempty" json:"valueMeta,omitempty"`
-	ValueOid             string                         `bson:"valueOid,omitempty" json:"valueOid,omitempty"`
+	ValueOID             string                         `bson:"valueOid,omitempty" json:"valueOid,omitempty"`
 	ValuePeriod          *Period                        `bson:"valuePeriod,omitempty" json:"valuePeriod,omitempty"`
 	ValuePositiveInt     *uint32                        `bson:"valuePositiveInt,omitempty" json:"valuePositiveInt,omitempty"`
 	ValueQuantity        *Quantity                      `bson:"valueQuantity,omitempty" json:"valueQuantity,omitempty"`
@@ -76,7 +76,7 @@ type ParametersParameterComponent struct {
 	ValueTime            *FHIRDateTime                  `bson:"valueTime,omitempty" json:"valueTime,omitempty"`
 	ValueTiming          *Timing                        `bson:"valueTiming,omitempty" json:"valueTiming,omitempty"`
 	ValueUnsignedInt     *uint32                        `bson:"valueUnsignedInt,omitempty" json:"valueUnsignedInt,omitempty"`
-	ValueUri             string                         `bson:"valueUri,omitempty" json:"valueUri,omitempty"`
+	ValueURI             string                         `bson:"valueUri,omitempty" json:"valueUri,omitempty"`
 	Resource             interface{}                    `bson:"resource,omitempty" json:"resource,omitempty"`
 	Part                 []ParametersParameterComponent `bson:"part,omitempty" json:"part,omitempty"`
 }
